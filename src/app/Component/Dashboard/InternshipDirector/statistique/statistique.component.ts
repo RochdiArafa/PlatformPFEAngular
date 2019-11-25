@@ -98,7 +98,7 @@ export class StatistiqueComponent implements OnInit {
       data: [{
         type: "pie",
         showInLegend: true,
-        toolTipContent: "<b>{name}</b>: Etudiant(s) {y} (#percent%)",
+        toolTipContent: "<b>{name}</b>: Etudiants {y} (#percent%)",
         indexLabel: "{name} - #percent%",
         dataPoints: [
           { y: 0, name: "" },
