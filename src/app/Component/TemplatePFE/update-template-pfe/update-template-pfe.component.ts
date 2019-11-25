@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TemplatePFE } from 'src/app/Model/template-pfe';
 import { TemplatePFEService } from 'src/app/Service/TemplatePFEService/template-pfe.service';
+import { GradProjectFile } from 'src/app/Model/grad-project-file';
 
 @Component({
   selector: 'app-update-template-pfe',
@@ -8,7 +9,7 @@ import { TemplatePFEService } from 'src/app/Service/TemplatePFEService/template-
   styleUrls: ['./update-template-pfe.component.scss']
 })
 export class UpdateTemplatePFEComponent implements OnInit {
-  
+
   public templatePFE: TemplatePFE ;
   constructor(public templatePFEService:TemplatePFEService) { 
     this.templatePFE = new TemplatePFE();
@@ -35,5 +36,29 @@ export class UpdateTemplatePFEComponent implements OnInit {
       this.templatePFE.site = data.site.id;
     })
 
-}
+  }
+
+  copyMessage(val: string){
+    if(val == "titre")
+      val = "{{gradProjectFile.titre}}";
+    if(val == "description")
+      val = "{{gradProjectFile.description}}";
+    if(val == "problem")
+      val = "{{gradProjectFile.problem}}";
+    if(val == "functionnalities")
+      val = "{{gradProjectFile.functionnalities}}";
+      
+      
+    const selBox = document.createElement('textarea');
+    selBox.style.position = 'fixed';
+    selBox.style.left = '0';
+    selBox.style.top = '0';
+    selBox.style.opacity = '0';
+    selBox.value = val;
+    document.body.appendChild(selBox);
+    selBox.focus();
+    selBox.select();
+    document.execCommand('copy');
+    document.body.removeChild(selBox);
+  }
 }

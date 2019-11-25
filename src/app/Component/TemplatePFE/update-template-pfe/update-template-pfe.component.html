@@ -1,4 +1,21 @@
 <h3>Modifier Template PFE : </h3>
+<table>
+    <tr>
+        <td> <button (click)="copyMessage('titre')" value="click to copy" >Titre de sujet</button>
+        </td>
+
+        <td> <button (click)="copyMessage('description')" value="click to copy" >Description de sujet</button>
+        </td>
+
+        <td> <button (click)="copyMessage('problem')" value="click to copy" >Probleme de sujet</button>         
+        </td>
+
+        <td> <button (click)="copyMessage('functionnalities')" value="click to copy" >Functionnalities de sujet</button>
+            
+        </td>
+    
+    </tr>
+</table>
 <ckeditor [(ngModel)]="templatePFE.template"> ></ckeditor>
 <input type="button" value="Modifier Template"  (click)="updateTemplatePFE()">
 
