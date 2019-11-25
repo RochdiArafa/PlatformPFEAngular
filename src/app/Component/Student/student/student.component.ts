@@ -59,6 +59,7 @@ export class StudentComponent implements OnInit {
 
     this.companyService.getRecrutedCompayByOrder(site_id).subscribe((data: any)=>{
       console.log(data);
-    })    }
+    })    
+  }
 
 }

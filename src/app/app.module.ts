@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
-
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { Routes } from '@angular/router';
@@ -16,9 +17,8 @@ import { StudentComponent } from './Component/Student/student/student.component'
 import { AddTemplatePFEComponent } from './Component/TemplatePFE/add-template-pfe/add-template-pfe.component';
 import { UpdateTemplatePFEComponent } from './Component/TemplatePFE/update-template-pfe/update-template-pfe.component';
 import { ExportTemplatePFEComponent } from './Component/TemplatePFE/export-template-pfe/export-template-pfe.component';
-import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ExportDataFichePFEComponent } from './Component/TemplatePFE/export-data-fiche-pfe/export-data-fiche-pfe.component';
+import { StatistiqueComponent } from './Component/Dashboard/InternshipDirector/statistique/statistique.component';
 
 
 
@@ -39,7 +39,8 @@ const appRoutes: Routes = [
     AddTemplatePFEComponent,
     UpdateTemplatePFEComponent,
     ExportTemplatePFEComponent,
-    ExportDataFichePFEComponent
+    ExportDataFichePFEComponent,
+    StatistiqueComponent
   ],
   imports: [
     BrowserModule,
@@ -47,9 +48,9 @@ const appRoutes: Routes = [
     CKEditorModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule,
     PDFExportModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

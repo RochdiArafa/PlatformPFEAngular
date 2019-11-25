@@ -4,34 +4,34 @@ import { TemplatePFE } from './template-pfe';
 
 export class GradProjectFile {
 
-    private id:number;
-	private title:string;
-	private description:string;
-	private problem : string;
-	private functionnalities: string;
-    private keyword : string;
+     id:number;
+	 title:string;
+	 description:string;
+	 problem : string;
+	 functionnalities: string;
+     keyword : string;
     
     	
-private preValidated:boolean;
+ preValidated:boolean;
 	
 
-private anneeScolaire : Date =  new Date();
+ anneeScolaire : Date =  new Date();
 
-private  Motif : string;
+  Motif : string;
 
-private note : number;
+ note : number;
 
-private note_rapporteur:number;
+ note_rapporteur:number;
 
-private  Student:Student;
+  Student:Student;
 
-//private  soutenance:Soutenance ;
+//  soutenance:Soutenance ;
 
-private  company:Company;
+  company:Company;
 
-private  templatePFE : TemplatePFE;
+  templatePFE : TemplatePFE;
 
-//private Categorys :projectCategory[];
+// Categorys :projectCategory[];
 
     constructor(){
 

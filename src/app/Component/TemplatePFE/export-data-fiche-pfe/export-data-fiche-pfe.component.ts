@@ -11,15 +11,16 @@ import { GradProjectFile } from 'src/app/Model/grad-project-file';
 export class ExportDataFichePFEComponent implements OnInit {
 
   public templatePFE: TemplatePFE = new TemplatePFE();
-  public gradProjectFile : GradProjectFile = new GradProjectFile();
+  public gradProjectFile : GradProjectFile;
   public template: string;
 
   public templateNotblank: string = "";
 
   constructor(public templatePFEService:TemplatePFEService) { 
     this.templatePFE = new TemplatePFE();
+    this.gradProjectFile = new GradProjectFile();
     this.GetTemplatePFE(16);
-    this.gradProjectFile.titre = "developement d'une pplateform de stage pfe";
+    this.gradProjectFile.title = "developement d'une pplateform de stage pfe";
     this.gradProjectFile.description = "description developement d'une pplateform de stage pfe";
     this.gradProjectFile.problem = "problem 1 ";
     this.gradProjectFile.functionnalities = "gestion etudiant , gestion classe , gestion salle , gestion user";
@@ -43,7 +44,7 @@ export class ExportDataFichePFEComponent implements OnInit {
   }
 
   ExportStudentTemplate(){
-    this.templateNotblank =  this.templatePFE.template.replace("{{gradProjectFile.titre}}", this.gradProjectFile.titre);
+    this.templateNotblank =  this.templatePFE.template.replace("{{gradProjectFile.titre}}", this.gradProjectFile.title);
     this.templateNotblank =  this.templateNotblank.replace(" {{gradProjectFile.description}}", this.gradProjectFile.description);
     this.templateNotblank =  this.templateNotblank.replace("{{gradProjectFile.problem}}", this.gradProjectFile.problem);
     this.templateNotblank =  this.templateNotblank.replace("{{gradProjectFile.functionnalities}}", this.gradProjectFile.functionnalities);

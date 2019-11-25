@@ -6,6 +6,8 @@ import { TemplateIntershipAgreementComponent } from './Component/TemplateIntersh
 import { AddTemplatePFEComponent } from './Component/TemplatePFE/add-template-pfe/add-template-pfe.component';
 import { UpdateTemplatePFEComponent } from './Component/TemplatePFE/update-template-pfe/update-template-pfe.component';
 import { ExportTemplatePFEComponent } from './Component/TemplatePFE/export-template-pfe/export-template-pfe.component';
+import { ExportDataFichePFEComponent } from './Component/TemplatePFE/export-data-fiche-pfe/export-data-fiche-pfe.component';
+import { StatistiqueComponent } from './Component/Dashboard/InternshipDirector/statistique/statistique.component';
 
 const routes: Routes = [
   {
@@ -25,8 +27,16 @@ const routes: Routes = [
     component: ExportTemplatePFEComponent
   },
   {
+    path        : 'InternshipDirector/TemplatePFE/exportPFEfile',
+    component: ExportDataFichePFEComponent
+  },
+  {
     path        : 'InternshipDirector/TemplateIntershipAgreement',
     component: TemplateIntershipAgreementComponent
+  },
+  {
+    path        : 'InternshipDirector/Statistique',
+    component: StatistiqueComponent
   },
   {
       path      : '**',
