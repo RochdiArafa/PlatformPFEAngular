@@ -18,6 +18,7 @@ import { UpdateTemplatePFEComponent } from './Component/TemplatePFE/update-templ
 import { ExportTemplatePFEComponent } from './Component/TemplatePFE/export-template-pfe/export-template-pfe.component';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ExportDataFichePFEComponent } from './Component/TemplatePFE/export-data-fiche-pfe/export-data-fiche-pfe.component';
 
 
 
@@ -37,7 +38,8 @@ const appRoutes: Routes = [
     StudentComponent,
     AddTemplatePFEComponent,
     UpdateTemplatePFEComponent,
-    ExportTemplatePFEComponent
+    ExportTemplatePFEComponent,
+    ExportDataFichePFEComponent
   ],
   imports: [
     BrowserModule,
