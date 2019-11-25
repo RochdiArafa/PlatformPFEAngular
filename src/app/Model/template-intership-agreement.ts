@@ -4,7 +4,7 @@ export class TemplateIntershipAgreement {
 
     id:number;
     template:string;
-    site : number
+    site : number;
     internshipAgreement:List<object>;
     
     constructor(){

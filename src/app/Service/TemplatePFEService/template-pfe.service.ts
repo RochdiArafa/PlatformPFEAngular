@@ -22,8 +22,7 @@ headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 
 
   public ajouter(T:TemplatePFE){
-
-    return this.httpClient.post<TemplatePFE>(this.urlBase+"templatePFE/?template="+T.template+"&site_id="+T.site , this.httpOptions);
+    return this.httpClient.post<TemplatePFE>(encodeURI(this.urlBase+"templatePFE/?template="+T.template+"&site_id="+T.site) , this.httpOptions);
   }
 	
 	public search(id:number){
@@ -33,12 +32,12 @@ headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 
 	
 	public modifier(T:TemplatePFE ){
-    return this.httpClient.put<TemplatePFE>(this.urlBase+"templatePFE/?template="+T.template+"&site_id="+T.site+"&id="+T.id, this.httpOptions);
+    return this.httpClient.put<TemplatePFE>(encodeURI(this.urlBase+"templatePFE/?template="+T.template+"&site_id="+T.site+"&id="+T.id), this.httpOptions);
   }
 
 	public delete(id:number){
 
-    return this.httpClient.delete<TemplatePFE>("http://localhost:9080/PlatformPFE-web/rest/templatePFE/?id="+id); 
+    return this.httpClient.delete<TemplatePFE>(this.urlBase+"templatePFE/?id="+id); 
   }
   
 	public exportTemplateFile(id:number){

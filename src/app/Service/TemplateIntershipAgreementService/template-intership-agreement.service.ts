@@ -21,7 +21,7 @@ headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 
   public ajouter(T:TemplateIntershipAgreement){
 
-    return this.httpClient.post<TemplateIntershipAgreement>(this.urlBase+"templateIntershipAgreement/?template="+T.template+"&site_id="+T.site, this.httpOptions);
+    return this.httpClient.post<TemplateIntershipAgreement>(encodeURI(this.urlBase+"templateIntershipAgreement/?template="+T.template+"&site_id="+T.site), this.httpOptions);
   }
 	
 	public search(id:number){
@@ -31,7 +31,7 @@ headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 
 	
 	public modifier(T:TemplateIntershipAgreement ){
-    return this.httpClient.put<TemplateIntershipAgreement>(this.urlBase+"templateIntershipAgreement/?template="+T.template+"&site_id="+T.site+"&id="+T.id, this.httpOptions);
+    return this.httpClient.put<TemplateIntershipAgreement>(encodeURI(this.urlBase+"templateIntershipAgreement/?template="+T.template+"&site_id="+T.site+"&id="+T.id), this.httpOptions);
   }
 
 	public delete(id:number){

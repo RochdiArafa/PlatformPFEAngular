@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TemplatePFEService } from 'src/app/Service/TemplatePFEService/template-pfe.service';
 import { TemplatePFE } from 'src/app/Model/template-pfe';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-template-pfe',
@@ -9,7 +10,7 @@ import { TemplatePFE } from 'src/app/Model/template-pfe';
 })
 export class TemplatePFEComponent implements OnInit {
   templatePFE : TemplatePFE;
-  constructor(public templatePFEService:TemplatePFEService ) { 
+  constructor(public templatePFEService:TemplatePFEService , public router:Router ) { 
     
     //this.deleteTemplatePFE(10);
     //this.GetTemplatePFE(10);
@@ -53,5 +54,6 @@ export class TemplatePFEComponent implements OnInit {
       console.log(data);
     }) 
   }
+
 
 }
