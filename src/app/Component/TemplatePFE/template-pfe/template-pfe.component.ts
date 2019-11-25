@@ -15,7 +15,7 @@ export class TemplatePFEComponent implements OnInit {
     //this.deleteTemplatePFE(10);
     //this.GetTemplatePFE(10);
     //this.addTemplatePFE();
-    this.updateTemplatePFE();
+    //this.updateTemplatePFE();
   }
 
   ngOnInit() {

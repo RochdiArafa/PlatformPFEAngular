@@ -15,6 +15,11 @@ import { TemplateIntershipAgreementComponent } from './Component/TemplateIntersh
 import { StudentComponent } from './Component/Student/student/student.component';
 import { AddTemplatePFEComponent } from './Component/TemplatePFE/add-template-pfe/add-template-pfe.component';
 import { UpdateTemplatePFEComponent } from './Component/TemplatePFE/update-template-pfe/update-template-pfe.component';
+import { ExportTemplatePFEComponent } from './Component/TemplatePFE/export-template-pfe/export-template-pfe.component';
+import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 const appRoutes: Routes = [
   {
@@ -31,7 +36,8 @@ const appRoutes: Routes = [
     TemplateIntershipAgreementComponent,
     StudentComponent,
     AddTemplatePFEComponent,
-    UpdateTemplatePFEComponent
+    UpdateTemplatePFEComponent,
+    ExportTemplatePFEComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,9 @@ const appRoutes: Routes = [
     CKEditorModule,
     FormsModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    PDFExportModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

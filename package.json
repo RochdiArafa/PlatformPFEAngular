@@ -19,10 +19,16 @@
     "@angular/platform-browser": "~8.0.3",
     "@angular/platform-browser-dynamic": "~8.0.3",
     "@angular/router": "~8.0.3",
+    "@progress/kendo-angular-pdf-export": "^2.0.0",
     "ckeditor4-angular": "^1.0.0",
+    "html2canvas": "^1.0.0-rc.5",
+    "jspdf": "^1.5.3",
     "rxjs": "~6.4.0",
     "tslib": "^1.9.0",
-    "zone.js": "~0.9.1"
+    "zone.js": "~0.9.1",
+    "@progress/kendo-angular-common": "^1.0.0",
+    "@progress/kendo-drawing": "^1.2.0",
+    "@progress/kendo-theme-default": "latest"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.800.6",

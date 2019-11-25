@@ -5,6 +5,7 @@ import { NotFoundComponent } from './Component/NotFound/not-found/not-found.comp
 import { TemplateIntershipAgreementComponent } from './Component/TemplateIntershipAgreement/template-intership-agreement/template-intership-agreement.component';
 import { AddTemplatePFEComponent } from './Component/TemplatePFE/add-template-pfe/add-template-pfe.component';
 import { UpdateTemplatePFEComponent } from './Component/TemplatePFE/update-template-pfe/update-template-pfe.component';
+import { ExportTemplatePFEComponent } from './Component/TemplatePFE/export-template-pfe/export-template-pfe.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,10 @@ const routes: Routes = [
   {
     path        : 'InternshipDirector/TemplatePFE/update',
     component: UpdateTemplatePFEComponent
+  },
+  {
+    path        : 'InternshipDirector/TemplatePFE/export',
+    component: ExportTemplatePFEComponent
   },
   {
     path        : 'InternshipDirector/TemplateIntershipAgreement',
