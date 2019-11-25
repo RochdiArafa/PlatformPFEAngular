@@ -13,6 +13,9 @@ export class StatistiqueComponent implements OnInit {
 
   student : Student;
   ListStudent : Student[];
+  ListStudentoverContry : Student[];
+  //ListStudent : Student[];
+
   listComplanyStage : object[];
   constructor(private studentService : StudentService , private companyService:CompanyService) {
 
@@ -20,18 +23,17 @@ export class StatistiqueComponent implements OnInit {
 
   ngOnInit() {
     this.getRecrutedCompayByOrder(1);
-
+    this.GetAllStudent(1);
+    this.getAllStudentRecrutedoverContry(1);
   }
   
 
   public getRecrutedCompayByOrder(site_id:number){
 
     this.companyService.getRecrutedCompayByOrder(site_id).subscribe((data: any)=>{
-      //console.log(data[0][0].gmName);
       console.log(data);
       this.listComplanyStage = data;
       this.showStatic();
-
 
     })    
   }
@@ -82,6 +84,57 @@ export class StatistiqueComponent implements OnInit {
 
     chart.render();
 
+  }
+
+
+  showStaticCircle(){
+    let chart = new CanvasJS.Chart("chartCircleContainer", {
+      theme: "light2",
+      animationEnabled: true,
+      exportEnabled: true,
+      title:{
+        text: "les etudiants qui faisent leur stage à l'etranger"
+      },
+      data: [{
+        type: "pie",
+        showInLegend: true,
+        toolTipContent: "<b>{name}</b>: Etudiant(s) {y} (#percent%)",
+        indexLabel: "{name} - #percent%",
+        dataPoints: [
+          { y: 0, name: "" },
+          { y: 0, name: "" },
+
+        ]
+      }]
+    });
+      
+    chart.render();
+
+      chart.data[0].dataPoints[0].y=this.ListStudent.length;
+      chart.data[0].dataPoints[0].name="Tunis";
+
+      chart.data[0].dataPoints[1].y=this.ListStudentoverContry.length;
+      chart.data[0].dataPoints[1].name="Etranger";
+
+
+    chart.render();
+  }
+
+
+  getAllStudentRecrutedByContryByYear(contry , year , site_id){
+    this.studentService.getAllStudentRecrutedByContryByYear(contry , year , site_id).subscribe((data: any)=>{
+      console.log(data);
+      this.ListStudentoverContry = data;
+    })
+  }
+
+  getAllStudentRecrutedoverContry(site_id){
+    this.studentService.getAllStudentRecrutedoverContry(site_id).subscribe((data: any)=>{
+      console.log(data);
+      this.ListStudentoverContry = data;
+      this.showStaticCircle();
+
+    })
   }
 
 }
