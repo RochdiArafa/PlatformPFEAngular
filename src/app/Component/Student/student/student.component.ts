@@ -13,13 +13,7 @@ export class StudentComponent implements OnInit {
   student : Student;
   ListStudent : Student[];
   constructor(public studentService :StudentService , public categoryService:CategoryService , public companyService :CompanyService) {
-      //this.GetAllStudent(1);
-     // this.getAllStudentRecrutedByContryByYear("paris" , 2019 , 1);
-     //this.getAllStudentRecrutedoverContry(1);
-
-     //this.getNbStageParCategorie(1,1);
-
-    this.getRecrutedCompayByOrder(1);
+      this.GetAllStudent(1);
 
    }
 
@@ -32,34 +26,6 @@ export class StudentComponent implements OnInit {
       console.log(data);
       this.ListStudent = data;
     })
-  }
-
-  getAllStudentRecrutedByContryByYear(contry , year , site_id){
-    this.studentService.getAllStudentRecrutedByContryByYear(contry , year , site_id).subscribe((data: any)=>{
-      console.log(data);
-      this.ListStudent = data;
-    })
-  }
-
-  getAllStudentRecrutedoverContry(site_id){
-    this.studentService.getAllStudentRecrutedoverContry(site_id).subscribe((data: any)=>{
-      console.log(data);
-      this.ListStudent = data;
-    })
-  }
-
-  public getNbStageParCategorie(site_id:number , category_id : number){
-
-    this.categoryService.getNbStageParCategorie(site_id,category_id).subscribe((data: any)=>{
-      console.log(data);
-    })  
-  }
-
-  public getRecrutedCompayByOrder(site_id:number){
-
-    this.companyService.getRecrutedCompayByOrder(site_id).subscribe((data: any)=>{
-      console.log(data);
-    })    
   }
 
 }

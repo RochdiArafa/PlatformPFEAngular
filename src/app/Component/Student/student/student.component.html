@@ -1,1 +1,21 @@
-<p>student works!</p>
+<h3>Liste étudiant d'école : </h3>
+<table style="border: 1px solid; font-size: 20px;">
+        <tr style="border: 1px solid;">
+                <td style="border: 1px solid;"> Nom </td>
+                <td style="border: 1px solid;"> Prenom </td>
+                <td style="border: 1px solid;"> Email </td>
+                <td style="border: 1px solid;"> Classe </td>
+                <td style="border: 1px solid;"> Téléphone </td>
+                <td style="border: 1px solid;"> Date de naissence</td>
+                <td style="border: 1px solid;">Action </td>
+        </tr>
+    <tr *ngFor="let item of ListStudent">
+        <td style="border: 1px solid;"> {{item.lastName}} </td>
+        <td style="border: 1px solid;"> {{item.firstName}} </td>
+        <td style="border: 1px solid;"> {{item.email}}</td>
+        <td style="border: 1px solid;"> 4twin2 </td>
+        <td style="border: 1px solid;"> {{item.phoneNumber}} </td>
+        <td style="border: 1px solid;"> {{item.birthDay}}</td>
+        <td style="border: 1px solid;">  </td>
+    </tr>
+</table>
