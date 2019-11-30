@@ -19,6 +19,12 @@ export class AddTemplatePFEComponent implements OnInit {
   }
 
   addTemplatePFE(){
+    var ch = this.templatePFE.template;
+    for (let index = 0; index < ch.length; index++) {
+      ch = ch.replace("&nbsp;"," ")    
+    }
+    this.templatePFE.template = ch;
+
     this.templatePFE.site= 1;
     this.templatePFEService.ajouter(this.templatePFE).subscribe((data: any)=>{
       console.log(data);

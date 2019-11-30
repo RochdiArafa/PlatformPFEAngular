@@ -1,0 +1,17 @@
+<h3>Export Template Fiche convention de stage avec ses donnés</h3>
+
+<div class="pageWrapper">
+        <div class="content">
+          <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+            <div class="size-a4">
+                <p [innerHTML]="template">  </p>       
+            </div>
+          </kendo-pdf-export>
+          
+          <div>
+            <button kendo-button (click)="pdf.saveAs('demo-content.pdf')">
+              Export As PDF
+            </button>
+          </div>
+        </div>
+      </div>

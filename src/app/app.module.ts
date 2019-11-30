@@ -19,6 +19,10 @@ import { UpdateTemplatePFEComponent } from './Component/TemplatePFE/update-templ
 import { ExportTemplatePFEComponent } from './Component/TemplatePFE/export-template-pfe/export-template-pfe.component';
 import { ExportDataFichePFEComponent } from './Component/TemplatePFE/export-data-fiche-pfe/export-data-fiche-pfe.component';
 import { StatistiqueComponent } from './Component/Dashboard/InternshipDirector/statistique/statistique.component';
+import { AddTemplateIntershipAgreementComponent } from './Component/TemplateIntershipAgreement/add-template-intership-agreement/add-template-intership-agreement.component';
+import { UpdateTemplateIntershipAgreementComponent } from './Component/TemplateIntershipAgreement/update-template-intership-agreement/update-template-intership-agreement.component';
+import { ExportTemplateFicheComponent } from './Component/TemplateIntershipAgreement/export-template-fiche/export-template-fiche.component';
+import { ExportDataFicheComponent } from './Component/TemplateIntershipAgreement/export-data-fiche/export-data-fiche.component';
 
 
 
@@ -40,7 +44,11 @@ const appRoutes: Routes = [
     UpdateTemplatePFEComponent,
     ExportTemplatePFEComponent,
     ExportDataFichePFEComponent,
-    StatistiqueComponent
+    StatistiqueComponent,
+    AddTemplateIntershipAgreementComponent,
+    UpdateTemplateIntershipAgreementComponent,
+    ExportTemplateFicheComponent,
+    ExportDataFicheComponent
   ],
   imports: [
     BrowserModule,

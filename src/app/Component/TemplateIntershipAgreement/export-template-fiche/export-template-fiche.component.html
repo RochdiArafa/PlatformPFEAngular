@@ -1,0 +1,21 @@
+<h3>Export Template Convention de stage</h3>
+<!--
+<input type="button" value="Export vide Template" (click)="ExportBlankTemplate()">
+
+<input type="button" value="Export Template etudiant" (click)="ExportStudentTemplate()">
+-->
+<div class="pageWrapper">
+        <div class="content">
+          <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+            <div class="size-a4">
+                <p [innerHTML]="template">  </p>       
+            </div>
+          </kendo-pdf-export>
+          
+          <div>
+            <button kendo-button (click)="pdf.saveAs('demo-content.pdf')">
+              Export As PDF
+            </button>
+          </div>
+        </div>
+      </div>

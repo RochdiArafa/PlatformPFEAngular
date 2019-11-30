@@ -22,6 +22,12 @@ export class UpdateTemplatePFEComponent implements OnInit {
 
 
   updateTemplatePFE(){
+    var ch = this.templatePFE.template;
+    for (let index = 0; index < ch.length; index++) {
+      ch = ch.replace("&nbsp;"," ")    
+    }
+    this.templatePFE.template = ch;
+    
     this.templatePFEService.modifier(this.templatePFE).subscribe((data: any)=>{
       console.log(data);
     }) 

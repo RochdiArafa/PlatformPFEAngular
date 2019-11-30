@@ -24,7 +24,6 @@ export class StatistiqueComponent implements OnInit {
   ngOnInit() {
     this.getRecrutedCompayByOrder(1);
     this.GetAllStudent(1);
-    this.getAllStudentRecrutedoverContry(1);
   }
   
 
@@ -43,7 +42,7 @@ export class StatistiqueComponent implements OnInit {
     this.studentService.getAllStudent(site_id).subscribe((data: any)=>{
       console.log(data);
       this.ListStudent = data;
-
+      this.getAllStudentRecrutedoverContry(1);
     })
   }
 
@@ -56,6 +55,8 @@ export class StatistiqueComponent implements OnInit {
       },
       data: [{
         type: "column",
+        showInLegend: true,
+        toolTipContent: "<b>{name}</b>: {y} Etudiant(s)",
         dataPoints: [
           { y: 0, label: "" },
           { y: 0, label: "" },
@@ -98,7 +99,7 @@ export class StatistiqueComponent implements OnInit {
       data: [{
         type: "pie",
         showInLegend: true,
-        toolTipContent: "<b>{name}</b>: Etudiants {y} (#percent%)",
+        toolTipContent: "<b>{name}</b>: {y} Etudiant(s) (#percent%)",
         indexLabel: "{name} - #percent%",
         dataPoints: [
           { y: 0, name: "" },
