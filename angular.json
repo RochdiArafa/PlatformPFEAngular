@@ -47,7 +47,6 @@
               "src/assets"
             ],
             "styles": [
-
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "src/styles.scss",
               "src/assets/css/bootstrap.min.css",
@@ -56,12 +55,6 @@
               "src/assets/js/plugins/gritter/jquery.gritter.css",
               "src/assets/css/animate.css",
               "src/assets/css/style.css"
-
-              {
-                "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
-              },
-              "src/styles.scss"
-
             ],
             "scripts": [
               "src/assets/js/jquery-3.1.1.min.js",
@@ -147,13 +140,7 @@
               "src/assets"
             ],
             "styles": [
-
               "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
-
-              {
-                "input": "node_modules/@progress/kendo-theme-default/dist/all.css"
-              },
-
               "src/styles.scss"
             ],
             "scripts": []
@@ -168,7 +155,7 @@
               "e2e/tsconfig.json"
             ],
             "exclude": [
-              "**/node_modules/**"
+              "*/node_modules/*"
             ]
           }
         },

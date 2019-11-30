@@ -1,30 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
-<<<<<<< HEAD
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA  } from '@angular/core';
-=======
-import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { CKEditorModule } from 'ckeditor4-angular';
 import { FormsModule , ReactiveFormsModule} from '@angular/forms';
 import { PDFExportModule } from '@progress/kendo-angular-pdf-export';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
->>>>>>> 10fe3411b2dd1a9a09d1602419d57e2f7347e4d0
 
 import { AppRoutingModule } from './app-routing.module';
 import { Routes } from '@angular/router';
 
 import { AppComponent } from './app.component';
-<<<<<<< HEAD
 import { FirstPageComponent } from './TeacherDashboard/first-page/first-page.component';
 import { LoginComponent } from './authUser/login/login.component';
 import {AuthService} from './Services/AuthentificationUser/auth.service';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 import { ProfileComponent } from './TeacherDashboard/copmposants/profile/profile.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import { TeacherActionComponent } from './TeacherDashboard/copmposants/teacher-action/teacher-action.component';
 import { MyCategoriesComponent } from './TeacherDashboard/copmposants/my-categories/my-categories.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MydialogueComponent } from './TeacherDashboard/Dialogs/mydialogue/mydialogue.component';
 import { ModialogueComponent } from './modialogue/modialogue.component';
 import { AngularMaterialModule } from './angular-material.module';
@@ -32,7 +25,6 @@ import {MatDialogModule} from '@angular/material';
 import { AreUSureComponent } from './TeacherDashboard/Dialogs/are-usure/are-usure.component';
 import { TeacherFilesComponent } from './TeacherDashboard/copmposants/teacher-files/teacher-files.component';
 import { ViewDetailFileComponent } from './TeacherDashboard/Dialogs/view-detail-file/view-detail-file.component';
-=======
 import { TemplatePFEComponent } from './Component/TemplatePFE/template-pfe/template-pfe.component';
 import { NotFoundComponent } from './Component/NotFound/not-found/not-found.component';
 import { TemplateIntershipAgreementComponent } from './Component/TemplateIntershipAgreement/template-intership-agreement/template-intership-agreement.component';
@@ -47,7 +39,6 @@ import { UpdateTemplateIntershipAgreementComponent } from './Component/TemplateI
 import { ExportTemplateFicheComponent } from './Component/TemplateIntershipAgreement/export-template-fiche/export-template-fiche.component';
 import { ExportDataFicheComponent } from './Component/TemplateIntershipAgreement/export-data-fiche/export-data-fiche.component';
 
->>>>>>> 10fe3411b2dd1a9a09d1602419d57e2f7347e4d0
 
 
 const appRoutes: Routes = [
@@ -60,7 +51,6 @@ const appRoutes: Routes = [
 @NgModule({
   declarations: [
     AppComponent,
-<<<<<<< HEAD
     FirstPageComponent,
     LoginComponent,
     ProfileComponent,
@@ -70,23 +60,11 @@ const appRoutes: Routes = [
     ModialogueComponent,
     AreUSureComponent,
     TeacherFilesComponent,
-    ViewDetailFileComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    FontAwesomeModule,
-    BrowserAnimationsModule,
-    AngularMaterialModule,
-    MatDialogModule
-  ],
-  entryComponents: [
-    MydialogueComponent, ViewDetailFileComponent
-=======
+    ViewDetailFileComponent,
+
     TemplatePFEComponent,
+    MydialogueComponent, 
+    ViewDetailFileComponent,
     NotFoundComponent,
     TemplateIntershipAgreementComponent,
     StudentComponent,
@@ -102,14 +80,18 @@ const appRoutes: Routes = [
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    CKEditorModule,
+    AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    PDFExportModule,
+    HttpClientModule,
+    FontAwesomeModule,
     BrowserAnimationsModule,
-    AppRoutingModule
->>>>>>> 10fe3411b2dd1a9a09d1602419d57e2f7347e4d0
+    AngularMaterialModule,
+    MatDialogModule,
+    CKEditorModule,
+    PDFExportModule
+  ],
+  entryComponents: [
   ],
 
   providers: [AuthService, HttpClient],
