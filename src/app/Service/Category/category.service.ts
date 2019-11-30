@@ -23,4 +23,9 @@ headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 
     return this.httpClient.get<GradProjectFile>(this.urlBase+"category/StageParCategory/?id="+category_id+"&site_id="+site_id);
   }
+
+  public getStageParCategorie(site_id:number){
+
+    return this.httpClient.get<Object>(this.urlBase+"category/ListStageParCategory/?site_id="+site_id);
+  }
 }

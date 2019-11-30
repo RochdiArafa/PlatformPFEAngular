@@ -3,6 +3,9 @@ import * as CanvasJS from '../../../../../assets/canvasjs.min'
 import { StudentService } from 'src/app/Service/Student/student.service';
 import { CompanyService } from 'src/app/Service/Company/company.service';
 import { Student } from 'src/app/Model/student';
+import * as $ from 'jquery';
+import { CategoryService } from 'src/app/Service/Category/category.service';
+
 
 @Component({
   selector: 'app-statistique',
@@ -15,20 +18,22 @@ export class StatistiqueComponent implements OnInit {
   ListStudent : Student[];
   ListStudentoverContry : Student[];
   //ListStudent : Student[];
+  ListStageParCategory : Object[];
 
   listComplanyStage : object[];
-  constructor(private studentService : StudentService , private companyService:CompanyService) {
-
-  }
-
-  ngOnInit() {
+  constructor(private studentService : StudentService , private companyService:CompanyService , private categoryService:CategoryService) {
     this.getRecrutedCompayByOrder(1);
     this.GetAllStudent(1);
+    this.StageParCategory(1);
+  }
+
+	ngOnInit() {
+
+
   }
   
 
   public getRecrutedCompayByOrder(site_id:number){
-
     this.companyService.getRecrutedCompayByOrder(site_id).subscribe((data: any)=>{
       console.log(data);
       this.listComplanyStage = data;
@@ -58,18 +63,6 @@ export class StatistiqueComponent implements OnInit {
         showInLegend: true,
         toolTipContent: "<b>{name}</b>: {y} Etudiant(s)",
         dataPoints: [
-          { y: 0, label: "" },
-          { y: 0, label: "" },
-          { y: 0, label: "" },
-          { y: 0, label: "" },
-          { y: 0, label: "" },
-          /*
-          { y: 71, label: "Apple" },
-          { y: 55, label: "Mango" },
-          { y: 50, label: "Orange" },
-          { y: 65, label: "Banana" },
-          { y: 95, label: "Pineapple" }
-          */
         ]
       }]
     });
@@ -77,10 +70,10 @@ export class StatistiqueComponent implements OnInit {
     chart.render();
 
     for (let index = 0; index < this.listComplanyStage.length; index++) {
-      if(index<=4){
-      chart.data[0].dataPoints[index].y=this.listComplanyStage[index][1];
-      chart.data[0].dataPoints[index].label=this.listComplanyStage[index][0].gmName;
-      }
+      chart.data[0].dataPoints.push({
+        y: this.listComplanyStage[index][1],
+        label: this.listComplanyStage[index][0].gmName
+        });
     }
 
     chart.render();
@@ -135,6 +128,43 @@ export class StatistiqueComponent implements OnInit {
       this.ListStudentoverContry = data;
       this.showStaticCircle();
 
+    })
+  }
+
+  ShowStaticStageParCategory(){
+    let dataPoints = [];
+    let chart = new CanvasJS.Chart("livechartContainer", {
+      animationEnabled: true,
+      exportEnabled: true,
+      title: {
+        text: "Nombre de stage par categrie"
+      },
+      data: [{
+        type: "column",
+        showInLegend: true,
+        toolTipContent: "<b>{name}</b>: {y} Etudiant(s)",
+        dataPoints: [
+        ]
+      }]
+    });
+
+    chart.render();
+
+    for (let index = 0; index < this.ListStageParCategory.length; index++) {
+      chart.data[0].dataPoints.push({
+        y: this.ListStageParCategory[index].nbstage,
+        label: this.ListStageParCategory[index].category
+        });
+    }
+
+    chart.render();
+  }
+
+  StageParCategory(site_id){
+    this.categoryService.getStageParCategorie(site_id).subscribe((data: any)=>{
+      console.log(data);
+      this.ListStageParCategory = data;
+      this.ShowStaticStageParCategory();
     })
   }
 
