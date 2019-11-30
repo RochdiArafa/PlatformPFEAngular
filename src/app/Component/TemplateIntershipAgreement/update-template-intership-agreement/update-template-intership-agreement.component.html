@@ -1,0 +1,24 @@
+<h3>Modifier template convention de stage : </h3>
+<table>
+    <tr>
+        <td> <button (click)="copyMessage('nom')" value="click to copy" >Nom Etudiant</button>
+        </td>
+
+        <td> <button (click)="copyMessage('prenom')" value="click to copy" >Prénom Etudiant</button>
+        </td>
+
+        <td> <button (click)="copyMessage('datedebut')" value="click to copy" >Date début</button>         
+        </td>
+
+        <td> <button (click)="copyMessage('datefin')" value="click to copy" >Date Fin</button>
+            
+        </td>
+
+        <td> <button (click)="copyMessage('entreprise')" value="click to copy" >Nom Entreprise</button>
+            
+        </td>
+    
+    </tr>
+</table>
+<ckeditor [(ngModel)]="templateIntershipAgreement.template"> ></ckeditor>
+<input type="button" value="Modifier Template"  (click)="updateTemplatePFE()">
