@@ -1,5 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {FirstPageComponent} from './TeacherDashboard/first-page/first-page.component';
+import {LoginComponent} from './authUser/login/login.component';
+import {ControlIsTeacherService} from './Services/AuthentificationUser/control-is-teacher.service';
+import {ProfileComponent} from './TeacherDashboard/copmposants/profile/profile.component';
+
+
 import { TemplatePFEComponent } from './Component/TemplatePFE/template-pfe/template-pfe.component';
 import { NotFoundComponent } from './Component/NotFound/not-found/not-found.component';
 import { TemplateIntershipAgreementComponent } from './Component/TemplateIntershipAgreement/template-intership-agreement/template-intership-agreement.component';
@@ -10,6 +16,9 @@ import { ExportDataFichePFEComponent } from './Component/TemplatePFE/export-data
 import { StatistiqueComponent } from './Component/Dashboard/InternshipDirector/statistique/statistique.component';
 
 const routes: Routes = [
+  {path: 'ProfileTeacher', component: FirstPageComponent,  canActivate: [ControlIsTeacherService]},
+  {path: 'Login', component: LoginComponent},
+  {path: 'profile', component: ProfileComponent},
   {
     path        : 'InternshipDirector/TemplatePFE',
     component: TemplatePFEComponent

@@ -1,0 +1,12 @@
+.redicon{
+  color: red;
+}
+.greenicon{
+  color: green;
+}
+input.ng-invalid.ng-touched{
+  border-color: red;
+}
+input.ng-valid{
+  border-color: green;
+}

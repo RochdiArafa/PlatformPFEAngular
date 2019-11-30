@@ -1,4 +1,3 @@
-//Flot Pie Chart Devices
 $(function() {
 
     var data = [{
