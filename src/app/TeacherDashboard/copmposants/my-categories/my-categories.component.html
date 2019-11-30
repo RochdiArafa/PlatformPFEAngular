@@ -1,0 +1,33 @@
+<div class="ibox " >
+  <div class="ibox-title" >
+    <h5>My Prefered Categories</h5>
+    <div class="ibox-tools">
+
+      <a (click)="openDialog()" >
+        <fa-icon [icon]="annonceIcon" size="1x" [spin]="true"  [title]="'Propose One !'" [ngStyle]="{color: 'darkgreen'}"></fa-icon>
+      </a>
+      <a class="collapse-link">
+        <i class="fa fa-chevron-up"></i>
+      </a>
+      <a class="close-link">
+        <i class="fa fa-times"></i>
+      </a>
+    </div>
+  </div>
+
+  <div class="ibox-content" >
+    <div class="feed-activity-list" *ngFor="let category of ListPreferedCategories">
+
+      <div class="feed-element">
+        <div>
+          <a  (click)="deletePreferedCategory(category.id)" ><small class="float-right "><fa-icon [icon]="trashIncon" [ngStyle]="{color: 'darkred'}" ></fa-icon></small></a>
+          <strong>{{category.name}}</strong>
+          <div>{{category.description}}</div>
+          <small class="text-muted">Today 5:60 pm - 12.06.2014</small>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
