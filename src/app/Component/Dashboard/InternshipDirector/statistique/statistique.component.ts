@@ -5,6 +5,7 @@ import { CompanyService } from 'src/app/Service/Company/company.service';
 import { Student } from 'src/app/Model/student';
 import * as $ from 'jquery';
 import { CategoryService } from 'src/app/Service/Category/category.service';
+import { StageParCategory } from 'src/app/Model/stage-par-category';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class StatistiqueComponent implements OnInit {
   ListStudent : Student[];
   ListStudentoverContry : Student[];
   //ListStudent : Student[];
-  ListStageParCategory : Object[];
+  ListStageParCategory : StageParCategory[];
 
   listComplanyStage : object[];
   constructor(private studentService : StudentService , private companyService:CompanyService , private categoryService:CategoryService) {
@@ -142,7 +143,7 @@ export class StatistiqueComponent implements OnInit {
       data: [{
         type: "column",
         showInLegend: true,
-        toolTipContent: "<b>{name}</b>: {y} Etudiant(s)",
+        toolTipContent: "<b>{name}</b>: {y} Stage(s)",
         dataPoints: [
         ]
       }]
