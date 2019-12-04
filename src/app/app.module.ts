@@ -38,6 +38,7 @@ import { AddTemplateIntershipAgreementComponent } from './Component/TemplateInte
 import { UpdateTemplateIntershipAgreementComponent } from './Component/TemplateIntershipAgreement/update-template-intership-agreement/update-template-intership-agreement.component';
 import { ExportTemplateFicheComponent } from './Component/TemplateIntershipAgreement/export-template-fiche/export-template-fiche.component';
 import { ExportDataFicheComponent } from './Component/TemplateIntershipAgreement/export-data-fiche/export-data-fiche.component';
+import { DashboardInternshipDirectorComponent } from './Component/Dashboard/InternshipDirector/dashboard-internship-director/dashboard-internship-director.component';
 
 
 
@@ -76,7 +77,8 @@ const appRoutes: Routes = [
     AddTemplateIntershipAgreementComponent,
     UpdateTemplateIntershipAgreementComponent,
     ExportTemplateFicheComponent,
-    ExportDataFicheComponent
+    ExportDataFicheComponent,
+    DashboardInternshipDirectorComponent
   ],
   imports: [
     BrowserModule,

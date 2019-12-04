@@ -1,21 +1,48 @@
-<h3>Liste étudiant d'école : </h3>
-<table style="border: 1px solid; font-size: 20px;">
-        <tr style="border: 1px solid;">
-                <td style="border: 1px solid;"> Nom </td>
-                <td style="border: 1px solid;"> Prenom </td>
-                <td style="border: 1px solid;"> Email </td>
-                <td style="border: 1px solid;"> Classe </td>
-                <td style="border: 1px solid;"> Téléphone </td>
-                <td style="border: 1px solid;"> Date de naissence</td>
-                <td style="border: 1px solid;">Action </td>
-        </tr>
-    <tr *ngFor="let item of ListStudent">
-        <td style="border: 1px solid;"> {{item.lastName}} </td>
-        <td style="border: 1px solid;"> {{item.firstName}} </td>
-        <td style="border: 1px solid;"> {{item.email}}</td>
-        <td style="border: 1px solid;"> 4twin2 </td>
-        <td style="border: 1px solid;"> {{item.phoneNumber}} </td>
-        <td style="border: 1px solid;"> {{item.birthDay}}</td>
-        <td style="border: 1px solid;">  </td>
-    </tr>
-</table>
+<div class="row">
+    
+    <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+    <div class="ibox-title">
+        <h5>Liste des etudiants </h5>
+        <div ibox-tools></div>
+    </div>
+    <div class="ibox-content">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
+                                            <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+    
+                    <th>Nom </th>
+                    <th>Prenom </th>
+                    <th>Email </th>
+                    <th>Classe </th>
+                    <th>Téléphone </th>
+                    <th>Date de naissence</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of ListStudent">
+                        <td> {{item.lastName}} </td>
+                        <td> {{item.firstName}} </td>
+                        <td> {{item.email}}</td>
+                        <td> 4twin2 </td>
+                        <td> {{item.phoneNumber}} </td>
+                        <td> {{item.birthDay}}</td>
+                        <td>  </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+    </div>
+    </div>
+    </div>
+    
+    </div>
