@@ -21,21 +21,39 @@
               IN+
             </div>
           </li>
-          <li class="active">
-            <a  routerLink="Login" ><i  class="fa fa-home"></i> <span class="nav-label">Dashboard</span></a>
-  
-          </li>
-          <li>
-            <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Etudiant </span></a>
-  
-          </li>
-          <li>
-            <a href="metrics.html"><i  class="fa fa-bell-o"></i> <span class="nav-label">Template PFE</span>  </a>
+
+          <li class="active" *ngIf="afficherStatis" style="color:#FFf;">
+            <a  (click)="showStatis()" ><i  class="fa fa-home"></i> <span class="nav-label">Dashboard</span></a>
           </li>
 
-          <li>
-            <a href="metrics.html"><i  class="fa fa-bell-o"></i> <span class="nav-label">Template Convention de Stage</span>  </a>
+          <li *ngIf="!afficherStatis" style="color:#FFf;">
+            <a  (click)="showStatis()" ><i  class="fa fa-home"></i> <span class="nav-label">Dashboard</span></a>
           </li>
+
+
+          <li class="active"  *ngIf="afficherEtudiant" style="color:#FFf;">
+            <a (click)="showStudent()"><i class="fa fa-envelope"></i> <span class="nav-label">Etudiant </span></a>
+          </li>
+
+          <li *ngIf="!afficherEtudiant" style="color:#FFf;">
+            <a (click)="showStudent()"><i class="fa fa-envelope"></i> <span class="nav-label">Etudiant </span></a>
+          </li>
+
+          <li class="active" *ngIf="afficherTemplatePFE" style="color:#FFf;"> 
+            <a (click)="showTemplatePFE()"><i  class="fa fa-bell-o"></i> <span class="nav-label">Template PFE</span>  </a>
+          </li>
+
+          <li *ngIf="!afficherTemplatePFE" style="color:#FFf;">
+                <a (click)="showTemplatePFE()"><i  class="fa fa-bell-o"></i> <span class="nav-label">Template PFE</span>  </a>
+            </li>
+
+          <li class="active" *ngIf="afficherTemplateConvention" style="color:#FFf;">
+            <a (click)="showTemplateConvention()"><i  class="fa fa-bell-o"></i> <span class="nav-label">Template Convention de Stage</span>  </a>
+          </li>
+
+          <li *ngIf="!afficherTemplateConvention" style="color:#FFf;">
+                <a (click)="showTemplateConvention()"><i  class="fa fa-bell-o"></i> <span class="nav-label">Template Convention de Stage</span>  </a>
+            </li>
         </ul>
   
       </div>
@@ -175,44 +193,57 @@
 
   <div class="wrapper wrapper-content">
     <div class="animated fadeInRight">
-    <div class="row">
-        <div class="col-lg-2">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Etudiant</h5>
-                </div>
-                <div class="ibox-content">
-                    <h1 class="no-margins">3</h1>
 
+
+        <div *ngIf="afficherStatis">
+                <div class="row">
+                        <div class="col-lg-2">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Etudiant</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <h1 class="no-margins">3</h1>
+                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-2">
+                            <div class="ibox float-e-margins">
+                                <div class="ibox-title">
+                                    <h5>Etudiant Sans Stage</h5>
+                                </div>
+                                <div class="ibox-content">
+                                    <h1 class="no-margins">0</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            <div class="row" >
+                <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                        <div class="ibox-content">
+                            
+                            <app-statistique></app-statistique>
+            
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-2">
-            <div class="ibox float-e-margins">
-                <div class="ibox-title">
-                    <h5>Etudiant Sans Stage</h5>
-                </div>
-                <div class="ibox-content">
-                    <h1 class="no-margins">0</h1>
-                </div>
-            </div>
-        </div>
-    </div>
 
-
-    <div class="row">
-        <div class="col-lg-12">
-            <div class="ibox float-e-margins">
-                <div class="ibox-content">
-                    
-                    <app-statistique></app-statistique>
-    
-                </div>
-            </div>
+        <div *ngIf="afficherEtudiant">            
+            <app-student></app-student>
         </div>
-    </div>
-    
-    <app-student></app-student>
+
+        <div *ngIf="afficherTemplatePFE">            
+            <app-template-pfe></app-template-pfe>
+        </div>
+
+        <div *ngIf="afficherTemplateConvention">            
+            <app-template-intership-agreement></app-template-intership-agreement>
+        </div>
+
     
     </div>
     

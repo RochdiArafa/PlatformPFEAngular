@@ -16,7 +16,7 @@ export class UpdateTemplateIntershipAgreementComponent implements OnInit {
   constructor(public templateIntershipAgreementService:TemplateIntershipAgreementService) { 
     this.templateIntershipAgreement = new TemplateIntershipAgreement();
     this.intershipAgreement = new IntershipAgreement();
-    this.GetTemplatePFE(26);
+    this.GetTemplatePFE(27);
   }
 
   ngOnInit() {
