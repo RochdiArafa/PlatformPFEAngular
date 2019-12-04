@@ -1,0 +1,151 @@
+
+
+  <div class="row">
+    <div class="col-lg-12">
+
+      <div class="ibox product-detail">
+        <div class="ibox-content">
+
+          <div class="row">
+
+
+
+            <div class="col-md-12">
+
+              <h2 class="font-bold m-b-xs">
+                {{data.pfe.title}}
+              </h2>
+              <small *ngIf="data.type == 'encadred'" > you supervise this Grade Project File </small>
+              <small *ngIf="data.type == 'rapported'"  >you reppot this Grade Project File</small>
+              <small *ngIf="data.type == 'presedent' " >you are the presedent this Grade Project File</small>
+              <div class="m-t-md">
+                <h2 class="product-main-price" *ngIf="data.pfe.preValidated == true" >Prevalidated <small class="text-muted">file</small> </h2>
+                <h2 class="product-main-price" *ngIf="data.pfe.preValidated == false" >Not Prevalidated Yet <small class="text-muted">file</small> </h2>
+              </div>
+              <hr>
+
+              <h4>Grade file description</h4>
+
+              <div class="small text-muted">
+               {{data.pfe.description}}
+              </div>
+              <dl class="small m-t-md">
+                <dt>Problem  :</dt>
+                <dd>{{data.pfe.problem}}</dd>
+                <dt>KeyWords lists :</dt>
+                <dd>{{data.pfe.keyword}}</dd>
+                <dt>Categories Used :</dt>
+                <dd *ngFor="let c of data.pfe.categoriesoffile" > {{c.name}} ,</dd>
+
+                <dt *ngIf="data.type == 'rapported' || 'presedent'" >note Supervisor :</dt>
+                <dd *ngIf="data.type == 'rapported' || 'presedent'" > {{data.pfe.note == 0 ? 'Not Yet': data.pfe.note}} </dd>
+                <dt *ngIf="data.type == 'encadred' || 'presedent'" >note rapportor :</dt>
+                <dd *ngIf="data.type == 'encadred' || 'presedent'" > {{data.pfe.note_rapporteur == 0 ? 'Not Yet': data.pfe.note_rapporteur }} </dd>
+
+              </dl>
+              <hr>
+
+              <div class="row">
+                <div class="col-md-12" >
+              <form  [formGroup]="noteEncadreurForm"  (ngSubmit)="modifEncadrant()" *ngIf="data.type == 'encadred' && data.pfe.preValidated == true && justModified == false ">
+              <div>
+
+             <div class="row" >
+
+               <div class="col-md-3" >
+
+                <div class="form-group" >
+                  <div class="input-group" >
+                    <div class="input-group-prepend" >
+                      <div class="input-group-text bg-white"  >
+                        <fa-icon [icon]="UsergraduatIcon" [ngClass]="{
+                greenicon: noteEncadreurForm.get('Note').valid,
+                redicon: noteEncadreurForm.get('Note').invalid && noteEncadreurForm.get('Note').touched
+                }" ></fa-icon>
+                      </div>
+                    </div>
+                    <input name="" #UserName formControlName="Note"  required class="form-control"  placeholder="enter Grade" >
+                  </div>
+                </div>
+               </div>
+
+               <div class="col-md-3" >
+
+                <div class="form-group" >
+                  <div class="input-group" >
+                    <div class="input-group-prepend" >
+                      <div class="input-group-text bg-white"  >
+                        <fa-icon [icon]="MotifIcon" [ngClass]="{
+                greenicon: noteEncadreurForm.get('Motif').valid,
+                redicon: noteEncadreurForm.get('Motif').invalid && noteEncadreurForm.get('Motif').touched
+                }" ></fa-icon>
+                      </div>
+                    </div>
+                    <textarea name="" #UserName formControlName="Motif"  required class="form-control"  placeholder="enter Motif" ></textarea>
+                  </div>
+                </div>
+
+               </div>
+
+             </div>
+
+                <div class="btn-group">
+                  <button type="submit" [disabled]="noteEncadreurForm.invalid" class="btn btn-primary btn-w-m"><fa-icon [icon]="UsergraduatIcon" ></fa-icon>  Noter file </button>
+                </div>
+              </div>
+              </form>
+
+
+              <form  [formGroup]="noteRapporteurForm" (ngSubmit)="modifrapport()" *ngIf="data.type == 'rapported' && data.pfe.preValidated == true && justModified == false  ">
+                <div class="row">
+
+                  <div class="col-md-3">
+
+                  <div class="form-group" >
+                    <div class="input-group" >
+                      <div class="input-group-prepend" >
+                        <div class="input-group-text bg-white"  >
+                          <fa-icon [icon]="UsergraduatIcon" [ngClass]="{
+                greenicon: noteRapporteurForm.get('Note_Rappoteur').valid,
+                redicon: noteRapporteurForm.get('Note_Rappoteur').invalid && noteRapporteurForm.get('Note_Rappoteur').touched
+                }" ></fa-icon>
+                        </div>
+                      </div>
+                      <input name=""  formControlName="Note_Rappoteur"  required class="form-control"  placeholder="enter Grade" >
+                    </div>
+                  </div>
+
+
+                  <div class="btn-group">
+                    <button type="submit" [disabled]="noteRapporteurForm.invalid" class="btn btn-primary btn-w-m"><fa-icon [icon]="UsergraduatIcon" ></fa-icon>  Noter file </button>
+                  </div>
+
+                  </div>
+
+                </div>
+              </form>
+
+
+                  <div  *ngIf="justModified == true"  class="alert alert-info" role="alert">
+                    you just modified this file ;
+                  </div>
+
+
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+        <div class="ibox-footer">
+                            <span class="pull-right">
+                                Full stock - <i class="fa fa-clock-o"></i> 14.04.2016 10:04 pm
+                            </span>
+          The generated Lorem Ipsum is therefore always free
+        </div>
+      </div>
+
+    </div>
+  </div>
+

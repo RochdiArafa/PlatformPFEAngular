@@ -1,0 +1,47 @@
+
+  <div class="ibox ">
+
+    <div class="ibox-title">
+      <h5>Teacher's Actions </h5>
+      <span class="label label-primary">Last 5  Actions </span>
+      <div class="ibox-tools">
+        <a class="collapse-link">
+          <i class="fa fa-chevron-up"></i>
+        </a>
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="fa fa-wrench"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-user">
+
+        </ul>
+        <a class="close-link">
+          <i class="fa fa-times"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="ibox-content inspinia-timeline">
+
+      <div class="timeline-item" *ngFor="let obj of ListActions">
+        <div class="row">
+          <div class="col-3 date">
+            <p>{{obj.dateaction | date: 'yyyy-MM-dd'}}</p>
+            <fa-icon size="2x" [icon]="checkicon" *ngIf="obj.title === 'Pre-validation d\' une fiche pfe'" ></fa-icon>
+            <fa-icon size="2x" [icon]="penIcon" *ngIf="obj.title === 'Noter une fiche pfe'" ></fa-icon>
+            <fa-icon size="2x" [icon]="commentIcon" *ngIf="obj.title === ' Motif fiche pfe'" ></fa-icon>
+
+            <br/>
+            <small class="text-navy">à {{obj.dateaction | date: 'hh:mm'}}</small>
+          </div>
+          <div class="col-7 content no-top-border">
+            <p class="m-b-xs"><strong>{{obj.title}}</strong></p>
+
+            <p>{{obj.description}}</p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
