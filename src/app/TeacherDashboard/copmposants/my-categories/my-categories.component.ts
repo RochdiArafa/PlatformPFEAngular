@@ -52,7 +52,7 @@ export class MyCategoriesComponent implements OnInit {
       () => {
         console.log(this.ListPreferedCategories);
         this.ngOnInit();
-        }
+      }
     );
 
   }

@@ -10,5 +10,6 @@ export interface GradeFileModel {
   note: number;
   note_rapporteur: number;
   motif: string;
+  anneeScolaire: Date;
   categoriesoffile: CategoryModel[];
 }

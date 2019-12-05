@@ -39,7 +39,12 @@ import { UpdateTemplateIntershipAgreementComponent } from './Component/TemplateI
 import { ExportTemplateFicheComponent } from './Component/TemplateIntershipAgreement/export-template-fiche/export-template-fiche.component';
 import { ExportDataFicheComponent } from './Component/TemplateIntershipAgreement/export-data-fiche/export-data-fiche.component';
 import { DashboardInternshipDirectorComponent } from './Component/Dashboard/InternshipDirector/dashboard-internship-director/dashboard-internship-director.component';
+import { SkillsComponent } from './TeacherDashboard/copmposants/skills/skills.component';
+import { StatistiquesTeacherComponent } from './TeacherDashboard/copmposants/statistiques-teachers/statistiques-teachers.component';
 
+
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {ChartsModule} from 'ng2-charts';
 
 
 const appRoutes: Routes = [
@@ -48,7 +53,6 @@ const appRoutes: Routes = [
       loadChildren: './main/apps/apps.module#AppsModule'
   }
 ]
-  
 @NgModule({
   declarations: [
     AppComponent,
@@ -62,7 +66,6 @@ const appRoutes: Routes = [
     AreUSureComponent,
     TeacherFilesComponent,
     ViewDetailFileComponent,
-
     TemplatePFEComponent,
     MydialogueComponent, 
     ViewDetailFileComponent,
@@ -78,7 +81,22 @@ const appRoutes: Routes = [
     UpdateTemplateIntershipAgreementComponent,
     ExportTemplateFicheComponent,
     ExportDataFicheComponent,
-    DashboardInternshipDirectorComponent
+    DashboardInternshipDirectorComponent,
+    SkillsComponent,
+    StatistiquesTeacherComponent,
+    AppComponent,
+    FirstPageComponent,
+    LoginComponent,
+    ProfileComponent,
+    TeacherActionComponent,
+    MyCategoriesComponent,
+    MydialogueComponent,
+    ModialogueComponent,
+    AreUSureComponent,
+    TeacherFilesComponent,
+    ViewDetailFileComponent,
+    SkillsComponent,
+    StatistiquesTeacherComponent
   ],
   imports: [
     BrowserModule,
@@ -91,9 +109,21 @@ const appRoutes: Routes = [
     AngularMaterialModule,
     MatDialogModule,
     CKEditorModule,
-    PDFExportModule
+    PDFExportModule,
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    FontAwesomeModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule,
+    MatDialogModule,
+    NgxChartsModule,
+    ChartsModule
   ],
   entryComponents: [
+    MydialogueComponent, ViewDetailFileComponent, AreUSureComponent
   ],
 
   providers: [AuthService, HttpClient],

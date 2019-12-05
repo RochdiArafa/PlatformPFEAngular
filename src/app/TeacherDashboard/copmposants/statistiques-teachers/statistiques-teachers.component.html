@@ -1,0 +1,99 @@
+
+
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="ibox-content text-center p-md">
+
+        <h2><span class="text-navy">Statistics for You !</span></h2>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-lg-6">
+    <div class="ibox float-e-margins">
+      <div class="ibox-content text-center p-md">
+
+        <h4 class="m-b-xxs">Encadred Categories Stats <span class="label label-primary">NEW</span></h4>
+        <small>   this is the most encadred categories you ever encadred !   </small>
+        <div class="row" >
+
+          <div class="col-lg-6" *ngFor=" let obj of categories, let  i = index" >
+            <div class="ibox ">
+              <div class="ibox-title">
+                <span class="label label-success float-right"> / 20 </span>
+                <h5>{{poids[i]}}</h5>
+              </div>
+              <div class="ibox-content">
+                <h1 class="no-margins">{{obj}}</h1>
+                <div class="stat-percent font-bold text-success"><i class="fa fa-bolt"></i></div>
+                <small>Total income</small>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-lg-6">
+    <div class="ibox float-e-margins">
+      <div class="ibox-content text-center p-md">
+
+        <h4 class="m-b-xxs">Rapportedd Categories Stats <span class="label label-primary">NEW</span></h4>
+        <small>   this is the most Rapported categories you ever encadred !   </small>
+        <div class="row" >
+
+          <div class="col-lg-6" *ngFor=" let obj of categoriesRapported, let  i = index" >
+            <div class="ibox ">
+              <div class="ibox-title">
+                <span class="label label-success float-right"> / 20</span>
+                <h5>{{poidsRapported[i]}}</h5>
+              </div>
+              <div class="ibox-content">
+                <h1 class="no-margins">{{obj}}</h1>
+                <div class="stat-percent font-bold text-success"><i class="fa fa-bolt"></i></div>
+                <small>Total income</small>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+<div>
+  <div>
+    <div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+    <button mat-button mat-raised-button color="primary" (click)="randomize()">Update</button>
+  </div>
+</div>
