@@ -18,14 +18,14 @@
       <div class="ibox">
         <div class="ibox-title">
           <div class="row" >
-          <div class="col-md-4">
-          <h5>All projects assigned to this account</h5>
-          </div>
-          <div class="col-md-8">
-            <a  (click)="chagetoencadred()" class="btn btn-primary btn-xs" style="padding-left: 5px; color: white" >Encadred project</a>
-            <a  (click)="chagetorapported()" class="btn btn-primary btn-xs" style="padding-left: 5px; color: white">Rapported project</a>
-            <a  (click)="chagetopresented()" class="btn btn-primary btn-xs" style="padding-left: 5px; color: white">Presedent new project</a>
-          </div>
+            <div class="col-md-4">
+              <h5>All projects assigned to this account</h5>
+            </div>
+            <div class="col-md-8">
+              <a  (click)="chagetoencadred()" class="btn btn-primary btn-xs" style="padding-left: 5px; color: white" >Encadred project</a>
+              <a  (click)="chagetorapported()" class="btn btn-primary btn-xs" style="padding-left: 5px; color: white">Rapported project</a>
+              <a  (click)="chagetopresented()" class="btn btn-primary btn-xs" style="padding-left: 5px; color: white">Presedent new project</a>
+            </div>
           </div>
         </div>
         <div class="ibox-content">
@@ -66,7 +66,7 @@
                 </td>
                 <td class="project-actions">
                   <a (click)="ShowDetails(obj)" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-                  <a (click)="prevalidate(obj.id)" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                  <a *ngIf="obj.preValidated == false" (click)="prevalidate(obj)" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
                 </td>
               </tr>
 

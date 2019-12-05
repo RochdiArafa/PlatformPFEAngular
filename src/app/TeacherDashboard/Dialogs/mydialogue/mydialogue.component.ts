@@ -17,8 +17,8 @@ export class MydialogueComponent implements OnInit {
   descriptionIcon = faPaste;
 
   CategoryFrom = new FormGroup({
-      CategoryName: new  FormControl('', [Validators.required]),
-      CategoryDescription: new  FormControl('', [Validators.required])
+    CategoryName: new  FormControl('', [Validators.required]),
+    CategoryDescription: new  FormControl('', [Validators.required])
   });
 
   constructor(public dialogRef: MatDialogRef<MydialogueComponent>,

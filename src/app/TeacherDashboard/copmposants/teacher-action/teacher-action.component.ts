@@ -9,11 +9,11 @@ import {TeacherService} from '../../../Services/teacher.service';
   styleUrls: ['./teacher-action.component.scss']
 })
 export class TeacherActionComponent implements OnInit {
- // fotawsome icons
+  // fotawsome icons
   checkicon = faClipboardCheck;
   penIcon = faPen;
   commentIcon = faCommentAlt;
- // *****
+  // *****
   ListActions: ActionTeacherModel[] = [];
   constructor(private TeacherSer: TeacherService) { }
 
@@ -22,9 +22,9 @@ export class TeacherActionComponent implements OnInit {
   }
 
   GetListActionsOfTeacher() {
-      this.TeacherSer.getTeachersAction().subscribe((value) => {
-        this.ListActions = value;
-      });
+    this.TeacherSer.getTeachersAction().subscribe((value) => {
+      this.ListActions = value;
+    });
   }
 
 }

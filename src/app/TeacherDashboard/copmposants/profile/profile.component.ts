@@ -33,18 +33,18 @@ export class ProfileComponent implements OnInit {
     // this.captnbtotalfile = this.captnbencadrantfile + this.captnbrapportedfile + this.captnbPresedentfile;
   }
 
-    GetEncadredFiles() {
-        let list: GradeFileModel[] = [];
-        // console.log('id: ' + this.connectedTeacherSer.Teacher.id);
-        this.TeacherSer.getNbOfAllEncadred(Number(this.connectedTeacherSer.Teacher.id)).subscribe(
-          value => {list = value; },
-          error1 => {},
-          () => {
-            this.captnbencadrantfile = list.length;
-            this.captnbtotalfile += list.length;
+  GetEncadredFiles() {
+    let list: GradeFileModel[] = [];
+    // console.log('id: ' + this.connectedTeacherSer.Teacher.id);
+    this.TeacherSer.getNbOfAllEncadred(Number(this.connectedTeacherSer.Teacher.id)).subscribe(
+      value => {list = value; },
+      error1 => {},
+      () => {
+        this.captnbencadrantfile = list.length;
+        this.captnbtotalfile += list.length;
+      }
+    );
   }
-        );
-    }
 
   GetRapportedFiles() {
     let list: GradeFileModel[] = [];
