@@ -12,8 +12,8 @@ import {isNgTemplate} from '@angular/compiler';
 
 @Component({
   selector: 'app-statistiques-teacher',
-  templateUrl: './statistiques-teacher.component.html',
-  styleUrls: ['./statistiques-teacher.component.scss']
+  templateUrl: './statistiques-teachers.component.html',
+  styleUrls: ['./statistiques-teachers.component.scss']
 })
 export class StatistiquesTeacherComponent implements OnInit {
 
