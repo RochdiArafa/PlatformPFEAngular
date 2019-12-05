@@ -138,7 +138,7 @@ export class StatistiqueComponent implements OnInit {
       animationEnabled: true,
       exportEnabled: true,
       title: {
-        text: "Nombre de stage par categrie"
+        text: "Nombre de stage par categorie"
       },
       data: [{
         type: "column",
