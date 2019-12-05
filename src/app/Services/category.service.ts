@@ -19,17 +19,17 @@ export class CategoryService {
 
   public MyProposedCategories(): Observable<CategoryModel[]>  {
     return  this.httpClientSer.get<CategoryModel[]>('http://localhost:9080/PlatformPFE-web/rest/categories/MyPrefered/' +
-      this.authservice.Teacher.id ).pipe(timeout(6000));
+      this.authservice.Teacher.id );
   }
 
-public ProposerCategorie(Categry: any) {
-  return  this.httpClientSer.post<CategoryModel>('http://localhost:9080/PlatformPFE-web/rest/categories/propose/'
-   + this.authservice.Teacher.id , Categry, this.httpOptions ).pipe(timeout(6000));
-}
+  public ProposerCategorie(Categry: any) {
+    return  this.httpClientSer.post<CategoryModel>('http://localhost:9080/PlatformPFE-web/rest/categories/propose/'
+      + this.authservice.Teacher.id , Categry, this.httpOptions );
+  }
 
   public deletePreferedCategorie(idC: number): Observable<any>  {
     return  this.httpClientSer.delete<any>('http://localhost:9080/PlatformPFE-web/rest/categories/DELETEpreferedCat/'
-      + idC + '/' + this.authservice.Teacher.id).pipe(timeout(6000));
+      + idC + '/' + this.authservice.Teacher.id);
   }
 
 
