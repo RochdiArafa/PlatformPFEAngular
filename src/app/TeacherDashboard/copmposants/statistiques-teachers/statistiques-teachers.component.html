@@ -88,14 +88,14 @@
       <div class="ibox-content text-center p-md">
 
         <h4 class="m-b-xxs">Encadred Categories Stats <span class="label label-primary">NEW</span></h4>
-        <small>   this is the avrage grade of encadred categories you ever encadred !   </small>
+        <small>   this is the number of times the you encadred these categories !   </small>
         <div class="row" >
 
-          <div class="col-lg-6" *ngFor=" let obj of categories, let  i = index" >
+          <div class="col-lg-6" *ngFor=" let obj of nbcategories, let  i = index" >
             <div class="ibox ">
               <div class="ibox-title">
-                <span class="label label-success float-right"> / 20 </span>
-                <h5>{{poids[i]}}</h5>
+                <span class="label label-success float-right"> times </span>
+                <h5>{{nbpoids[i]}}</h5>
               </div>
               <div class="ibox-content">
                 <h1 class="no-margins">{{obj}}</h1>
@@ -118,14 +118,14 @@
       <div class="ibox-content text-center p-md">
 
         <h4 class="m-b-xxs">Rapportedd Categories Stats <span class="label label-primary">NEW</span></h4>
-        <small>   this is the avrage grade of Rapported categories you ever Rapported !   </small>
+        <small>   this is the number of times the you Rapported these categories  !   </small>
         <div class="row" >
 
-          <div class="col-lg-6" *ngFor=" let obj of categoriesRapported, let  i = index" >
+          <div class="col-lg-6" *ngFor=" let obj of nbcategoriesRapported, let  i = index" >
             <div class="ibox ">
               <div class="ibox-title">
-                <span class="label label-success float-right"> / 20</span>
-                <h5>{{poidsRapported[i]}}</h5>
+                <span class="label label-success float-right"> times</span>
+                <h5>{{nbpoidsRapported[i]}}</h5>
               </div>
               <div class="ibox-content">
                 <h1 class="no-margins">{{obj}}</h1>
