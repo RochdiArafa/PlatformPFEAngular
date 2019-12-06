@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from '../../../Services/category.service';
 import {CategoryModel} from '../../../Models/Category.Model';
-import {faTrashAlt, faPlusCircle, faBullhorn} from '@fortawesome/free-solid-svg-icons';
+import {faTrashAlt, faPlusCircle, faBullhorn, faGrinStars} from '@fortawesome/free-solid-svg-icons';
 import {MydialogueComponent} from '../../Dialogs/mydialogue/mydialogue.component';
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
@@ -18,19 +18,22 @@ export class MyCategoriesComponent implements OnInit {
   trashIncon = faTrashAlt;
   addcatIcon = faPlusCircle;
   annonceIcon = faBullhorn;
+  proposedIcon = faGrinStars;
   //
   ListPreferedCategories: CategoryModel[] = [];
+  ListProposedCategories: CategoryModel[] = [];
   constructor(private categorieSer: CategoryService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
     this.GetListPreferedCategorie();
+    this.getproposedCategoories();
   }
   GetListPreferedCategorie() {
-    this.categorieSer.MyProposedCategories().subscribe(
+    this.categorieSer.MypreferedCategories().subscribe(
       (value) => {this.ListPreferedCategories = value; },
       er => {},
       () => {
-        console.log(this.ListPreferedCategories);
+        console.log('this is prefered Categories' + this.ListPreferedCategories);
       }
     );
   }
@@ -41,6 +44,7 @@ export class MyCategoriesComponent implements OnInit {
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
+      this.ngOnInit();
       // this.animal = result;
     });
 
@@ -55,6 +59,15 @@ export class MyCategoriesComponent implements OnInit {
       }
     );
 
+  }
+  getproposedCategoories() {
+    this.categorieSer.getmyproposedCategories().subscribe(
+      v => { this.ListProposedCategories = v; },
+      e => {},
+      () => {
+        console.log('this is promosed Categories' + this.ListProposedCategories);
+      }
+    );
   }
 
 
