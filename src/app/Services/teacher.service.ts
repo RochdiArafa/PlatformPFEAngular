@@ -106,7 +106,14 @@ export class TeacherService {
     return  this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/bestnoterapportedcategorie/'
       + this.teacher.id);
   }
-
+  getmostrapportedCategorie() {
+    return  this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/mostrapportedcategorie/'
+      + this.teacher.id);
+  }
+  getmosencadredCategorie() {
+    return  this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/mostencadredcategorie/'
+      + this.teacher.id);
+  }
 
 
 
