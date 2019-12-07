@@ -3,6 +3,6 @@ import {TeacherModel} from './Teacher.Model';
 
 export interface SkillModel {
   id: number;
-  categorie: CategoryModel;
-  teachers: TeacherModel;
+  category: CategoryModel;
+  teacher: TeacherModel;
 }

@@ -26,17 +26,19 @@
 
         </li>
         <li>
-          <a  (click)="chagetoProfile()" ><i class="fa fa-user"></i> <span class="nav-label">Profil</span></a>
+          <a  (click)="DisplayStudentList()" ><i class="fa fa-user"></i> <span class="nav-label">Liste etudiant 5ème</span></a>
         </li>
         <li>
-          <a  (click)="chagetoFiles()" ><i  class="fa fa-briefcase"></i> <span class="nav-label">My pfe files</span></a>
+          <a  (click)="DisplayUndoneFiles()" ><i  class="fa fa-briefcase"></i> <span class="nav-label">Liste des fiches</span></a>
         </li>
         <li>
-          <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Messagerie </span></a>
-
+          <a href=""><i class="fa fa-envelope"></i> <span class="nav-label">Fiches non traités </span></a>
         </li>
         <li>
-          <a href="metrics.html"><i  class="fa fa-bell-o"></i> <span class="nav-label">Notifications</span>  </a>
+          <a href=""><i  class="fa fa-bell-o"></i> <span class="nav-label">Validation rapport</span>  </a>
+        </li>
+        <li>
+          <a href=""><i  class="fa fa-bell-o"></i> <span class="nav-label">Archive</span>  </a>
         </li>
       </ul>
 
@@ -174,13 +176,8 @@
     </div>
     <!--body-->
 
-
-
-
-    <app-profile *ngIf="navTeacher.navTeachertoProfile" ></app-profile>
-    <app-teacher-files *ngIf="navTeacher.navTeachertofiles"></app-teacher-files>
-
-
+    <app-students-without-file *ngIf="navDirector.navDirectorfilesUndone"></app-students-without-file>
+    <app-student-list *ngIf="navDirector.navDirector5thlist"></app-student-list>
 
 
     <!--body-->
