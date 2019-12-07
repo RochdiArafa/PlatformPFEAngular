@@ -21,6 +21,7 @@ import {ProfilAdminComponent} from './Admin/profil-admin/profil-admin.component'
 import {ControleIsadminService} from './Services/AuthentificationUser/controle-isadmin.service';
 import {DepartmentComponent} from './Admin/department/department.component';
 import {EcoleComponent} from './Admin/ecole/ecole.component';
+import {SitessitComponent} from './Admin/sitessit/sitessit.component';
 
 const routes: Routes = [
   {path: 'ProfileTeacher', component: FirstPageComponent,  canActivate: [ControlIsTeacherService]},
@@ -31,6 +32,7 @@ const routes: Routes = [
   {path: 'profileadmin', component: ProfilAdminComponent,   canActivate: [ControleIsadminService]  },
   {path: 'departments', component: DepartmentComponent },
   {path: 'ecole', component: EcoleComponent },
+  {path: 'sites', component: SitessitComponent },
   {
     path        : 'InternshipDirector/TemplatePFE',
     component: TemplatePFEComponent

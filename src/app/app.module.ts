@@ -52,6 +52,7 @@ import { CalendarComponent } from './Admin/calendar/calendar.component';
 import { ProfilAdminComponent } from './Admin/profil-admin/profil-admin.component';
 import { EcoleComponent } from './Admin/ecole/ecole.component';
 import { DepartmentComponent } from './Admin/department/department.component';
+import { SitessitComponent } from './Admin/sitessit/sitessit.component';
 
 
 const appRoutes: Routes = [
@@ -108,7 +109,8 @@ const appRoutes: Routes = [
     CalendarComponent,
     ProfilAdminComponent,
     EcoleComponent,
-    DepartmentComponent
+    DepartmentComponent,
+    SitessitComponent
   ],
   imports: [
     BrowserModule,
