@@ -55,6 +55,7 @@ import { DepartmentComponent } from './Admin/department/department.component';
 import { SitessitComponent } from './Admin/sitessit/sitessit.component';
 import { OptionnComponent } from './Admin/optionn/optionn.component';
 import { ClassesComponent } from './Admin/classes/classes.component';
+import { ChefdepComponent } from './Admin/chefdep/chefdep.component';
 
 
 const appRoutes: Routes = [
@@ -114,7 +115,8 @@ const appRoutes: Routes = [
     DepartmentComponent,
     SitessitComponent,
     OptionnComponent,
-    ClassesComponent
+    ClassesComponent,
+    ChefdepComponent
   ],
   imports: [
     BrowserModule,
