@@ -1,0 +1,116 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Profile</h2>
+    <ol class="breadcrumb">
+      <li>
+        <a>Welcom ! </a>
+      </li>
+      <li class="active">
+        <strong> &nbsp; {{connectedTeacherSer.Teacher.firstName}} {{connectedTeacherSer.Teacher.lastName}} </strong>
+      </li>
+    </ol>
+  </div>
+  <div class="col-lg-2">
+
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+
+
+  <div class="row m-b-lg m-t-lg">
+    <div class="col-md-6">
+
+      <div class="profile-image">
+        <!-- img/a4.jpg -->
+        <img src="{{connectedTeacherSer.Teacher.image}}" class="img-circle circle-border m-b-md" alt="profile">
+      </div>
+      <div class="profile-info">
+        <div class="">
+          <div>
+            <h2 class="no-margins">
+              {{connectedTeacherSer.Teacher.firstName}} {{connectedTeacherSer.Teacher.lastName}}
+            </h2>
+            <h4>Teacher</h4>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <table class="table small m-b-xs">
+        <tbody>
+        <tr>
+          <td colspan="2" align="center">
+            <strong>{{captnbtotalfile}}</strong>  Worked On
+          </td>
+
+
+        </tr>
+        <tr>
+          <td>
+            <strong>{{captnbencadrantfile}}</strong> Supervised
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            <strong>{{captnbrapportedfile}}</strong> Rappoted
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            <strong>{{captnbPresedentfile}}</strong> Presedent
+          </td>
+
+        </tr>
+        <tr>
+          <td>
+            Email : <strong>{{connectedTeacherSer.Teacher.email}}</strong>
+          </td>
+          <td>
+            Tel : <strong>{{connectedTeacherSer.Teacher.phoneNumber}}</strong>
+          </td>
+
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-3" ng-controller="dashboardFive as chart">
+      <small>Working On &nbsp; <fa-icon [icon]="FaSuitCase" [ngStyle]="{color : 'green'}" ></fa-icon></small>
+      <h2 class="no-margins">{{captnbWorkingOn}} </h2>
+      <div sparkline spark-data="chart.sparkline1" spark-options="chart.sparkline1Options"></div>
+    </div>
+
+
+  </div>
+  <div class="row">
+
+
+
+    <div class="col-lg-3">
+      <app-my-categories></app-my-categories>
+
+
+
+
+
+
+    </div>
+
+    <div class="col-lg-5">
+
+
+      <app-skills></app-skills>
+
+
+
+    </div>
+    <div class="col-lg-4">
+      <app-teacher-action></app-teacher-action>
+    </div>
+  </div>
+
+  <app-statistiques-teacher></app-statistiques-teacher>
+
+</div>

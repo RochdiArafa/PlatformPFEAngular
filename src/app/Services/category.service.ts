@@ -22,10 +22,10 @@ export class CategoryService {
       this.authservice.Teacher.id );
   }
 
-public ProposerCategorie(Categry: any) {
-  return  this.httpClientSer.post<CategoryModel>('http://localhost:9080/PlatformPFE-web/rest/categories/propose/'
-   + this.authservice.Teacher.id , Categry, this.httpOptions );
-}
+  public ProposerCategorie(Categry: any) {
+    return  this.httpClientSer.post<CategoryModel>('http://localhost:9080/PlatformPFE-web/rest/categories/propose/'
+      + this.authservice.Teacher.id , Categry, this.httpOptions );
+  }
 
   public deletePreferedCategorie(idC: number): Observable<any>  {
     return  this.httpClientSer.delete<any>('http://localhost:9080/PlatformPFE-web/rest/categories/DELETEpreferedCat/'

@@ -28,7 +28,7 @@ export class TeacherService {
       this.authservice.Teacher.id );
   }
   getNbOfAllEncadred(idt: number): Observable<GradeFileModel[]> {
-   return  this.httpClientSer.get<GradeFileModel[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/listfileaencadrer/' +
+    return  this.httpClientSer.get<GradeFileModel[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/listfileaencadrer/' +
       this.authservice.Teacher.id );
   }
   getNbOfAllPresedent(idt: number) {
@@ -81,7 +81,7 @@ export class TeacherService {
     //  http://localhost:9080/PlatformPFE-web/rest/teacher/motif/1/1/this is nice/encadrant
   }
   // http://localhost:9080/PlatformPFE-web/rest/teacher/filerapportedBetwwen2Years/1/2017/2019
- // http://localhost:9080/PlatformPFE-web/rest/teacher/fileencadreBetwwen2Years/1/2017/2019
+  // http://localhost:9080/PlatformPFE-web/rest/teacher/fileencadreBetwwen2Years/1/2017/2019
   getfilesEncadredBetween2Yrears(year1: number, year2: number) {
     return  this.httpClientSer.get<GradeFileModel[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/fileencadreBetwwen2Years/' +
       this.teacher.id + '/' + year1 + '/' + year2 );
@@ -98,11 +98,14 @@ export class TeacherService {
   }
 
 
-getmosNottedencadredCategorie() {
-  return  this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/bestnoteencadredcategorie/'
-  + this.teacher.id);
-}
-
+  getmosNottedencadredCategorie() {
+    return  this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/bestnoteencadredcategorie/'
+      + this.teacher.id);
+  }
+  getmosNottedrapportedCategorie() {
+    return  this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/bestnoterapportedcategorie/'
+      + this.teacher.id);
+  }
 
 
 
