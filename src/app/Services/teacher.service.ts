@@ -114,7 +114,10 @@ export class TeacherService {
     return  this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/mostencadredcategorie/'
       + this.teacher.id);
   }
-
+  public getautoComplete() {
+    return  this.httpClientSer.get<any[]>(' http://localhost:9080/PlatformPFE-web/rest/teacher/autocomplete/'
+      + this.teacher.id);
+  }
 
 
 

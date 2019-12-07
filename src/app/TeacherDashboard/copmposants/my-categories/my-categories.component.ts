@@ -6,6 +6,7 @@ import {MydialogueComponent} from '../../Dialogs/mydialogue/mydialogue.component
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
+import {AddPreferdCategoriesComponent} from "../../Dialogs/add-preferd-categories/add-preferd-categories.component";
 
 @Component({
   selector: 'app-my-categories',
@@ -70,5 +71,16 @@ export class MyCategoriesComponent implements OnInit {
     );
   }
 
+
+  openDialogToAddPrefered() {
+    const dialogRef = this.dialog.open(AddPreferdCategoriesComponent, { maxHeight: '600px',
+      data: {name: 'mo', animal: 'zitoun'}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+      // this.animal = result;
+    });
+  }
 
 }
