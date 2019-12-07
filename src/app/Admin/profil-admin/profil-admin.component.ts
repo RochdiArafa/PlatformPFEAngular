@@ -19,7 +19,7 @@ export class ProfilAdminComponent implements OnInit {
   logout(){
     //disconectttttt
     this.connectedadminSer.DoLogout();
-
+    console.log('hhhh');
 
   }
 
