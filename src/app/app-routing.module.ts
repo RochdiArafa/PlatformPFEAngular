@@ -19,6 +19,8 @@ import {ControlIsDirecteurService} from './Services/AuthentificationUser/control
 import {CalendarComponent} from './Admin/calendar/calendar.component';
 import {ProfilAdminComponent} from './Admin/profil-admin/profil-admin.component';
 import {ControleIsadminService} from './Services/AuthentificationUser/controle-isadmin.service';
+import {DepartmentComponent} from './Admin/department/department.component';
+import {EcoleComponent} from './Admin/ecole/ecole.component';
 
 const routes: Routes = [
   {path: 'ProfileTeacher', component: FirstPageComponent,  canActivate: [ControlIsTeacherService]},
@@ -27,6 +29,8 @@ const routes: Routes = [
   {path: 'profildirecteur', component: ProfilDirecteurComponent,  canActivate: [ControlIsDirecteurService] },
   {path: 'calendar', component: CalendarComponent },
   {path: 'profileadmin', component: ProfilAdminComponent,   canActivate: [ControleIsadminService]  },
+  {path: 'departments', component: DepartmentComponent },
+  {path: 'ecole', component: EcoleComponent },
   {
     path        : 'InternshipDirector/TemplatePFE',
     component: TemplatePFEComponent

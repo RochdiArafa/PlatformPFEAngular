@@ -51,6 +51,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CalendarComponent } from './Admin/calendar/calendar.component';
 import { ProfilAdminComponent } from './Admin/profil-admin/profil-admin.component';
 import { EcoleComponent } from './Admin/ecole/ecole.component';
+import { DepartmentComponent } from './Admin/department/department.component';
 
 
 const appRoutes: Routes = [
@@ -106,7 +107,8 @@ const appRoutes: Routes = [
     ProfilDirecteurComponent,
     CalendarComponent,
     ProfilAdminComponent,
-    EcoleComponent
+    EcoleComponent,
+    DepartmentComponent
   ],
   imports: [
     BrowserModule,
