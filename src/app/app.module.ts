@@ -54,6 +54,7 @@ import { EcoleComponent } from './Admin/ecole/ecole.component';
 import { DepartmentComponent } from './Admin/department/department.component';
 import { SitessitComponent } from './Admin/sitessit/sitessit.component';
 import { OptionnComponent } from './Admin/optionn/optionn.component';
+import { ClassesComponent } from './Admin/classes/classes.component';
 
 
 const appRoutes: Routes = [
@@ -112,7 +113,8 @@ const appRoutes: Routes = [
     EcoleComponent,
     DepartmentComponent,
     SitessitComponent,
-    OptionnComponent
+    OptionnComponent,
+    ClassesComponent
   ],
   imports: [
     BrowserModule,
