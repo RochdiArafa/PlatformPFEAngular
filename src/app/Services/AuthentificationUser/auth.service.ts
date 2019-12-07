@@ -23,7 +23,7 @@ export class AuthService {
   constructor(private route: Router, private httpClientSer: HttpClient) { }
 
   DoLogin(login: string, password: string ) {
-    this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/teachers/authuser/' +
+    this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/teacher/authuser/' +
       login + '/' + password + '/', this.httpOptions ).subscribe(
       value => {this.User = value; },
       error1 => {},

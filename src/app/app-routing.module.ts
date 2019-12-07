@@ -19,6 +19,8 @@ import {ControlIsDirecteurService} from './Services/AuthentificationUser/control
 import {CalendarComponent} from './Admin/calendar/calendar.component';
 import {ProfilAdminComponent} from './Admin/profil-admin/profil-admin.component';
 import {ControleIsadminService} from './Services/AuthentificationUser/controle-isadmin.service';
+import { DashboardInternshipDirectorComponent } from './Component/Dashboard/InternshipDirector/dashboard-internship-director/dashboard-internship-director.component';
+import { StudentComponent } from './Component/Student/student/student.component';
 
 const routes: Routes = [
   {path: 'ProfileTeacher', component: FirstPageComponent,  canActivate: [ControlIsTeacherService]},
@@ -29,7 +31,8 @@ const routes: Routes = [
   {path: 'profileadmin', component: ProfilAdminComponent,   canActivate: [ControleIsadminService]  },
   {
     path        : 'InternshipDirector/TemplatePFE',
-    component: TemplatePFEComponent
+    component: TemplatePFEComponent,
+    canActivate: [ControlIsDirecteurService] 
   },
   {
     path        : 'InternshipDirector/TemplatePFE/add',
@@ -50,10 +53,21 @@ const routes: Routes = [
   {
     path        : 'InternshipDirector/TemplateIntershipAgreement',
     component: TemplateIntershipAgreementComponent
+    ,  canActivate: [ControlIsDirecteurService] 
   },
   {
     path        : 'InternshipDirector/Statistique',
     component: StatistiqueComponent
+  },
+  {
+    path        : 'InternshipDirector/Dashboard',
+    component: DashboardInternshipDirectorComponent,
+    canActivate: [ControlIsDirecteurService]
+  },
+  {
+    path        : 'InternshipDirector/Etudiant',
+    component: StudentComponent,
+    canActivate: [ControlIsDirecteurService]
   },
   {
       path      : '**',
