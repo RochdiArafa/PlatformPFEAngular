@@ -22,6 +22,7 @@ import {ControleIsadminService} from './Services/AuthentificationUser/controle-i
 import {DepartmentComponent} from './Admin/department/department.component';
 import {EcoleComponent} from './Admin/ecole/ecole.component';
 import {SitessitComponent} from './Admin/sitessit/sitessit.component';
+import {OptionnComponent} from './Admin/optionn/optionn.component';
 
 const routes: Routes = [
   {path: 'ProfileTeacher', component: FirstPageComponent,  canActivate: [ControlIsTeacherService]},
@@ -33,6 +34,7 @@ const routes: Routes = [
   {path: 'departments', component: DepartmentComponent },
   {path: 'ecole', component: EcoleComponent },
   {path: 'sites', component: SitessitComponent },
+  {path: 'options', component: OptionnComponent },
   {
     path        : 'InternshipDirector/TemplatePFE',
     component: TemplatePFEComponent
