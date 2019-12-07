@@ -50,6 +50,7 @@ import { ProfilDirecteurComponent } from './Directeurdesstage/profil-directeur/p
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CalendarComponent } from './Admin/calendar/calendar.component';
 import { ProfilAdminComponent } from './Admin/profil-admin/profil-admin.component';
+import { EcoleComponent } from './Admin/ecole/ecole.component';
 
 
 const appRoutes: Routes = [
@@ -104,7 +105,8 @@ const appRoutes: Routes = [
     StatistiquesTeacherComponent,
     ProfilDirecteurComponent,
     CalendarComponent,
-    ProfilAdminComponent
+    ProfilAdminComponent,
+    EcoleComponent
   ],
   imports: [
     BrowserModule,
