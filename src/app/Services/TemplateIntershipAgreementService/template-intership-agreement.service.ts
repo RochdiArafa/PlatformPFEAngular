@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { UrlDBService } from '../UrlDBService/url-db.service';
-import { TemplateIntershipAgreement } from 'src/app/Model/template-intership-agreement';
+import { TemplateIntershipAgreement } from 'src/app/Models/template-intership-agreement';
 
 @Injectable({
   providedIn: 'root'

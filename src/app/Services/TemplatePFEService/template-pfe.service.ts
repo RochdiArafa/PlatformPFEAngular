@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { TemplatePFE } from '../../Model/template-pfe';
+import { TemplatePFE } from '../../Models/template-pfe';
 import { UrlDBService } from '../UrlDBService/url-db.service';
 import { Observable } from 'rxjs';
 

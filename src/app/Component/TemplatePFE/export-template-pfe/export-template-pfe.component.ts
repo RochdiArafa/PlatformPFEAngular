@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { TemplatePFE } from 'src/app/Model/template-pfe';
-import { TemplatePFEService } from 'src/app/Service/TemplatePFEService/template-pfe.service';
+import { TemplatePFE } from 'src/app/Models/template-pfe';
+import { TemplatePFEService } from 'src/app/Services/TemplatePFEService/template-pfe.service';
 
-import { Student } from 'src/app/Model/student';
+import { Student } from 'src/app/Models/student';
 
 @Component({
   selector: 'app-export-template-pfe',

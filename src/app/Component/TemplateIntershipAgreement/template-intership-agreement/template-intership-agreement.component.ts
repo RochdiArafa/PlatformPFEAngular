@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TemplateIntershipAgreement } from 'src/app/Model/template-intership-agreement';
-import { TemplateIntershipAgreementService } from 'src/app/Service/TemplateIntershipAgreementService/template-intership-agreement.service';
+import { TemplateIntershipAgreement } from 'src/app/Models/template-intership-agreement';
+import { TemplateIntershipAgreementService } from 'src/app/Services/TemplateIntershipAgreementService/template-intership-agreement.service';
 
 @Component({
   selector: 'app-template-intership-agreement',
@@ -8,14 +8,21 @@ import { TemplateIntershipAgreementService } from 'src/app/Service/TemplateInter
   styleUrls: ['./template-intership-agreement.component.scss']
 })
 export class TemplateIntershipAgreementComponent implements OnInit {
-  templateIntershipAgreement : TemplateIntershipAgreement;
+  templateIntershipAgreement : TemplateIntershipAgreement = new TemplateIntershipAgreement();
+  showAddTemplate : boolean;
+  showUpdateTemplate : boolean;
 
   constructor(public templateIntershipAgreementService:TemplateIntershipAgreementService ) { 
-    
-    //this.deleteTemplateIntershipAgreement(18);
-    //this.GetTemplateIntershipAgreement(7);
-    //this.addTemplateIntershipAgreement();
-    this.updateTemplateIntershipAgreement();
+    if(this.templateIntershipAgreement == null){
+      this.showAddTemplate = true;
+      this.showUpdateTemplate = false;
+    }  
+    else{
+      this.showAddTemplate = false;
+      this.showUpdateTemplate = true;
+    }
+
+    //this.updateTemplateIntershipAgreement();
   }
 
   ngOnInit() {

@@ -1,15 +1,19 @@
 
 <h3>Gestion Template PFE</h3>
-<!--
-<app-add-template-pfe></app-add-template-pfe>
--->
+
+<div *ngIf="showAddTemplate">
+    <app-add-template-pfe></app-add-template-pfe>
+</div>
 
 
-<app-update-template-pfe></app-update-template-pfe>
+<div *ngIf="showUpdateTemplate">
+    <app-update-template-pfe></app-update-template-pfe>
+</div>
 
-<!--
+
 <app-export-template-pfe></app-export-template-pfe>
--->
 
 
+<!--
 <app-export-data-fiche-pfe></app-export-data-fiche-pfe>
+-->

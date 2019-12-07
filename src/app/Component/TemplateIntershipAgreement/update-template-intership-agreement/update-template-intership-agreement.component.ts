@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TemplateIntershipAgreement } from 'src/app/Model/template-intership-agreement';
-import { TemplateIntershipAgreementService } from 'src/app/Service/TemplateIntershipAgreementService/template-intership-agreement.service';
-import { IntershipAgreement } from 'src/app/Model/intership-agreement';
+import { TemplateIntershipAgreement } from 'src/app/Models/template-intership-agreement';
+import { TemplateIntershipAgreementService } from 'src/app/Services/TemplateIntershipAgreementService/template-intership-agreement.service';
+import { IntershipAgreement } from 'src/app/Models/intership-agreement';
 
 @Component({
   selector: 'app-update-template-intership-agreement',
