@@ -1,17 +1,16 @@
 <h3>Export Template Convention de stage</h3>
 
 <div class="pageWrapper">
-        <div class="content">
+        <div class="content cadre">
           <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
             <div class="size-a4">
                 <p [innerHTML]="template">  </p>       
             </div>
           </kendo-pdf-export>
-          
-          <div>
-            <button kendo-button (click)="pdf.saveAs('demo-content.pdf')">
-              Export As PDF
+        </div>
+        <div>
+            <button kendo-button (click)="pdf.saveAs('demo-content.pdf')" class="w3-button w3-blue">
+              Export Template
             </button>
           </div>
-        </div>
       </div>

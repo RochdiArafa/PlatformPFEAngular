@@ -5,17 +5,16 @@
 <input type="button" value="Export Template etudiant" (click)="ExportStudentTemplate()">
 -->
 <div class="pageWrapper">
-        <div class="content">
-          <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
-            <div class="size-a4">
-                <p [innerHTML]="template">  </p>       
-            </div>
-          </kendo-pdf-export>
-          
-          <div>
-            <button kendo-button (click)="pdf.saveAs('demo-content.pdf')">
-              Export As PDF
-            </button>
-          </div>
+    <div class="content cadre">
+      <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
+        <div class="size-a4">
+            <p [innerHTML]="template">  </p>       
         </div>
+      </kendo-pdf-export>
+    </div>
+    <div>
+        <button kendo-button (click)="pdf.saveAs('demo-content.pdf')" class="w3-button w3-blue">
+          Export Template
+        </button>
       </div>
+  </div>

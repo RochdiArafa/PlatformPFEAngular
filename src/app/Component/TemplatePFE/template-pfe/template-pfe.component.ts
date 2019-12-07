@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TemplatePFEService } from 'src/app/Service/TemplatePFEService/template-pfe.service';
-import { TemplatePFE } from 'src/app/Model/template-pfe';
+import { TemplatePFEService } from 'src/app/Services/TemplatePFEService/template-pfe.service';
+import { TemplatePFE } from 'src/app/Models/template-pfe';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,12 +10,18 @@ import { Router } from '@angular/router';
 })
 export class TemplatePFEComponent implements OnInit {
   templatePFE : TemplatePFE;
+  showAddTemplate : boolean;
+  showUpdateTemplate : boolean;
+  template : TemplatePFE = new TemplatePFE()
   constructor(public templatePFEService:TemplatePFEService , public router:Router ) { 
-    
-    //this.deleteTemplatePFE(10);
-    //this.GetTemplatePFE(10);
-    //this.addTemplatePFE();
-    //this.updateTemplatePFE();
+    if(this.template == null){
+      this.showAddTemplate = true;
+      this.showUpdateTemplate = false;
+    }  
+    else{
+      this.showAddTemplate = false;
+      this.showUpdateTemplate = true;
+    }
   }
 
   ngOnInit() {

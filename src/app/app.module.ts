@@ -41,10 +41,15 @@ import { ExportDataFicheComponent } from './Component/TemplateIntershipAgreement
 import { DashboardInternshipDirectorComponent } from './Component/Dashboard/InternshipDirector/dashboard-internship-director/dashboard-internship-director.component';
 import { SkillsComponent } from './TeacherDashboard/copmposants/skills/skills.component';
 import { StatistiquesTeacherComponent } from './TeacherDashboard/copmposants/statistiques-teachers/statistiques-teachers.component';
+import {FullCalendarModule} from '@fullcalendar/angular';
 
 
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ChartsModule} from 'ng2-charts';
+import { ProfilDirecteurComponent } from './Directeurdesstage/profil-directeur/profil-directeur.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CalendarComponent } from './Admin/calendar/calendar.component';
+import { ProfilAdminComponent } from './Admin/profil-admin/profil-admin.component';
 
 
 const appRoutes: Routes = [
@@ -67,7 +72,7 @@ const appRoutes: Routes = [
     TeacherFilesComponent,
     ViewDetailFileComponent,
     TemplatePFEComponent,
-    MydialogueComponent, 
+    MydialogueComponent,
     ViewDetailFileComponent,
     NotFoundComponent,
     TemplateIntershipAgreementComponent,
@@ -96,7 +101,10 @@ const appRoutes: Routes = [
     TeacherFilesComponent,
     ViewDetailFileComponent,
     SkillsComponent,
-    StatistiquesTeacherComponent
+    StatistiquesTeacherComponent,
+    ProfilDirecteurComponent,
+    CalendarComponent,
+    ProfilAdminComponent
   ],
   imports: [
     BrowserModule,
@@ -120,7 +128,10 @@ const appRoutes: Routes = [
     AngularMaterialModule,
     MatDialogModule,
     NgxChartsModule,
-    ChartsModule
+    ChartsModule,
+    ModalModule.forRoot(),
+    FullCalendarModule
+
   ],
   entryComponents: [
     MydialogueComponent, ViewDetailFileComponent, AreUSureComponent

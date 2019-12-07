@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { TemplatePFE } from 'src/app/Model/template-pfe';
-import { TemplatePFEService } from 'src/app/Service/TemplatePFEService/template-pfe.service';
-import { GradProjectFile } from 'src/app/Model/grad-project-file';
+import { TemplatePFE } from 'src/app/Models/template-pfe';
+import { TemplatePFEService } from 'src/app/Services/TemplatePFEService/template-pfe.service';
+import { GradProjectFile } from 'src/app/Models/grad-project-file';
 
 @Component({
   selector: 'app-export-data-fiche-pfe',

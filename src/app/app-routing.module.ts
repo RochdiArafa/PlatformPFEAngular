@@ -14,11 +14,19 @@ import { UpdateTemplatePFEComponent } from './Component/TemplatePFE/update-templ
 import { ExportTemplatePFEComponent } from './Component/TemplatePFE/export-template-pfe/export-template-pfe.component';
 import { ExportDataFichePFEComponent } from './Component/TemplatePFE/export-data-fiche-pfe/export-data-fiche-pfe.component';
 import { StatistiqueComponent } from './Component/Dashboard/InternshipDirector/statistique/statistique.component';
+import {ProfilDirecteurComponent} from './Directeurdesstage/profil-directeur/profil-directeur.component';
+import {ControlIsDirecteurService} from './Services/AuthentificationUser/control-is-directeur.service';
+import {CalendarComponent} from './Admin/calendar/calendar.component';
+import {ProfilAdminComponent} from './Admin/profil-admin/profil-admin.component';
+import {ControleIsadminService} from './Services/AuthentificationUser/controle-isadmin.service';
 
 const routes: Routes = [
   {path: 'ProfileTeacher', component: FirstPageComponent,  canActivate: [ControlIsTeacherService]},
   {path: 'Login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent},
+  {path: 'profildirecteur', component: ProfilDirecteurComponent,  canActivate: [ControlIsDirecteurService] },
+  {path: 'calendar', component: CalendarComponent },
+  {path: 'profileadmin', component: ProfilAdminComponent,   canActivate: [ControleIsadminService]  },
   {
     path        : 'InternshipDirector/TemplatePFE',
     component: TemplatePFEComponent

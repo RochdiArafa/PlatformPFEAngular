@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { UrlDBService } from '../UrlDBService/url-db.service';
-import { GradProjectFile } from 'src/app/Model/grad-project-file';
+import { GradProjectFile } from 'src/app/Models/grad-project-file';
 
 @Injectable({
   providedIn: 'root'

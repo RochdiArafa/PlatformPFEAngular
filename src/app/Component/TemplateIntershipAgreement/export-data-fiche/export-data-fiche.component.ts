@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TemplateIntershipAgreement } from 'src/app/Model/template-intership-agreement';
-import { TemplateIntershipAgreementService } from 'src/app/Service/TemplateIntershipAgreementService/template-intership-agreement.service';
-import { Student } from 'src/app/Model/student';
-import { IntershipAgreement } from 'src/app/Model/intership-agreement';
-import { Company } from 'src/app/Model/company';
+import { TemplateIntershipAgreement } from 'src/app/Models/template-intership-agreement';
+import { TemplateIntershipAgreementService } from 'src/app/Services/TemplateIntershipAgreementService/template-intership-agreement.service';
+import { Student } from 'src/app/Models/student';
+import { IntershipAgreement } from 'src/app/Models/intership-agreement';
+import { Company } from 'src/app/Models/company';
 
 @Component({
   selector: 'app-export-data-fiche',

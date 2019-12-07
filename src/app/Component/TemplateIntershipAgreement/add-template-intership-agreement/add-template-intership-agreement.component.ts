@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { TemplateIntershipAgreement } from 'src/app/Model/template-intership-agreement';
-import { TemplateIntershipAgreementService } from 'src/app/Service/TemplateIntershipAgreementService/template-intership-agreement.service';
+import { TemplateIntershipAgreement } from 'src/app/Models/template-intership-agreement';
+import { TemplateIntershipAgreementService } from 'src/app/Services/TemplateIntershipAgreementService/template-intership-agreement.service';
 
 
 @Component({

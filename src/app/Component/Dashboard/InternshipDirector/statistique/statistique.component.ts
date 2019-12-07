@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as CanvasJS from '../../../../../assets/canvasjs.min'
-import { StudentService } from 'src/app/Service/Student/student.service';
-import { CompanyService } from 'src/app/Service/Company/company.service';
-import { Student } from 'src/app/Model/student';
+import { StudentService } from 'src/app/Services/Student/student.service';
+import { CompanyService } from 'src/app/Services/Company/company.service';
+import { Student } from 'src/app/Models/student';
 import * as $ from 'jquery';
-import { CategoryService } from 'src/app/Service/Category/category.service';
-import { StageParCategory } from 'src/app/Model/stage-par-category';
+import { CategoryService } from 'src/app/Services/Category/category.service';
+import { StageParCategory } from 'src/app/Models/stage-par-category';
 
 
 @Component({
@@ -61,8 +61,9 @@ export class StatistiqueComponent implements OnInit {
       },
       data: [{
         type: "column",
-        showInLegend: true,
-        toolTipContent: "<b>{name}</b>: {y} Etudiant(s)",
+        //showInLegend: true,
+        toolTipContent: "{y} Etudiant(s)",
+        indexLabel: "{label} a {y} etudiant(s)",
         dataPoints: [
         ]
       }]
@@ -142,8 +143,9 @@ export class StatistiqueComponent implements OnInit {
       },
       data: [{
         type: "column",
-        showInLegend: true,
+        //showInLegend: true,
         toolTipContent: "<b>{name}</b>: {y} Stage(s)",
+        indexLabel: "{y} stage(s) {label}",
         dataPoints: [
         ]
       }]
