@@ -17,8 +17,9 @@ export class ProfilAdminComponent implements OnInit {
   ngOnInit() {
   }
   logout(){
+    //disconecttttttfsdfsdfsd
     this.connectedadminSer.DoLogout();
-
+    console.log('hhhh');
 
   }
 
