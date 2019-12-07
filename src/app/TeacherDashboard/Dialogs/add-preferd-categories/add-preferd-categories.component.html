@@ -11,7 +11,7 @@
         <div class="search-form">
           <form action="index.html" method="get">
             <div class="input-group">
-              <input type="text" (keyup)="autocomplete()" [(ngModel)]="inputval" placeholder="Admin Theme" name="search" class="form-control input-lg">
+              <input type="text" (keyup)="autocomplete()" [(ngModel)]="inputval" placeholder="Enter your Category" name="search" class="form-control input-lg">
 
               <div class="input-group-btn">
                 <button  class="btn btn-lg btn-primary" type="submit">
@@ -31,9 +31,8 @@
 
               <div class="feed-element">
                 <div>
-                  <a  ><small class="float-right "><fa-icon [icon]="" [ngStyle]="{color: 'darkred'}" ></fa-icon>  {{aafficherPoidsC[i].toFixed(2)}}</small></a>
-                  <strong>{{obj}}</strong>
-                  <br>
+                  <a  ><small class="float-right "> <strong style="font-size: 16px;" >{{aafficherPoidsC[i].toFixed(2)}}</strong> <fa-icon [icon]="folderIcon" size="3x" [ngStyle]="{color: 'darkgreen'}" ></fa-icon>  </small></a>
+                  <span style="font-size: 20px;" class="text-navy"> <strong>{{obj}}</strong></span>
                   <br>
                   <small class="text-muted">{{i+1}}</small>
                 </div>

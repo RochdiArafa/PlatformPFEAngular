@@ -1,7 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {TeacherService} from '../../../Services/teacher.service';
-import {CategoryModel} from "../../../Models/Category.Model";
+import {faClipboardCheck, faPen, faCalendarAlt, faCommentAlt, faFolderPlus} from '@fortawesome/free-solid-svg-icons';
+
+import {CategoryModel} from '../../../Models/Category.Model';
 
 @Component({
   selector: 'app-add-preferd-categories',
@@ -9,6 +11,8 @@ import {CategoryModel} from "../../../Models/Category.Model";
   styleUrls: ['./add-preferd-categories.component.scss']
 })
 export class AddPreferdCategoriesComponent implements OnInit {
+
+  folderIcon  = faFolderPlus;
 
   ListCateoriesNames: string[] = [];
   PoidsC: number[] = [];
