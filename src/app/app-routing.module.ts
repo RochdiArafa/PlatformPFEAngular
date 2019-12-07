@@ -19,8 +19,17 @@ import {ControlIsDirecteurService} from './Services/AuthentificationUser/control
 import {CalendarComponent} from './Admin/calendar/calendar.component';
 import {ProfilAdminComponent} from './Admin/profil-admin/profil-admin.component';
 import {ControleIsadminService} from './Services/AuthentificationUser/controle-isadmin.service';
+
 import { DashboardInternshipDirectorComponent } from './Component/Dashboard/InternshipDirector/dashboard-internship-director/dashboard-internship-director.component';
 import { StudentComponent } from './Component/Student/student/student.component';
+
+import {DepartmentComponent} from './Admin/department/department.component';
+import {EcoleComponent} from './Admin/ecole/ecole.component';
+import {SitessitComponent} from './Admin/sitessit/sitessit.component';
+import {OptionnComponent} from './Admin/optionn/optionn.component';
+import {ClassesComponent} from './Admin/classes/classes.component';
+import {ChefdepComponent} from './Admin/chefdep/chefdep.component';
+
 
 const routes: Routes = [
   {path: 'ProfileTeacher', component: FirstPageComponent,  canActivate: [ControlIsTeacherService]},
@@ -29,10 +38,16 @@ const routes: Routes = [
   {path: 'profildirecteur', component: ProfilDirecteurComponent,  canActivate: [ControlIsDirecteurService] },
   {path: 'calendar', component: CalendarComponent },
   {path: 'profileadmin', component: ProfilAdminComponent,   canActivate: [ControleIsadminService]  },
+  {path: 'departments', component: DepartmentComponent },
+  {path: 'ecole', component: EcoleComponent },
+  {path: 'sites', component: SitessitComponent },
+  {path: 'options', component: OptionnComponent },
+  {path: 'classes', component: ClassesComponent },
+  {path: 'chefdeps', component: ChefdepComponent },
   {
     path        : 'InternshipDirector/TemplatePFE',
     component: TemplatePFEComponent,
-    canActivate: [ControlIsDirecteurService] 
+    canActivate: [ControlIsDirecteurService]
   },
   {
     path        : 'InternshipDirector/TemplatePFE/add',
@@ -53,7 +68,7 @@ const routes: Routes = [
   {
     path        : 'InternshipDirector/TemplateIntershipAgreement',
     component: TemplateIntershipAgreementComponent
-    ,  canActivate: [ControlIsDirecteurService] 
+    ,  canActivate: [ControlIsDirecteurService]
   },
   {
     path        : 'InternshipDirector/Statistique',

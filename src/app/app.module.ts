@@ -50,6 +50,12 @@ import { ProfilDirecteurComponent } from './Directeurdesstage/profil-directeur/p
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CalendarComponent } from './Admin/calendar/calendar.component';
 import { ProfilAdminComponent } from './Admin/profil-admin/profil-admin.component';
+import { EcoleComponent } from './Admin/ecole/ecole.component';
+import { DepartmentComponent } from './Admin/department/department.component';
+import { SitessitComponent } from './Admin/sitessit/sitessit.component';
+import { OptionnComponent } from './Admin/optionn/optionn.component';
+import { ClassesComponent } from './Admin/classes/classes.component';
+import { ChefdepComponent } from './Admin/chefdep/chefdep.component';
 
 
 const appRoutes: Routes = [
@@ -104,7 +110,13 @@ const appRoutes: Routes = [
     StatistiquesTeacherComponent,
     ProfilDirecteurComponent,
     CalendarComponent,
-    ProfilAdminComponent
+    ProfilAdminComponent,
+    EcoleComponent,
+    DepartmentComponent,
+    SitessitComponent,
+    OptionnComponent,
+    ClassesComponent,
+    ChefdepComponent
   ],
   imports: [
     BrowserModule,
