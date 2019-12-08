@@ -34,7 +34,7 @@ admin: Admin;
   addsite(site: Site): Observable<Site>  {
 
     return  this.httpClientSer.post<Site>( 'http://localhost:9080/PlatformPFE-web/rest/site/' +
-      1, site , this.httpOptions);
+      this.authservice.Admin.id, site , this.httpOptions);
 }
 affecterdirecteur(ids: number , idds: number) {
     return  this.httpClientSer.get('http://localhost:9080/PlatformPFE-web/rest/site/affecterdireteurtosite/'+

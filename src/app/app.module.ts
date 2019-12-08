@@ -58,6 +58,8 @@ import { ClassesComponent } from './Admin/classes/classes.component';
 import { ChefdepComponent } from './Admin/chefdep/chefdep.component';
 import { DirecteurComponent } from './Admin/directeur/directeur.component';
 import { EnseignantComponent } from './Admin/enseignant/enseignant.component';
+import { GesStudentComponent } from './Admin/ges-student/ges-student.component';
+
 
 
 const appRoutes: Routes = [
@@ -120,7 +122,9 @@ const appRoutes: Routes = [
     ClassesComponent,
     ChefdepComponent,
     DirecteurComponent,
-    EnseignantComponent
+    EnseignantComponent,
+    GesStudentComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,22 +1,22 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
-import {Directeurdesstages} from '../../Models/Directeurdesstages';
+import {Student1} from '../../Models/Student1';
+import {StudentService} from '../../Services/student.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ChefdepartmentService} from '../../Services/chefdepartment.service';
-import {DirecteurdesstageService} from '../../Services/directeurdesstage.service';
 
 @Component({
-  selector: 'app-directeur',
-  templateUrl: './directeur.component.html',
-  styleUrls: ['./directeur.component.scss']
+  selector: 'app-ges-student',
+  templateUrl: './ges-student.component.html',
+  styleUrls: ['./ges-student.component.scss']
 })
-export class DirecteurComponent implements OnInit {
-  directeurs: Directeurdesstages[]=[];
-  directeur: Directeurdesstages;
+export class GesStudentComponent implements OnInit {
   modalRef: BsModalRef;
   addcatIcon = faPlusCircle;
-  constructor(private direcserv: DirecteurdesstageService, private modalService: BsModalService) { }
+  student: Student1;
+  students: Student1[]=[];
+  constructor(private studentser: StudentService, private modalService: BsModalService) { }
+
   file: File ;
   formc = new FormGroup({
     firstname: new FormControl('',[Validators.required, Validators.minLength(4)]),
@@ -29,10 +29,9 @@ export class DirecteurComponent implements OnInit {
   });
 
   ngOnInit() {
-    this.direcserv.getalldirecteurdesstages().subscribe(data=>{this.directeurs=data;
-    console.log(data);});
+    this.studentser.getallstudent().subscribe(data=>{this.students=data;
+      console.log(this.students);});
   }
-
   onFileChange(event){
     const reader = new FileReader();
 
@@ -46,17 +45,17 @@ export class DirecteurComponent implements OnInit {
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
- //   this.add();
-
   }
-
   add(){
-    this.directeur= new Directeurdesstages(this.file.name,this.formc.value['phonenumber'],null,this.formc.value['firstname'],this.formc.value['lastname'],this.formc.value['password'],
+    this.student= new Student1(this.file.name,this.formc.value['phonenumber'],null,this.formc.value['firstname'],this.formc.value['lastname'],this.formc.value['password'],
       this.formc.value['email']);
-    console.log(this.directeur);
-    this.direcserv.adddirecteur(this.directeur).subscribe();
-    this.ngOnInit();
+    console.log(this.student);
+    this.studentser.addstudent(this.student).subscribe();
+    this.studentser.getallstudent().subscribe(data=>{this.students=data;
+      console.log(this.students)});
+
   }
+
   get namef(){
     return  this.formc.get('firstname');
   }
@@ -72,5 +71,6 @@ export class DirecteurComponent implements OnInit {
   get nameph () {
     return this.formc.get('phonenumber');
   }
+
 
 }
