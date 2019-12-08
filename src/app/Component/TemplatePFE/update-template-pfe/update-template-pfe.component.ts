@@ -18,7 +18,7 @@ export class UpdateTemplatePFEComponent implements OnInit {
 
   constructor(public templatePFEService:TemplatePFEService) { 
     this.templatePFE = new TemplatePFE();
-    this.GetTemplatePFE(16);
+    this.GetTemplatePFE(4);
   }
 
   ngOnInit() {

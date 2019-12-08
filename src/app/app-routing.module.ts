@@ -62,8 +62,9 @@ const routes: Routes = [
     component: ExportTemplatePFEComponent
   },
   {
-    path        : 'InternshipDirector/TemplatePFE/exportPFEfile',
+    path        : 'InternshipDirector/TemplatePFE/exportPFEfile/:id',
     component: ExportDataFichePFEComponent
+    ,  canActivate: [ControlIsDirecteurService]
   },
   {
     path        : 'InternshipDirector/TemplateIntershipAgreement',

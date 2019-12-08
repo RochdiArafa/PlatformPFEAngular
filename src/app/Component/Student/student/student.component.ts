@@ -28,4 +28,12 @@ export class StudentComponent implements OnInit {
     })
   }
 
+  ExportTemplatePFE(){
+    
+  }
+
+  ExportTemplateConvention(){
+
+  }
+
 }

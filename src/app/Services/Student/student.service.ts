@@ -32,4 +32,11 @@ headers: new HttpHeaders({ 'Content-Type': 'application/json' })
     return this.httpClient.get<Student>(this.urlBase+"student/getAllStudentRecrutedbyContryandYear/?contry="+contry+"&year="+year+"&site_id="+site_id);
 
   }
+
+  public getStudent(id:number){
+
+    return this.httpClient.get<Student>(this.urlBase+"student/searchStudent/?id="+id);
+  }
+
+
 }
