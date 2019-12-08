@@ -19,11 +19,11 @@ export class EnseignantComponent implements OnInit {
   constructor(private teacherser: TeacherService, private modalService: BsModalService) { }
   file: File ;
   formc = new FormGroup({
-    firstname: new FormControl(),
-    lastname: new FormControl(),
-    email: new FormControl(),
-    password: new FormControl(),
-    phonenumber: new FormControl(),
+    firstname: new FormControl('',[Validators.required, Validators.minLength(4)]),
+    lastname: new FormControl('',[Validators.required, Validators.minLength(4)]),
+    email: new FormControl('',[Validators.required, Validators.email]),
+    password: new FormControl('',[Validators.required, Validators.minLength(8)]),
+    phonenumber: new FormControl('',[Validators.required, Validators.minLength(8)]),
 
     file: new FormControl()
   });
@@ -56,6 +56,22 @@ add(){
     console.log(this.teachers);});
 
 }
+  get namef(){
+    return  this.formc.get('firstname');
+  }
+  get namel(){
+    return  this.formc.get('lastname');
+  }
+  get namee(){
+    return this.formc.get('email');
+  }
+  get namep () {
+    return this.formc.get('password');
+  }
+  get nameph () {
+    return this.formc.get('phonenumber');
+  }
+
 
 
 }

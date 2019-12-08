@@ -2,7 +2,7 @@ import {Component, OnInit, TemplateRef} from '@angular/core';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import {Directeurdesstages} from '../../Models/Directeurdesstages';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ChefdepartmentService} from '../../Services/chefdepartment.service';
 import {DirecteurdesstageService} from '../../Services/directeurdesstage.service';
 
@@ -19,11 +19,11 @@ export class DirecteurComponent implements OnInit {
   constructor(private direcserv: DirecteurdesstageService, private modalService: BsModalService) { }
   file: File ;
   formc = new FormGroup({
-    firstname: new FormControl(),
-    lastname: new FormControl(),
-    email: new FormControl(),
-    password: new FormControl(),
-    phonenumber: new FormControl(),
+    firstname: new FormControl('',[Validators.required, Validators.minLength(4)]),
+    lastname: new FormControl('',[Validators.required, Validators.minLength(4)]),
+    email: new FormControl('',[Validators.required, Validators.email]),
+    password: new FormControl('',[Validators.required, Validators.minLength(8)]),
+    phonenumber: new FormControl('',[Validators.required, Validators.minLength(8)]),
 
     file: new FormControl()
   });
@@ -56,6 +56,21 @@ export class DirecteurComponent implements OnInit {
     console.log(this.directeur);
     this.direcserv.adddirecteur(this.directeur).subscribe();
     this.ngOnInit();
+  }
+  get namef(){
+    return  this.formc.get('firstname');
+  }
+  get namel(){
+    return  this.formc.get('lastname');
+  }
+  get namee(){
+    return this.formc.get('email');
+  }
+  get namep () {
+    return this.formc.get('password');
+  }
+  get nameph () {
+    return this.formc.get('phonenumber');
   }
 
 }
