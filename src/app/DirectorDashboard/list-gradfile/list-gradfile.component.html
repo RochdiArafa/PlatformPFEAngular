@@ -1,0 +1,66 @@
+<h2>Liste des fiches</h2>
+<form class="m-t" role="form" [formGroup]="FilesForm" (ngSubmit)="DisplayFiles()">
+	<table>
+	      <div class="form-group">
+	      	<tr>
+	      		<td>
+	      			<label for="etat">l'etat de la fiche</label>
+	      		</td>
+	      		<td>
+	      	<select class="form-control" id="etat" formControlName="etat" required="">
+	      		<option value="encours">
+	      			en cours
+	      		</option>
+	      		<option value="acceptée">
+	      			validée
+	      		</option>
+	      		<option value="refusée">
+	      			refusée
+	      		</option>
+	      	</select>
+	      		</td>
+	        
+	    	</tr>
+	    	<tr>
+	    	<td><label for="pays">Pays</label></td>
+	        <td><input type="text" class="form-control" id="pays" formControlName="pays" ></td>
+	        </tr>
+	        <tr>
+	         <td>l'annee universitaire</td>
+	         <td><input type="text" id="year" formControlName="year"></td>
+	         <div *ngIf="yearC.touched && yearC.invalid">
+	        année universitaire invalide.Exemple valide: 2019-2020.
+	      </div>
+	      </tr>
+	      </div>
+      </table>
+      <button type="submit" class="btn btn-primary block full-width m-b">Rechercher</button>
+    </form>
+    <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Problematique </th>
+                    <th>Description </th>
+                    <th>Annee</th>
+                    <th>Etat </th>
+                    <th>Note rapporteur</th>
+                    <th>Note encadreur</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listFiles">
+                        <td> {{item.problem}} </td>
+                        <td> {{item.description}}</td>
+                        <td>{{item.anneeScolairee}}</td>
+                        <td> {{item.state}} </td>
+                        <td>{{item.note_rapporteur==0 ? 'non attribuée' : item.note_rapporteur}}</td>
+                        <td>{{item.note==0 ? 'non attribuée' : item.note}}</td>
+                        <td > <a *ngIf="item.state=='encours'" (click)="acceptFile(item)">Valider fiche</a>/ <!-- (click)="validerFiche( item )" -->
+                        	<a *ngIf="item.state=='encours'" (click)="refuseFile(item)">Refuser fiche</a> 
+                        </td> <!-- pop up -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>
