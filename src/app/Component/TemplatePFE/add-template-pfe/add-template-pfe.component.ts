@@ -11,6 +11,11 @@ import { TemplatePFEService } from 'src/app/Services/TemplatePFEService/template
 export class AddTemplatePFEComponent implements OnInit {
 
   public templatePFE: TemplatePFE ;
+  showerrorTitre : boolean = false;
+  showerrordescription : boolean = false;
+  showerrorproblem : boolean = false;
+  showerrorfunctionnalities : boolean = false;
+  
   constructor(public templatePFEService:TemplatePFEService) { 
     this.templatePFE = new TemplatePFE();
   }
@@ -19,16 +24,40 @@ export class AddTemplatePFEComponent implements OnInit {
   }
 
   addTemplatePFE(){
-    var ch = this.templatePFE.template;
-    for (let index = 0; index < ch.length; index++) {
-      ch = ch.replace("&nbsp;"," ")    
-    }
-    this.templatePFE.template = ch;
+    var error = 0;
+    var ch  = this.templatePFE.template;
+    if( ch.indexOf("{{gradProjectFile.titre}}")== -1 )
+      this.showerrorTitre = true;
+    else
+      this.showerrorTitre = false;  
 
-    this.templatePFE.site= 1;
-    this.templatePFEService.ajouter(this.templatePFE).subscribe((data: any)=>{
-      console.log(data);
-    }) 
+    if( ch.indexOf("{{gradProjectFile.description}}")== -1 )
+      this.showerrordescription = true;
+    else
+      this.showerrordescription = false; 
+      
+    if( ch.indexOf("{{gradProjectFile.problem}}")== -1 )
+      this.showerrorproblem = true;
+    else
+      this.showerrorproblem = false; 
+      
+    if( ch.indexOf("{{gradProjectFile.functionnalities}}")== -1 )
+      this.showerrorfunctionnalities = true;
+    else
+      this.showerrorfunctionnalities = false;   
+
+    if(error == 0){
+      var ch = this.templatePFE.template;
+      for (let index = 0; index < ch.length; index++) {
+        ch = ch.replace("&nbsp;"," ")    
+      }
+      this.templatePFE.template = ch;
+
+      this.templatePFE.site= 1;
+      this.templatePFEService.ajouter(this.templatePFE).subscribe((data: any)=>{
+        console.log(data);
+      })
+    } 
   }
 
   copyMessage(val: string){
