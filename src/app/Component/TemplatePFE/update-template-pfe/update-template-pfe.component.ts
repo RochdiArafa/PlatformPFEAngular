@@ -29,23 +29,31 @@ export class UpdateTemplatePFEComponent implements OnInit {
   updateTemplatePFE(){
     var error = 0;
     var ch  = this.templatePFE.template;
-    if( ch.indexOf("{{gradProjectFile.titre}}")== -1 )
+    if( ch.indexOf("{{gradProjectFile.titre}}")== -1 ){
       this.showerrorTitre = true;
+      error++;
+    }
     else
       this.showerrorTitre = false;  
 
-    if( ch.indexOf("{{gradProjectFile.description}}")== -1 )
+    if( ch.indexOf("{{gradProjectFile.description}}")== -1 ){
       this.showerrordescription = true;
+      error++;
+    }
     else
       this.showerrordescription = false; 
       
-    if( ch.indexOf("{{gradProjectFile.problem}}")== -1 )
+    if( ch.indexOf("{{gradProjectFile.problem}}")== -1 ){
       this.showerrorproblem = true;
+      error++
+    }
     else
       this.showerrorproblem = false; 
       
-    if( ch.indexOf("{{gradProjectFile.functionnalities}}")== -1 )
+    if( ch.indexOf("{{gradProjectFile.functionnalities}}")== -1 ){
       this.showerrorfunctionnalities = true;
+      error++;
+    }
     else
       this.showerrorfunctionnalities = false;   
 

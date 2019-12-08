@@ -21,5 +21,11 @@
     </tr>
 </table>
 <ckeditor [(ngModel)]="templateIntershipAgreement.template"> ></ckeditor>
+<p *ngIf="showerrornom" style="color:brown">Template doit avoir le nom de l'etudiant</p>
+<p *ngIf="showerrorprenom" style="color:brown">Template doit avoir le prenom de l'etudiant</p>
+<p *ngIf="showerrorcompany" style="color:brown">Template doit avoir le nom de la societé</p>
+<p *ngIf="showerrordatedebut" style="color:brown">Template doit avoir la date debut de stage</p>
+<p *ngIf="showerrordatefin" style="color:brown">Template doit avoir la date fin de stage</p>
+
 <input type="button" value="Créer Template"  (click)="addTemplatePFE()" class="w3-button w3-blue">
 

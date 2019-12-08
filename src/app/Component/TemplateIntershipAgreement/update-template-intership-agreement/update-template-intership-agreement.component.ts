@@ -12,7 +12,12 @@ export class UpdateTemplateIntershipAgreementComponent implements OnInit {
 
   public templateIntershipAgreement: TemplateIntershipAgreement ;
   public intershipAgreement:IntershipAgreement;
-
+  showerrornom : boolean = false;
+  showerrorprenom : boolean = false;
+  showerrorcompany : boolean = false;
+  showerrordatedebut : boolean = false;
+  showerrordatefin : boolean = false;
+  
   constructor(public templateIntershipAgreementService:TemplateIntershipAgreementService) { 
     this.templateIntershipAgreement = new TemplateIntershipAgreement();
     this.intershipAgreement = new IntershipAgreement();
@@ -25,15 +30,54 @@ export class UpdateTemplateIntershipAgreementComponent implements OnInit {
 
 
   updateTemplatePFE(){
-    var ch = this.templateIntershipAgreement.template;
-    for (let index = 0; index < ch.length; index++) {
-      ch = ch.replace("&nbsp;"," ")    
+    var error = 0;
+    var ch  = this.templateIntershipAgreement.template;
+    if( ch.indexOf("{{student.nom}}")== -1 ){
+      this.showerrornom = true;
+      error++;
+    }  
+    else
+      this.showerrornom = false;  
+
+    if( ch.indexOf("{{student.prenom}}")== -1 ){
+      this.showerrorprenom = true;
+      error++;
+    }  
+    else
+      this.showerrorprenom = false; 
+      
+    if( ch.indexOf("{{company.nom}}")== -1 ){
+      this.showerrorcompany = true;
+      error++;
     }
-    this.templateIntershipAgreement.template = ch;
-    
-    this.templateIntershipAgreementService.modifier(this.templateIntershipAgreement).subscribe((data: any)=>{
-      console.log(data);
-    }) 
+    else
+      this.showerrorcompany = false; 
+      
+    if( ch.indexOf("{{intershipAgreement.beginningDate}}")== -1 ){
+      this.showerrordatedebut = true;
+      error++;
+    }
+    else
+      this.showerrordatedebut = false; 
+      
+    if( ch.indexOf("{{intershipAgreement.endingDate}}")== -1 ){
+      this.showerrordatefin = true;
+      error++;
+      }
+    else
+      this.showerrordatefin = false;   
+
+    if(error == 0){    
+      var ch = this.templateIntershipAgreement.template;
+      for (let index = 0; index < ch.length; index++) {
+        ch = ch.replace("&nbsp;"," ")    
+      }
+      this.templateIntershipAgreement.template = ch;
+      
+      this.templateIntershipAgreementService.modifier(this.templateIntershipAgreement).subscribe((data: any)=>{
+        console.log(data);
+      }) 
+    }
   }
 
   

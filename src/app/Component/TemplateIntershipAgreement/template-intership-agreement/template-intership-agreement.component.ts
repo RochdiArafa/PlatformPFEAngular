@@ -22,7 +22,6 @@ export class TemplateIntershipAgreementComponent implements OnInit {
       this.showUpdateTemplate = true;
     }
 
-    //this.updateTemplateIntershipAgreement();
   }
 
   ngOnInit() {
