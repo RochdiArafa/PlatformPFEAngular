@@ -57,6 +57,10 @@ export class DirecteurComponent implements OnInit {
     this.direcserv.adddirecteur(this.directeur).subscribe();
     this.ngOnInit();
   }
+  delete(id: number){
+    this.direcserv.deletedirecteur(id).subscribe();
+    this.ngOnInit();
+  }
   get namef(){
     return  this.formc.get('firstname');
   }

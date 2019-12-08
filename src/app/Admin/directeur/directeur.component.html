@@ -301,7 +301,7 @@
                   <h2 class="no-margins">
                     {{a.firstName}} {{a.lastName}}
                   </h2>
-                  <h4><A>CHef department</A></h4>
+                  <h4><A>Directeur des stages</A></h4>
 
                 </div>
               </div>
@@ -324,6 +324,29 @@
                 </td>
 
               </tr>
+
+              <tr>
+
+                <td>
+                  <button class="btn btn-outline-success"(click)="openModal(tempsupp)" >supprimer</button>
+                </td>
+
+              </tr>
+              <ng-template #tempsupp>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">suppression</h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  vous etes sur de supprimer  ? <br> <br>
+                  <div align="center">
+                    <button class="btn btn-outline-primary"(click)="delete(a.id)" >supprimer</button>
+                    <button class="btn btn-outline-success"(click)="modalRef.hide()" >annuler</button> </div>
+                </div>
+              </ng-template>
               </tbody>
             </table>
           </div>

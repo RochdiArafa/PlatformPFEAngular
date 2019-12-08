@@ -51,6 +51,13 @@ export class GesStudentComponent implements OnInit {
       this.formc.value['email']);
     console.log(this.student);
     this.studentser.addstudent(this.student).subscribe();
+    this.formc.reset();
+    this.studentser.getallstudent().subscribe(data=>{this.students=data;
+      console.log(this.students)});
+
+  }
+  delete(id: number){
+    this.studentser.deletestudent(id).subscribe();
     this.studentser.getallstudent().subscribe(data=>{this.students=data;
       console.log(this.students)});
 

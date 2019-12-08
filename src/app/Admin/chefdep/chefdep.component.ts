@@ -51,8 +51,11 @@ export class ChefdepComponent implements OnInit {
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    this.add();
 
+  }
+  delete(id: number){
+    this.depser.deletechef(id).subscribe();
+    this.ngOnInit();
   }
   get namef(){
     return  this.formc.get('firstname');
