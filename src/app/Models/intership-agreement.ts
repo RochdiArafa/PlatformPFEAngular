@@ -3,8 +3,8 @@ import { Company } from './company';
 
 export class IntershipAgreement {
     id : number;
-	beginningDate: Date;
-    endingDate : Date;
+	beginningDate: string;
+    endingDate : string;
 	company: Company;
     templateIntershipAgreement:TemplateIntershipAgreement;
      

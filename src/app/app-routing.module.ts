@@ -29,6 +29,7 @@ import {SitessitComponent} from './Admin/sitessit/sitessit.component';
 import {OptionnComponent} from './Admin/optionn/optionn.component';
 import {ClassesComponent} from './Admin/classes/classes.component';
 import {ChefdepComponent} from './Admin/chefdep/chefdep.component';
+import { ExportDataFicheComponent } from './Component/TemplateIntershipAgreement/export-data-fiche/export-data-fiche.component';
 
 
 const routes: Routes = [
@@ -69,6 +70,11 @@ const routes: Routes = [
   {
     path        : 'InternshipDirector/TemplateIntershipAgreement',
     component: TemplateIntershipAgreementComponent
+    ,  canActivate: [ControlIsDirecteurService]
+  },
+  {
+    path        : 'InternshipDirector/TemplateIntershipAgreement/exportfile/:id',
+    component: ExportDataFicheComponent
     ,  canActivate: [ControlIsDirecteurService]
   },
   {

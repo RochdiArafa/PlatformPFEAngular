@@ -221,7 +221,9 @@
                                 <td> {{item.phoneNumber}} </td>
                                 <td> {{item.birthDay}}</td>
                                 <td> <a class="w3-button w3-blue" [routerLink]="['/InternshipDirector/TemplatePFE/exportPFEfile', item.id]"> Export fichier PFE  </a>
-                                  <input type="button" value="Export Convention Stage"  (click)="ExportTemplateConvention()" class="w3-button w3-blue">
+                                  <a class="w3-button w3-blue" [routerLink]="['/InternshipDirector/TemplateIntershipAgreement/exportfile', item.id]"> Export Convention de stage  </a>
+                                
+                                  
                                 </td>
                             </tr>
                         </tbody>
