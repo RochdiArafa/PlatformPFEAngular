@@ -179,7 +179,7 @@
     <!--body-->
     <div class="ibox " >
       <div class="ibox-title" >
-        <h5>Ajouter chef department</h5>
+        <h5>Ajouter Etudient</h5>
         <div class="ibox-tools">
 
           <a (click)="openModal(temp)" >
@@ -206,7 +206,7 @@
             <div class="col-lg-12">
               <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                  <h5>Ajouter Chef department :
+                  <h5>Ajouter Etudiant:
 
                   </h5>
                   <div ibox-tools></div>
@@ -288,7 +288,7 @@
       <div class="wrapper wrapper-content animated fadeInRight">
 
 
-        <div class="row m-b-lg m-t-lg"  *ngFor="let a of chefdeps">
+        <div class="row m-b-lg m-t-lg"  *ngFor="let a of students">
           <div class="col-md-6">
 
             <div class="profile-image">
@@ -301,7 +301,7 @@
                   <h2 class="no-margins">
                     {{a.firstName}} {{a.lastName}}
                   </h2>
-                  <h4><A>CHef department</A></h4>
+                  <h4><A>Etudiant</A></h4>
 
                 </div>
               </div>

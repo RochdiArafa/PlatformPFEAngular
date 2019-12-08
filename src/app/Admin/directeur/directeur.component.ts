@@ -1,21 +1,22 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Chefdepartement} from '../../Models/Chefdepartement';
-import {ChefdepartmentService} from '../../Services/chefdepartment.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import {Directeurdesstages} from '../../Models/Directeurdesstages';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ChefdepartmentService} from '../../Services/chefdepartment.service';
+import {DirecteurdesstageService} from '../../Services/directeurdesstage.service';
 
 @Component({
-  selector: 'app-chefdep',
-  templateUrl: './chefdep.component.html',
-  styleUrls: ['./chefdep.component.scss']
+  selector: 'app-directeur',
+  templateUrl: './directeur.component.html',
+  styleUrls: ['./directeur.component.scss']
 })
-export class ChefdepComponent implements OnInit {
-  chefdep: Chefdepartement;
-  chefdeps: Chefdepartement[]  = [] ;
+export class DirecteurComponent implements OnInit {
+  directeurs: Directeurdesstages[]=[];
+  directeur: Directeurdesstages;
   modalRef: BsModalRef;
   addcatIcon = faPlusCircle;
-  constructor(private depser: ChefdepartmentService, private modalService: BsModalService) { }
+  constructor(private direcserv: DirecteurdesstageService, private modalService: BsModalService) { }
   file: File ;
   formc = new FormGroup({
     firstname: new FormControl('',[Validators.required, Validators.minLength(4)]),
@@ -26,10 +27,12 @@ export class ChefdepComponent implements OnInit {
 
     file: new FormControl()
   });
+
   ngOnInit() {
-    this.depser.getallchefdeps().subscribe(data =>{this.chefdeps=data;
-      console.log(this.chefdeps);});
+    this.direcserv.getalldirecteurdesstages().subscribe(data=>{this.directeurs=data;
+    console.log(data);});
   }
+
   onFileChange(event){
     const reader = new FileReader();
 
@@ -41,20 +44,21 @@ export class ChefdepComponent implements OnInit {
       console.log(this.file.name);
     }
   }
-  add(){
-    this.chefdep =new Chefdepartement(this.file.name,this.formc.value['phonenumber'],null,this.formc.value['firstname'],this.formc.value['lastname'],this.formc.value['password'],
-      this.formc.value['email']);
-    console.log(this.chefdep);
-    this.depser.addchefdep(this.chefdep).subscribe();
-    this.depser.getallchefdeps().subscribe(data =>{this.chefdeps=data;
-      console.log(this.chefdeps);});
-  }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+ //   this.add();
 
   }
+
+  add(){
+    this.directeur= new Directeurdesstages(this.file.name,this.formc.value['phonenumber'],null,this.formc.value['firstname'],this.formc.value['lastname'],this.formc.value['password'],
+      this.formc.value['email']);
+    console.log(this.directeur);
+    this.direcserv.adddirecteur(this.directeur).subscribe();
+    this.ngOnInit();
+  }
   delete(id: number){
-    this.depser.deletechef(id).subscribe();
+    this.direcserv.deletedirecteur(id).subscribe();
     this.ngOnInit();
   }
   get namef(){
@@ -72,4 +76,5 @@ export class ChefdepComponent implements OnInit {
   get nameph () {
     return this.formc.get('phonenumber');
   }
+
 }

@@ -32,6 +32,9 @@
         <li>
           <a [routerLink]="['/classes']"><i  class="fa fa-bell-o"></i> <span class="nav-label">Classes</span>  </a>
         </li>
+        <li>
+          <a [routerLink]="['/students']"><i  class="fa fa-bell-o"></i> <span class="nav-label">Etudients</span>  </a>
+        </li>
         <div class="dropdown profile-element">
 
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
@@ -40,8 +43,8 @@
           </a>
           <ul class="dropdown-menu animated fadeInRight m-t-xs">
             <li><a class="dropdown-item" [routerLink]="['/chefdeps']">Chef department</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/calendar']">Directeur des stages</a></li>
-            <li><a class="dropdown-item" href="mailbox.html">Enseignant</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/directeurs']">Directeur des stages</a></li>
+            <li><a class="dropdown-item" [routerLink]="['/teachers']">Enseignant</a></li>
             <li class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="login.html" (click)="logout()">Logout</a></li>
           </ul>

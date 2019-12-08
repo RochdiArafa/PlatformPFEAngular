@@ -179,7 +179,7 @@
     <!--body-->
     <div class="ibox " >
       <div class="ibox-title" >
-        <h5>Ajouter chef department</h5>
+        <h5>Ajouter Enseignant</h5>
         <div class="ibox-tools">
 
           <a (click)="openModal(temp)" >
@@ -206,7 +206,7 @@
             <div class="col-lg-12">
               <div class="ibox float-e-margins">
                 <div class="ibox-title">
-                  <h5>Ajouter Chef department :
+                  <h5>Ajouter Enseignant :
 
                   </h5>
                   <div ibox-tools></div>
@@ -288,7 +288,7 @@
       <div class="wrapper wrapper-content animated fadeInRight">
 
 
-        <div class="row m-b-lg m-t-lg"  *ngFor="let a of chefdeps">
+        <div class="row m-b-lg m-t-lg"  *ngFor="let a of teachers">
           <div class="col-md-6">
 
             <div class="profile-image">
@@ -324,28 +324,6 @@
                 </td>
 
               </tr>
-              <tr>
-
-                <td>
-                  <button class="btn btn-outline-success"(click)="openModal(tempsupp)" >supprimer</button>
-                </td>
-
-              </tr>
-              <ng-template #tempsupp>
-                <div class="modal-header">
-                  <h4 class="modal-title pull-left">suppression</h4>
-                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  vous etes sur de supprimer  ? <br> <br>
-                  <div align="center">
-                    <button class="btn btn-outline-primary"(click)="delete(a.id)" >supprimer</button>
-                    <button class="btn btn-outline-success"(click)="modalRef.hide()" >annuler</button> </div>
-                </div>
-              </ng-template>
               </tbody>
             </table>
           </div>

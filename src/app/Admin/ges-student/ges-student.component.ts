@@ -1,21 +1,22 @@
 import {Component, OnInit, TemplateRef} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {Chefdepartement} from '../../Models/Chefdepartement';
-import {ChefdepartmentService} from '../../Services/chefdepartment.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap';
 import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
+import {Student1} from '../../Models/Student1';
+import {StudentService} from '../../Services/student.service';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 
 @Component({
-  selector: 'app-chefdep',
-  templateUrl: './chefdep.component.html',
-  styleUrls: ['./chefdep.component.scss']
+  selector: 'app-ges-student',
+  templateUrl: './ges-student.component.html',
+  styleUrls: ['./ges-student.component.scss']
 })
-export class ChefdepComponent implements OnInit {
-  chefdep: Chefdepartement;
-  chefdeps: Chefdepartement[]  = [] ;
+export class GesStudentComponent implements OnInit {
   modalRef: BsModalRef;
   addcatIcon = faPlusCircle;
-  constructor(private depser: ChefdepartmentService, private modalService: BsModalService) { }
+  student: Student1;
+  students: Student1[]=[];
+  constructor(private studentser: StudentService, private modalService: BsModalService) { }
+
   file: File ;
   formc = new FormGroup({
     firstname: new FormControl('',[Validators.required, Validators.minLength(4)]),
@@ -26,9 +27,10 @@ export class ChefdepComponent implements OnInit {
 
     file: new FormControl()
   });
+
   ngOnInit() {
-    this.depser.getallchefdeps().subscribe(data =>{this.chefdeps=data;
-      console.log(this.chefdeps);});
+    this.studentser.getallstudent().subscribe(data=>{this.students=data;
+      console.log(this.students);});
   }
   onFileChange(event){
     const reader = new FileReader();
@@ -41,22 +43,26 @@ export class ChefdepComponent implements OnInit {
       console.log(this.file.name);
     }
   }
-  add(){
-    this.chefdep =new Chefdepartement(this.file.name,this.formc.value['phonenumber'],null,this.formc.value['firstname'],this.formc.value['lastname'],this.formc.value['password'],
-      this.formc.value['email']);
-    console.log(this.chefdep);
-    this.depser.addchefdep(this.chefdep).subscribe();
-    this.depser.getallchefdeps().subscribe(data =>{this.chefdeps=data;
-      console.log(this.chefdeps);});
-  }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+  add(){
+    this.student= new Student1(this.file.name,this.formc.value['phonenumber'],null,this.formc.value['firstname'],this.formc.value['lastname'],this.formc.value['password'],
+      this.formc.value['email']);
+    console.log(this.student);
+    this.studentser.addstudent(this.student).subscribe();
+    this.formc.reset();
+    this.studentser.getallstudent().subscribe(data=>{this.students=data;
+      console.log(this.students)});
 
   }
   delete(id: number){
-    this.depser.deletechef(id).subscribe();
-    this.ngOnInit();
+    this.studentser.deletestudent(id).subscribe();
+    this.studentser.getallstudent().subscribe(data=>{this.students=data;
+      console.log(this.students)});
+
   }
+
   get namef(){
     return  this.formc.get('firstname');
   }
@@ -72,4 +78,6 @@ export class ChefdepComponent implements OnInit {
   get nameph () {
     return this.formc.get('phonenumber');
   }
+
+
 }
