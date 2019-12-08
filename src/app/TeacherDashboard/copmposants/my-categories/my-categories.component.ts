@@ -6,7 +6,7 @@ import {MydialogueComponent} from '../../Dialogs/mydialogue/mydialogue.component
 import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
-import {AddPreferdCategoriesComponent} from "../../Dialogs/add-preferd-categories/add-preferd-categories.component";
+import {AddPreferdCategoriesComponent} from '../../Dialogs/add-preferd-categories/add-preferd-categories.component';
 
 @Component({
   selector: 'app-my-categories',

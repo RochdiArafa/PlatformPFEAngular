@@ -9,6 +9,7 @@ import {ActionTeacherModel} from '../Models/ActionTeacher.Model';
 import {TeacherModel} from '../Models/Teacher.Model';
 import {not} from 'rxjs/internal-compatibility';
 import {SkillModel} from '../Models/Skill.Model';
+import {CategoryModel} from "../Models/Category.Model";
 
 @Injectable({
   providedIn: 'root'
@@ -117,6 +118,21 @@ export class TeacherService {
   public getautoComplete() {
     return  this.httpClientSer.get<any[]>(' http://localhost:9080/PlatformPFE-web/rest/teacher/autocomplete/'
       + this.teacher.id);
+  }
+
+  addPreferdCategory(nomc: string) {
+    // http://localhost:9080/PlatformPFE-web/rest/categories/preferedCat/nomc/{idt}
+    return this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/categories/preferedCat/'
+      + nomc + '/' + this.teacher.id + '/');
+  }
+
+  addskills(idc: number) {
+    return this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/skills/' + this.teacher.id +
+      '/' + idc );
+  }
+  getallCategories() {
+    //
+    return this.httpClientSer.get<CategoryModel[]>('http://localhost:9080/PlatformPFE-web/rest/categories');
   }
 
 

@@ -4,6 +4,7 @@ import {TeacherService} from '../../../Services/teacher.service';
 import {faClipboardCheck, faPen, faCalendarAlt, faCommentAlt, faFolderPlus} from '@fortawesome/free-solid-svg-icons';
 
 import {CategoryModel} from '../../../Models/Category.Model';
+import {CategoryService} from "../../../Services/category.service";
 
 @Component({
   selector: 'app-add-preferd-categories',
@@ -20,8 +21,10 @@ export class AddPreferdCategoriesComponent implements OnInit {
   aafficherListCateoriesNames: string[] = [];
   aafficherPoidsC: number[] = [];
 
+  ListPreferdCategories: CategoryModel[] = [];
+
   inputval = '';
-  constructor(public dialogRef: MatDialogRef<AddPreferdCategoriesComponent>,
+  constructor(public dialogRef: MatDialogRef<AddPreferdCategoriesComponent>,private categorieSer: CategoryService,
               @Inject(MAT_DIALOG_DATA) public data: any, private Teachser: TeacherService) { }
 
   ngOnInit() {
@@ -57,12 +60,47 @@ export class AddPreferdCategoriesComponent implements OnInit {
       },
       e => {},
       () => {
-        console.log('these are Poids' + this.PoidsC);
-        console.log('these are Cat Names' + this.ListCateoriesNames);
-        this.aafficherListCateoriesNames = this.ListCateoriesNames;
-        this.aafficherPoidsC = this.PoidsC;
+
+        this.categorieSer.MypreferedCategories().subscribe(
+          (value) => {this.ListPreferdCategories = value; },
+          er => {},
+          () => {
+
+            for (let obj of this.ListPreferdCategories) {
+
+              for (let  i = 0 ; i < this.ListCateoriesNames.length ; i++) {
+                if (obj.name === this.ListCateoriesNames[i] ) {
+                      this.ListCateoriesNames.splice(i , 1);
+                      this.PoidsC.splice(i , 1);
+                }
+              }
+
+            }
+            console.log('these are Poids' + this.PoidsC);
+            console.log('these are Cat Names' + this.ListCateoriesNames);
+            this.aafficherListCateoriesNames = this.ListCateoriesNames;
+            this.aafficherPoidsC = this.PoidsC;
+          }
+        );
+
+
+
       }
     );
+  }
+  addPreferdCategory(str: string) {
+
+    // http://localhost:9080/PlatformPFE-web/rest/categories/preferedCat/nomc/{idt}
+    this.Teachser.addPreferdCategory(str).subscribe(
+      () => {
+
+      },
+      e => {},
+      () => {
+        this.dialogRef.close('');
+      }
+    );
+
   }
 
 

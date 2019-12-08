@@ -31,7 +31,7 @@
 
               <div class="feed-element">
                 <div>
-                  <a  ><small class="float-right "> <strong style="font-size: 16px;" >{{aafficherPoidsC[i].toFixed(2)}}</strong> <fa-icon [icon]="folderIcon" size="3x" [ngStyle]="{color: 'darkgreen'}" ></fa-icon>  </small></a>
+                  <a (click)="addPreferdCategory(obj)" ><small class="float-right "> <strong style="font-size: 16px;" >{{aafficherPoidsC[i].toFixed(2)}}</strong> <fa-icon [icon]="folderIcon" size="3x" [ngStyle]="{color: 'darkgreen'}" ></fa-icon>  </small></a>
                   <span style="font-size: 20px;" class="text-navy"> <strong>{{obj}}</strong></span>
                   <br>
                   <small class="text-muted">{{i+1}}</small>

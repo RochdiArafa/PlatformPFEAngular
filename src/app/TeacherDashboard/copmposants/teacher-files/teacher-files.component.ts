@@ -41,16 +41,16 @@ export class TeacherFilesComponent implements OnInit {
         console.log(e);
       },
       () => {
-        let i = 0;
-        for (let obj of this.Listencadred) {
-          // console.log('this is the deleted Obj ' + obj.note_rapporteur);
-          if (obj.note != 0 ) {
+
+        for (let i = 0 ; i < this.Listencadred.length ; i++ ) {
+          console.log('we are in the loop !!!!!!!! ' + this.Listencadred[i].description);
+          if (this.Listencadred[i].note !== 0) {
+            console.log('this is the deleted i =  ' + i + 'haha' + this.Listencadred[i].description);
             this.Listencadred.splice(i, 1);
-            console.log('this is deleted ! ' + obj.id);
+            i--;
           }
-          i++;
+
         }
-        console.log(this.Listencadred);
       }
     );
   }
@@ -60,13 +60,16 @@ export class TeacherFilesComponent implements OnInit {
         this.Listrapported = value;
       }, e => {},
       () => {
-        let i = 0;
-        for (let obj of this.Listrapported) {
-          if (obj.note_rapporteur != 0) {
+        for (let i = 0 ; i < this.Listrapported.length ; i++ ) {
+          console.log('we are in the loop !!!!!!!! ' + this.Listrapported[i].description);
+          if (this.Listrapported[i].note_rapporteur != 0) {
+            console.log('this is the deleted i =  ' + i + 'haha' + this.Listrapported[i].description);
             this.Listrapported.splice(i, 1);
+            i--;
           }
-          i++;
+
         }
+
       }
     );
   }
@@ -78,13 +81,16 @@ export class TeacherFilesComponent implements OnInit {
         this.Listpresented = value;
       }, e => {},
       () => {
-        let i = 0;
-        for (let obj of this.Listpresented) {
-          if (obj.note != 0 && obj.note_rapporteur != 0) {
+        for (let i = 0 ; i < this.Listpresented.length ; i++ ) {
+          console.log('we are in the loop !!!!!!!! ' + this.Listpresented[i].description);
+          if (this.Listpresented[i].note != 0 && this.Listpresented[i].note_rapporteur != 0) {
+            console.log('this is the deleted i =  ' + i + 'haha' + this.Listpresented[i].description);
             this.Listpresented.splice(i, 1);
+            i--;
           }
-          i++;
+
         }
+
       }
     );
   }

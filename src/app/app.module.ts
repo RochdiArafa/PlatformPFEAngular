@@ -46,6 +46,7 @@ import { StatistiquesTeacherComponent } from './TeacherDashboard/copmposants/sta
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ChartsModule} from 'ng2-charts';
 import { AddPreferdCategoriesComponent } from './TeacherDashboard/Dialogs/add-preferd-categories/add-preferd-categories.component';
+import { AddSkillsComponent } from './TeacherDashboard/Dialogs/add-skills/add-skills.component';
 
 
 const appRoutes: Routes = [
@@ -98,7 +99,8 @@ const appRoutes: Routes = [
     ViewDetailFileComponent,
     SkillsComponent,
     StatistiquesTeacherComponent,
-    AddPreferdCategoriesComponent
+    AddPreferdCategoriesComponent,
+    AddSkillsComponent
   ],
   imports: [
     BrowserModule,
@@ -125,7 +127,7 @@ const appRoutes: Routes = [
     ChartsModule
   ],
   entryComponents: [
-    MydialogueComponent, ViewDetailFileComponent, AreUSureComponent, AddPreferdCategoriesComponent
+    MydialogueComponent, ViewDetailFileComponent, AreUSureComponent, AddPreferdCategoriesComponent, AddSkillsComponent
   ],
 
   providers: [AuthService, HttpClient],
