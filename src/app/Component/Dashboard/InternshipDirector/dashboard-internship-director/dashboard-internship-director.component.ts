@@ -13,7 +13,6 @@ import { Site } from 'src/app/Models/site';
 export class DashboardInternshipDirectorComponent implements OnInit {
   ListStudent : Student[];
   SansStage : number = 0 ;
-  site : Site = new Site();
   constructor(public studentService :StudentService , public directeurStageService : DirecteurdesstageService) { }
 
   ngOnInit() {
