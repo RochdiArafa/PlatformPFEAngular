@@ -52,6 +52,7 @@ export class AuthService {
   DoLogout() {
     this.isTeacher = false;
     this.Teacher = null;
+    sessionStorage.clear();
     this.route.navigate(['/Login']);
   }
 
