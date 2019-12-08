@@ -57,6 +57,7 @@ import { OptionnComponent } from './Admin/optionn/optionn.component';
 import { ClassesComponent } from './Admin/classes/classes.component';
 import { ChefdepComponent } from './Admin/chefdep/chefdep.component';
 import { DirecteurComponent } from './Admin/directeur/directeur.component';
+import { EnseignantComponent } from './Admin/enseignant/enseignant.component';
 
 
 const appRoutes: Routes = [
@@ -118,7 +119,8 @@ const appRoutes: Routes = [
     OptionnComponent,
     ClassesComponent,
     ChefdepComponent,
-    DirecteurComponent
+    DirecteurComponent,
+    EnseignantComponent
   ],
   imports: [
     BrowserModule,

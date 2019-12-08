@@ -26,6 +26,7 @@ import {OptionnComponent} from './Admin/optionn/optionn.component';
 import {ClassesComponent} from './Admin/classes/classes.component';
 import {ChefdepComponent} from './Admin/chefdep/chefdep.component';
 import {DirecteurComponent} from './Admin/directeur/directeur.component';
+import {EnseignantComponent} from './Admin/enseignant/enseignant.component';
 
 const routes: Routes = [
   {path: 'ProfileTeacher', component: FirstPageComponent,  canActivate: [ControlIsTeacherService]},
@@ -41,6 +42,7 @@ const routes: Routes = [
   {path: 'classes', component: ClassesComponent },
   {path: 'chefdeps', component: ChefdepComponent },
   {path: 'directeurs', component: DirecteurComponent },
+  {path: 'teachers', component: EnseignantComponent },
   {
     path        : 'InternshipDirector/TemplatePFE',
     component: TemplatePFEComponent
