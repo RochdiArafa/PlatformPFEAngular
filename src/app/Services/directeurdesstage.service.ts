@@ -31,4 +31,5 @@ export class DirecteurdesstageService {
   notifrap() {
     return this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/student/mailrap');
   }
+
 }

@@ -17,5 +17,10 @@
     </tr>
 </table>
 <ckeditor [(ngModel)]="templatePFE.template"> ></ckeditor>
+<p *ngIf="showerrorTitre" style="color:brown">Template doit avoir titre de sujet PFE</p>
+<p *ngIf="showerrordescription" style="color:brown">Template doit avoir description de sujet PFE</p>
+<p *ngIf="showerrorproblem" style="color:brown">Template doit avoir problematique de sujet PFE</p>
+<p *ngIf="showerrorfunctionnalities" style="color:brown">Template doit avoir fonctionnalité de sujet PFE</p>
+
 <input type="button" value="Modifier Template"  (click)="updateTemplatePFE()" class="w3-button w3-blue">
 
