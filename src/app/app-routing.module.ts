@@ -28,6 +28,7 @@ import {ChefdepComponent} from './Admin/chefdep/chefdep.component';
 import {DirecteurComponent} from './Admin/directeur/directeur.component';
 import {EnseignantComponent} from './Admin/enseignant/enseignant.component';
 import {GesStudentComponent} from './Admin/ges-student/ges-student.component';
+import {CalendarteacherComponent} from './Admin/calendarteacher/calendarteacher.component';
 
 const routes: Routes = [
   {path: 'ProfileTeacher', component: FirstPageComponent,  canActivate: [ControlIsTeacherService]},
@@ -45,6 +46,7 @@ const routes: Routes = [
   {path: 'directeurs', component: DirecteurComponent },
   {path: 'teachers', component: EnseignantComponent },
   {path: 'students', component: GesStudentComponent },
+  {path: 'calendarteacher', component: CalendarteacherComponent },
   {
     path        : 'InternshipDirector/TemplatePFE',
     component: TemplatePFEComponent

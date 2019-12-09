@@ -9,35 +9,17 @@
               <span class="block m-t-xs font-bold">David Williams</span>
               <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
             </a>
-            <ul class="dropdown-menu animated fadeInRight m-t-xs">
-              <li><a class="dropdown-item" href="profile.html">Profile</a></li>
-              <li><a class="dropdown-item" href="contacts.html">Contacts</a></li>
-              <li><a class="dropdown-item" href="mailbox.html">Mailbox</a></li>
-              <li class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="login.html">Logout</a></li>
-            </ul>
+
           </div>
           <div class="logo-element">
             IN+
           </div>
         </li>
-        <li class="active">
-          <a  routerLink="Login" ><i  class="fa fa-home"></i> <span class="nav-label">Acceuil</span></a>
 
-        </li>
         <li>
-          <a  (click)="chagetoProfile()" ><i class="fa fa-user"></i> <span class="nav-label">Profil</span></a>
+          <a [routerLink]="['/calendar']"><i  class="fa fa-bell-o"></i> <span class="nav-label">Calendrier des soutenonce</span>  </a>
         </li>
-        <li>
-          <a  (click)="chagetoFiles()" ><i  class="fa fa-briefcase"></i> <span class="nav-label">My pfe files</span></a>
-        </li>
-        <li>
-          <a [routerLink]="['/calendarteacher']"><i class="fa fa-envelope"></i> <span class="nav-label">Calendrier  </span></a>
 
-        </li>
-        <li>
-          <a href="metrics.html"><i  class="fa fa-bell-o"></i> <span class="nav-label">Notifications</span>  </a>
-        </li>
       </ul>
 
     </div>
@@ -156,8 +138,8 @@
 
 
           <li>
-            <a href="login.html">
-              <i class="fa fa-sign-out"></i> Log out
+            <a >
+              <i class="fa fa-sign-out" (click)="logout()"></i> Log out
             </a>
           </li>
           <li>
@@ -172,19 +154,7 @@
     <div class="row  border-bottom white-bg dashboard-header">
 
     </div>
-    <!--body-->
-
-
-
-
-    <app-profile *ngIf="navTeacher.navTeachertoProfile" ></app-profile>
-    <app-teacher-files *ngIf="navTeacher.navTeachertofiles"></app-teacher-files>
-
-
-
-
-    <!--body-->
-    <!--footer-->
+    <full-calendar  [events]="CalendarEvents"  [plugins]="calendarPlugins"></full-calendar>
     <div class="footer">
       <div class="float-right">
         10GB of <strong>250GB</strong> Free.
@@ -659,102 +629,106 @@
 
 
 <script>
-  $(document).ready(function () {
-    setTimeout(function () {
-      toastr.options = {
-        closeButton: true,
-        progressBar: true,
-        showMethod: 'slideDown',
-        timeOut: 4000
-      };
-      toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
+    $(document).ready(function () {
+        setTimeout(function () {
+            toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                showMethod: 'slideDown',
+                timeOut: 4000
+            };
+            toastr.success('Responsive Admin Theme', 'Welcome to INSPINIA');
 
-    }, 1300);
-
-
-    var data1 = [
-      [0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 30], [11, 10], [12, 13], [13, 4], [14, 3], [15, 3], [16, 6]
-    ];
-    var data2 = [
-      [0, 1], [1, 0], [2, 2], [3, 0], [4, 1], [5, 3], [6, 1], [7, 5], [8, 2], [9, 3], [10, 2], [11, 1], [12, 0], [13, 2], [14, 8], [15, 0], [16, 0]
-    ];
-    $("#flot-dashboard-chart").length && $.plot($("#flot-dashboard-chart"), [
-        data1, data2
-      ],
-      {
-        series: {
-          lines: {
-            show: false,
-            fill: true
-          },
-          splines: {
-            show: true,
-            tension: 0.4,
-            lineWidth: 1,
-            fill: 0.4
-          },
-          points: {
-            radius: 0,
-            show: true
-          },
-          shadowSize: 2
-        },
-        grid: {
-          hoverable: true,
-          clickable: true,
-          tickColor: "#d5d5d5",
-          borderWidth: 1,
-          color: '#d5d5d5'
-        },
-        colors: ["#1ab394", "#1C84C6"],
-        xaxis: {
-        },
-        yaxis: {
-          ticks: 4
-        },
-        tooltip: false
-      }
-    );
-
-    var doughnutData = {
-      labels: ["App", "Software", "Laptop"],
-      datasets: [{
-        data: [300, 50, 100],
-        backgroundColor: ["#a3e1d4", "#dedede", "#9CC3DA"]
-      }]
-    };
+        }, 1300);
 
 
-    var doughnutOptions = {
-      responsive: false,
-      legend: {
-        display: false
-      }
-    };
+        var data1 = [
+            [0, 4], [1, 8], [2, 5], [3, 10], [4, 4], [5, 16], [6, 5], [7, 11], [8, 6], [9, 11], [10, 30], [11, 10], [12, 13], [13, 4], [14, 3], [15, 3], [16, 6]
+        ];
+        var data2 = [
+            [0, 1], [1, 0], [2, 2], [3, 0], [4, 1], [5, 3], [6, 1], [7, 5], [8, 2], [9, 3], [10, 2], [11, 1], [12, 0], [13, 2], [14, 8], [15, 0], [16, 0]
+        ];
+        $("#flot-dashboard-chart").length && $.plot($("#flot-dashboard-chart"), [
+                data1, data2
+            ],
+            {
+                series: {
+                    lines: {
+                        show: false,
+                        fill: true
+                    },
+                    splines: {
+                        show: true,
+                        tension: 0.4,
+                        lineWidth: 1,
+                        fill: 0.4
+                    },
+                    points: {
+                        radius: 0,
+                        show: true
+                    },
+                    shadowSize: 2
+                },
+                grid: {
+                    hoverable: true,
+                    clickable: true,
+                    tickColor: "#d5d5d5",
+                    borderWidth: 1,
+                    color: '#d5d5d5'
+                },
+                colors: ["#1ab394", "#1C84C6"],
+                xaxis: {
+                },
+                yaxis: {
+                    ticks: 4
+                },
+                tooltip: false
+            }
+        );
+
+        var doughnutData = {
+            labels: ["App", "Software", "Laptop"],
+            datasets: [{
+                data: [300, 50, 100],
+                backgroundColor: ["#a3e1d4", "#dedede", "#9CC3DA"]
+            }]
+        };
 
 
-    var ctx4 = document.getElementById("doughnutChart").getContext("2d");
-    new Chart(ctx4, { type: 'doughnut', data: doughnutData, options: doughnutOptions });
-
-    var doughnutData = {
-      labels: ["App", "Software", "Laptop"],
-      datasets: [{
-        data: [70, 27, 85],
-        backgroundColor: ["#a3e1d4", "#dedede", "#9CC3DA"]
-      }]
-    };
+        var doughnutOptions = {
+            responsive: false,
+            legend: {
+                display: false
+            }
+        };
 
 
-    var doughnutOptions = {
-      responsive: false,
-      legend: {
-        display: false
-      }
-    };
+        var ctx4 = document.getElementById("doughnutChart").getContext("2d");
+        new Chart(ctx4, { type: 'doughnut', data: doughnutData, options: doughnutOptions });
+
+        var doughnutData = {
+            labels: ["App", "Software", "Laptop"],
+            datasets: [{
+                data: [70, 27, 85],
+                backgroundColor: ["#a3e1d4", "#dedede", "#9CC3DA"]
+            }]
+        };
 
 
-    var ctx4 = document.getElementById("doughnutChart2").getContext("2d");
-    new Chart(ctx4, { type: 'doughnut', data: doughnutData, options: doughnutOptions });
+        var doughnutOptions = {
+            responsive: false,
+            legend: {
+                display: false
+            }
+        };
 
-  });
+
+        var ctx4 = document.getElementById("doughnutChart2").getContext("2d");
+        new Chart(ctx4, { type: 'doughnut', data: doughnutData, options: doughnutOptions });
+
+    });
 </script>
+
+
+
+

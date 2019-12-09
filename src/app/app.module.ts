@@ -61,6 +61,7 @@ import { EnseignantComponent } from './Admin/enseignant/enseignant.component';
 import { GesStudentComponent } from './Admin/ges-student/ges-student.component';
 import {Ng2SearchPipeModule} from 'ng2-search-filter';
 import {NgxPaginationModule} from 'ngx-pagination';
+import { CalendarteacherComponent } from './Admin/calendarteacher/calendarteacher.component';
 
 
 const appRoutes: Routes = [
@@ -125,6 +126,7 @@ const appRoutes: Routes = [
     DirecteurComponent,
     EnseignantComponent,
     GesStudentComponent,
+    CalendarteacherComponent,
 
 
 
