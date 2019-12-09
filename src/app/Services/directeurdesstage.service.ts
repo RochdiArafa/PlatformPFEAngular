@@ -7,6 +7,7 @@ import {Directeurdesstages} from '../Models/Directeurdesstages';
 import {Observable} from 'rxjs';
 
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -40,6 +41,10 @@ export class DirecteurdesstageService {
     const id = typeof directeur === 'number' ? directeur: directeur.id ;
     return  this.httpClientSer.delete('http://localhost:9080/PlatformPFE-web/rest/directeurdestages/' +
       id);
+  }
+
+  updatedirecteur(direc: Directeurdesstages): Observable<Directeurdesstages>{
+    return  this.httpClientSer.put<Directeurdesstages>( 'http://localhost:9080/PlatformPFE-web/rest/directeurdestages/', direc , this.httpOptions);
   }
 
 }

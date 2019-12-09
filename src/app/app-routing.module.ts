@@ -36,6 +36,7 @@ import { ExportDataFicheComponent } from './Component/TemplateIntershipAgreement
 import {DirecteurComponent} from './Admin/directeur/directeur.component';
 import {EnseignantComponent} from './Admin/enseignant/enseignant.component';
 import {GesStudentComponent} from './Admin/ges-student/ges-student.component';
+import {CalendarteacherComponent} from './Admin/calendarteacher/calendarteacher.component';
 
 
 const routes: Routes = [
@@ -54,6 +55,7 @@ const routes: Routes = [
   {path: 'directeurs', component: DirecteurComponent },
   {path: 'teachers', component: EnseignantComponent },
   {path: 'students', component: GesStudentComponent },
+  {path: 'calendarteacher', component: CalendarteacherComponent },
   {
     path        : 'InternshipDirector/TemplatePFE',
     component: TemplatePFEComponent,

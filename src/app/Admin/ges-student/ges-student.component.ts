@@ -4,6 +4,7 @@ import {faPlusCircle} from '@fortawesome/free-solid-svg-icons';
 import {Student1} from '../../Models/Student1';
 import {StudentService} from '../../Services/student.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {faSearchPlus} from '@fortawesome/free-solid-svg-icons/faSearchPlus';
 
 @Component({
   selector: 'app-ges-student',
@@ -11,7 +12,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./ges-student.component.scss']
 })
 export class GesStudentComponent implements OnInit {
+  serchtext: string
   modalRef: BsModalRef;
+  serchicone= faSearchPlus;
   addcatIcon = faPlusCircle;
   student: Student1;
   students: Student1[]=[];

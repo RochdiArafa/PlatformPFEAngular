@@ -18,7 +18,7 @@ export class SoutenanceService {
   }
   getteacherbysout(): Observable<any>{
     return  this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/soutenance/' +
-    10);
+    this.authservice.Teacher.id);
   }
   getallsoutcalendar():Observable<any>{
     return  this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/soutenance/');

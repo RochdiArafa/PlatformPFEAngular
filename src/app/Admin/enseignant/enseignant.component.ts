@@ -5,6 +5,7 @@ import {Teacher} from '../../Models/teacher';
 import {DirecteurdesstageService} from '../../Services/directeurdesstage.service';
 import {TeacherService} from '../../Services/teacher.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {faSearchPlus} from '@fortawesome/free-solid-svg-icons/faSearchPlus';
 
 @Component({
   selector: 'app-enseignant',
@@ -12,6 +13,9 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./enseignant.component.scss']
 })
 export class EnseignantComponent implements OnInit {
+  serchtext: string ;
+  serchicone= faSearchPlus;
+  p: number;
   modalRef: BsModalRef;
   addcatIcon = faPlusCircle;
   teacher: Teacher;
@@ -44,7 +48,7 @@ export class EnseignantComponent implements OnInit {
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    this.add();
+
 
   }
 add(){

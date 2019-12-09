@@ -287,8 +287,25 @@
 
       <div class="wrapper wrapper-content animated fadeInRight">
 
+        <div class="ibox " >
+          <div class="ibox-title" >
+            <h5>Rechercher :  <input type="text" placeholder="rechercher" [(ngModel)]="serchtext"></h5>
 
-        <div class="row m-b-lg m-t-lg"  *ngFor="let a of teachers">
+            <div class="ibox-tools">
+
+              <a  >
+                <fa-icon [icon]="serchicone" size="1x" [spin]="true"  [title]="'Propose One !'" [ngStyle]="{color: 'darkgreen'}"></fa-icon>
+              </a>
+              <a class="collapse-link">
+                <i class="fa fa-chevron-up"></i>
+              </a>
+              <a class="close-link">
+                <i class="fa fa-times"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="row m-b-lg m-t-lg"  *ngFor="let a of teachers    |filter:serchtext   |paginate:{itemsPerPage:5,currentPage:p}">
           <div class="col-md-6">
 
             <div class="profile-image">
@@ -325,8 +342,10 @@
 
               </tr>
               </tbody>
+
             </table>
-          </div>
+          </div></div>
+          <pagination-controls (pageChange)="p=$event"></pagination-controls>
 
 
           <!--body-->

@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {ClassesService} from '../../Services/classes.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {faSearchPlus} from '@fortawesome/free-solid-svg-icons/faSearchPlus';
 
 @Component({
   selector: 'app-classes',
@@ -13,6 +14,8 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
   styleUrls: ['./classes.component.scss']
 })
 export class ClassesComponent implements OnInit {
+  serchtext: string;
+  serchicone= faSearchPlus;
   classes: Classes[] = [];
   modalRef: BsModalRef;
   admin: Admin;
