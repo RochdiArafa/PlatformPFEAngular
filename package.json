@@ -34,7 +34,7 @@
     "@progress/kendo-drawing": "^1.2.0",
     "@progress/kendo-theme-default": "latest",
     "@swimlane/ngx-charts": "^12.1.0",
-    "bootstrap": "4.1.1",
+    "bootstrap": "4.3.1",
     "canvasjs": "^1.8.1",
     "chart.js": "^2.9.3",
     "chartjs-plugin-datalabels": "^0.7.0",
