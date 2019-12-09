@@ -15,6 +15,7 @@ export class ChefdepComponent implements OnInit {
   chefdeps: Chefdepartement[]  = [] ;
   modalRef: BsModalRef;
   addcatIcon = faPlusCircle;
+
   constructor(private depser: ChefdepartmentService, private modalService: BsModalService) { }
   file: File ;
   formc = new FormGroup({

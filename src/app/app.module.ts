@@ -59,7 +59,8 @@ import { ChefdepComponent } from './Admin/chefdep/chefdep.component';
 import { DirecteurComponent } from './Admin/directeur/directeur.component';
 import { EnseignantComponent } from './Admin/enseignant/enseignant.component';
 import { GesStudentComponent } from './Admin/ges-student/ges-student.component';
-
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 const appRoutes: Routes = [
@@ -125,9 +126,12 @@ const appRoutes: Routes = [
     EnseignantComponent,
     GesStudentComponent,
 
+
+
   ],
   imports: [
     BrowserModule,
+    Ng2SearchPipeModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -150,8 +154,8 @@ const appRoutes: Routes = [
     NgxChartsModule,
     ChartsModule,
     ModalModule.forRoot(),
-    FullCalendarModule
-
+    FullCalendarModule,
+    NgxPaginationModule
   ],
   entryComponents: [
     MydialogueComponent, ViewDetailFileComponent, AreUSureComponent
