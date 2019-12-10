@@ -112,14 +112,14 @@ export class TeacherService {
       + this.teacher.id);
   }
 
-  getallteachers(){
+  getallteachers() {
     return  this.httpClientSer.get<Teacher[]>('http://localhost:9080/PlatformPFE-web/rest/teachers'
     );
   }
   addteachers(teacher: Teacher): Observable<Teacher> {
-    return  this.httpClientSer.post<Teacher>( 'http://localhost:9080/PlatformPFE-web/rest/teachers/'
+    return this.httpClientSer.post<Teacher>('http://localhost:9080/PlatformPFE-web/rest/teachers/'
       , teacher, this.httpOptions);
-
+  }
 
   getmostrapportedCategorie() {
     return  this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/mostrapportedcategorie/'
