@@ -8,6 +8,7 @@ export class NavigationDirectorService {
     public  navDirectortoProfile = true;
     public  navDirectorfilesUndone = false;
     public  navDirector5thlist = false;
+    public navDirectorfileList = false;
 
     /*s
     public navtoencadred = true;

@@ -22,11 +22,29 @@ import { TeacherFilesComponent } from './TeacherDashboard/copmposants/teacher-fi
 import { ViewDetailFileComponent } from './TeacherDashboard/Dialogs/view-detail-file/view-detail-file.component';
 import { SkillsComponent } from './TeacherDashboard/copmposants/skills/skills.component';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
-import { StatistiquesTeacherComponent } from './TeacherDashboard/copmposants/statistiques-teacher/statistiques-teacher.component';
+import { StatistiquesTeacherComponent } from './TeacherDashboard/copmposants/statistiques-teachers/statistiques-teachers.component';
 import {ChartsModule} from 'ng2-charts';
 import { DirectorpageComponent } from './DirectorDashboard/directorpage/directorpage.component';
 import { StudentsWithoutFileComponent } from './DirectorDashboard/students-without-file/students-without-file.component';
 import { StudentListComponent } from './DirectorDashboard/student-list/student-list.component';
+import { TemplatePFEComponent } from './Component/TemplatePFE/template-pfe/template-pfe.component';
+import { NotFoundComponent } from './Component/NotFound/not-found/not-found.component';
+import { TemplateIntershipAgreementComponent } from './Component/TemplateIntershipAgreement/template-intership-agreement/template-intership-agreement.component';
+import { StudentComponent } from './Component/Student/student/student.component';
+import { AddTemplatePFEComponent } from './Component/TemplatePFE/add-template-pfe/add-template-pfe.component';
+import { UpdateTemplatePFEComponent } from './Component/TemplatePFE/update-template-pfe/update-template-pfe.component';
+import { ExportTemplatePFEComponent } from './Component/TemplatePFE/export-template-pfe/export-template-pfe.component';
+import { ExportDataFichePFEComponent } from './Component/TemplatePFE/export-data-fiche-pfe/export-data-fiche-pfe.component';
+import { StatistiqueComponent } from './Component/Dashboard/InternshipDirector/statistique/statistique.component';
+import { AddTemplateIntershipAgreementComponent } from './Component/TemplateIntershipAgreement/add-template-intership-agreement/add-template-intership-agreement.component';
+import { UpdateTemplateIntershipAgreementComponent } from './Component/TemplateIntershipAgreement/update-template-intership-agreement/update-template-intership-agreement.component';
+import { ExportTemplateFicheComponent } from './Component/TemplateIntershipAgreement/export-template-fiche/export-template-fiche.component';
+import { ExportDataFicheComponent } from './Component/TemplateIntershipAgreement/export-data-fiche/export-data-fiche.component';
+import { DashboardInternshipDirectorComponent } from './Component/Dashboard/InternshipDirector/dashboard-internship-director/dashboard-internship-director.component';
+import { ListGradfileComponent } from './DirectorDashboard/list-gradfile/list-gradfile.component';
+import { StatpageComponent } from './DirectorDashboard/statpage/statpage.component';
+import { NotifierModule, NotifierOptions } from "angular-notifier";
+
 
 @NgModule({
   declarations: [
@@ -45,7 +63,9 @@ import { StudentListComponent } from './DirectorDashboard/student-list/student-l
     StatistiquesTeacherComponent,
     DirectorpageComponent,
     StudentsWithoutFileComponent,
-    StudentListComponent
+    StudentListComponent,
+    ListGradfileComponent,
+    StatpageComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +78,20 @@ import { StudentListComponent } from './DirectorDashboard/student-list/student-l
     AngularMaterialModule,
     MatDialogModule,
     NgxChartsModule,
-    ChartsModule
+    ChartsModule,
+    NotifierModule.withConfig({
+      position: {
+    horizontal: {
+      position: 'middle',
+      distance: 12
+    },
+    vertical: {
+      position: 'top',
+      distance: 10,
+      gap: 30
+    }
+  }
+})
   ],
   entryComponents: [
     MydialogueComponent, ViewDetailFileComponent, AreUSureComponent

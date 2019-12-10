@@ -40,4 +40,57 @@ export class DirectorService {
     return this.httpClientSer.put<StudentModel>('http://localhost:9080/PlatformPFE-web/rest/Direction/activerEtudiant?id='+stu.id,stu,this.httpOptions);
   }
 
+  getListFiles(etat: string, pays: string, year: string){
+    var UrlEtat:string;
+    var UrlPays:string;
+    var UrlYear:string;
+    if(etat==""){
+      UrlEtat="";
+    }
+    else{
+      UrlEtat="etat="+etat;
+    }
+    if(pays==""){
+      UrlPays="";
+    }
+    else{
+      UrlPays="&pays="+pays;
+    }
+    if(year==""){
+      UrlYear="";
+    }
+    else{
+      UrlYear="&year="+year;
+    }
+    return  this.httpClientSer.get<GradeFileModel[]>('http://localhost:9080/PlatformPFE-web/rest/Fiche?'+UrlEtat+UrlPays+UrlYear);
+  }
+
+  AcceptFile(g:GradeFileModel){
+    return this.httpClientSer.put<GradeFileModel>('http://localhost:9080/PlatformPFE-web/rest/Direction/accepterFiche?id='+g.id,g,this.httpOptions);
+  }
+
+  RefuseFile(g:GradeFileModel){
+    return this.httpClientSer.put<GradeFileModel>('http://localhost:9080/PlatformPFE-web/rest/Direction/refuserFiche?id='+g.id,g,this.httpOptions);
+  }
+
+  getListCanceledFiles(){
+    return this.httpClientSer.get<GradeFileModel>('http://localhost:9080/PlatformPFE-web/rest/Direction/listannulerFiche');
+  }
+
+  CancelFile(g:GradeFileModel,motif:string){
+    var decision:string;
+    var UrlMotif:string;
+    if(motif!=""){
+      decision="encours";
+      UrlMotif="&motif="+motif;
+    }
+    else{
+      decision="annulée";
+      UrlMotif="";
+    }
+    return this.httpClientSer.put<GradeFileModel>('http://localhost:9080/PlatformPFE-web/rest/Direction/annulerFiche?id='+g.id+'&decision='
+      +decision+UrlMotif,g,this.httpOptions);
+  }
+
+
 }

@@ -22,7 +22,7 @@
           </div>
         </li>
         <li class="active">
-          <a  routerLink="Login" ><i  class="fa fa-home"></i> <span class="nav-label">Acceuil</span></a>
+          <a (click)="DisplayProfile()"  routerLink="Login" ><i  class="fa fa-home"></i> <span class="nav-label">Acceuil</span></a>
 
         </li>
         <li>
@@ -32,7 +32,7 @@
           <a  (click)="DisplayUndoneFiles()" ><i  class="fa fa-briefcase"></i> <span class="nav-label">Liste des fiches</span></a>
         </li>
         <li>
-          <a href=""><i class="fa fa-envelope"></i> <span class="nav-label">Fiches non traités </span></a>
+          <a (click)="DisplayfileList()"><i class="fa fa-envelope"></i> <span class="nav-label">Fiches non traités </span></a>
         </li>
         <li>
           <a href=""><i  class="fa fa-bell-o"></i> <span class="nav-label">Validation rapport</span>  </a>
@@ -175,9 +175,10 @@
 
     </div>
     <!--body-->
-
+    <app-statpage *ngIf="navDirector.navDirectortoProfile"></app-statpage>
     <app-students-without-file *ngIf="navDirector.navDirectorfilesUndone"></app-students-without-file>
     <app-student-list *ngIf="navDirector.navDirector5thlist"></app-student-list>
+    <app-list-gradfile *ngIf="navDirector.navDirectorfileList"></app-list-gradfile>
 
 
     <!--body-->

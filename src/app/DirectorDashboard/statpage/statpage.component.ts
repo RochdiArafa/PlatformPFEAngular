@@ -36,6 +36,7 @@ export class StatpageComponent implements OnInit {
   public barChartType: ChartType = 'bar';
   public barChartLegend = true;
   public barChartPlugins = [pluginDataLabels];
+  public barChartLabels1: Label[] = [];
 
   public barChartData: ChartDataSets[] = [
     { data: [], label: 'Fiches acceptées' },
@@ -45,6 +46,12 @@ export class StatpageComponent implements OnInit {
 
   ];
 
+  public barChartData1: ChartDataSets[] = [
+    { data: [], label: 'Fiches acceptées' },
+    { data: [], label: 'Fiches refusées' },
+    { data: [], label: 'Fiches annulées' }
+  ];
+
   constructor(private route: Router, private directorSer: DirectorService) { }
 
   ngOnInit() {
@@ -52,9 +59,24 @@ export class StatpageComponent implements OnInit {
   	this.getStatAccepted();
   	this.getStatRefused();
   	this.getStatCanceled();
+    this.getStatAccepted3Years();
+    this.getStatRefused3Years();
+    this.getStatCanceled3Years();
   	this.barChartLabels.push(""+(new Date()).getFullYear());
+    this.get3YearsLabel();
   }
 
+  get3YearsLabel(){
+    let year1=(new Date()).getFullYear();
+    let year2=(new Date()).getFullYear()-1;
+    let year3=(new Date()).getFullYear()-2;
+    let year11=year1+1;
+    let year22=year2+1;
+    let year33=year3+1;
+    this.barChartLabels1.push(""+year3+"-"+year33);
+    this.barChartLabels1.push(""+year2+"-"+year22);
+    this.barChartLabels1.push(""+year1+"-"+year11);
+  }
   getStatWaiting(){
   	let count=0;
   	let currentYear=(new Date()).getFullYear();
@@ -98,6 +120,53 @@ export class StatpageComponent implements OnInit {
   		error => {},
   		()=>{this.barChartData[2].data.push(count);} 
   		);
+  }
+
+  getStatAccepted3Years(){
+    let count=0;
+    let currentYear=(new Date()).getFullYear()-2;
+    let nextYear=currentYear+1;
+    for (var i = 0; i <= 2; i++) {
+      this.directorSer.getListFiles("acceptée","",""+currentYear+"-"+nextYear).subscribe(
+      value => { if(value!=null)
+        count = value.length;},
+      error => {},
+      ()=>{this.barChartData1[0].data.push(count);} 
+      );
+      currentYear++;
+      nextYear++;
+    }
+  }
+  getStatRefused3Years(){
+    let count=0;
+    let currentYear=(new Date()).getFullYear()-2;
+    let nextYear=currentYear+1;
+    for (var i = 0; i <= 2; i++) {
+      this.directorSer.getListFiles("refusée","",""+currentYear+"-"+nextYear).subscribe(
+      value => { if(value!=null)
+        count = value.length;},
+      error => {},
+      ()=>{this.barChartData1[1].data.push(count);} 
+      );
+      currentYear++;
+      nextYear++;
+    }
+  }
+  getStatCanceled3Years(){
+    let count=0;
+    let currentYear=(new Date()).getFullYear()-2;
+    let nextYear=currentYear+1;
+    for (var i = 0; i <= 2; i++) {
+      console.log(""+currentYear+"-"+nextYear);
+      this.directorSer.getListFiles("annulée","",""+currentYear+"-"+nextYear).subscribe(
+      value => { if(value!=null)
+        count = value.length;},
+      error => {},
+      ()=>{this.barChartData1[2].data.push(count);} 
+      );
+      currentYear++;
+      nextYear++;
+    }
   }
 
 }
