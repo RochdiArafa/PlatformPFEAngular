@@ -27,9 +27,15 @@ export class StatistiquesTeacherComponent implements OnInit {
 
   categories: string[] = [];
   poids: number[] = [];
-
   categoriesRapported: string[] = [];
   poidsRapported: any[] = [];
+
+  nbcategories: string[] = [];
+  nbpoids: number[] = [];
+  nbcategoriesRapported: string[] = [];
+  nbpoidsRapported: any[] = [];
+
+
 
 
   public barChartOptions: ChartOptions = {
@@ -65,6 +71,8 @@ export class StatistiquesTeacherComponent implements OnInit {
 
     this.getMostNottedCategories();
     this.getMostNottedCategoriesRapported();
+    this.getnbencadredCategories();
+    this.getnbategoriesRapported();
   }
 
   getFilesEncadredByYear(y1: number, y2: number ) {
@@ -283,5 +291,49 @@ export class StatistiquesTeacherComponent implements OnInit {
         // console.log('jksfnskjvnskj' + categories[1]);
       });
   }
+
+
+
+
+  public getnbencadredCategories() {
+
+
+    this.teacherSer.getmosencadredCategorie().subscribe(
+
+      (v) => {
+
+        // v.values();
+
+        this.nbcategories =  Object.keys(v);
+        this.nbpoids = Object.keys(v).map(key => v[key]);
+      },
+      e => {},
+      () => {
+        console.log('jksfnskjvnskj' + this.poids );
+      });
+  }
+
+
+  public getnbategoriesRapported() {
+
+
+    this.teacherSer.getmostrapportedCategorie().subscribe(
+
+      (v) => {
+
+        // v.values();
+        this.nbcategoriesRapported =  Object.keys(v);
+        this.nbpoidsRapported = Object.values(v);
+      },
+      e => {},
+      () => {
+        // console.log('jksfnskjvnskj' + categories[1]);
+      });
+  }
+
+
+
+
+
 
 }

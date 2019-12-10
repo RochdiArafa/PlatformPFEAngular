@@ -46,6 +46,7 @@ import {FullCalendarModule} from '@fullcalendar/angular';
 
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import {ChartsModule} from 'ng2-charts';
+
 import { ProfilDirecteurComponent } from './Directeurdesstage/profil-directeur/profil-directeur.component';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { CalendarComponent } from './Admin/calendar/calendar.component';
@@ -56,6 +57,16 @@ import { SitessitComponent } from './Admin/sitessit/sitessit.component';
 import { OptionnComponent } from './Admin/optionn/optionn.component';
 import { ClassesComponent } from './Admin/classes/classes.component';
 import { ChefdepComponent } from './Admin/chefdep/chefdep.component';
+import { DirecteurComponent } from './Admin/directeur/directeur.component';
+import { EnseignantComponent } from './Admin/enseignant/enseignant.component';
+import { GesStudentComponent } from './Admin/ges-student/ges-student.component';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { CalendarteacherComponent } from './Admin/calendarteacher/calendarteacher.component';
+
+import { AddPreferdCategoriesComponent } from './TeacherDashboard/Dialogs/add-preferd-categories/add-preferd-categories.component';
+import { AddSkillsComponent } from './TeacherDashboard/Dialogs/add-skills/add-skills.component';
+
 
 
 const appRoutes: Routes = [
@@ -108,6 +119,7 @@ const appRoutes: Routes = [
     ViewDetailFileComponent,
     SkillsComponent,
     StatistiquesTeacherComponent,
+
     ProfilDirecteurComponent,
     CalendarComponent,
     ProfilAdminComponent,
@@ -116,10 +128,22 @@ const appRoutes: Routes = [
     SitessitComponent,
     OptionnComponent,
     ClassesComponent,
-    ChefdepComponent
+    ChefdepComponent,
+    DirecteurComponent,
+    EnseignantComponent,
+    GesStudentComponent,
+    CalendarteacherComponent,
+
+
+
+
+    AddPreferdCategoriesComponent,
+    AddSkillsComponent
+
   ],
   imports: [
     BrowserModule,
+    Ng2SearchPipeModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -142,11 +166,11 @@ const appRoutes: Routes = [
     NgxChartsModule,
     ChartsModule,
     ModalModule.forRoot(),
-    FullCalendarModule
-
+    FullCalendarModule,
+    NgxPaginationModule
   ],
   entryComponents: [
-    MydialogueComponent, ViewDetailFileComponent, AreUSureComponent
+    MydialogueComponent, ViewDetailFileComponent, AreUSureComponent, AddPreferdCategoriesComponent, AddSkillsComponent
   ],
 
   providers: [AuthService, HttpClient],

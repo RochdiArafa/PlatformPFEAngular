@@ -29,7 +29,14 @@ import {SitessitComponent} from './Admin/sitessit/sitessit.component';
 import {OptionnComponent} from './Admin/optionn/optionn.component';
 import {ClassesComponent} from './Admin/classes/classes.component';
 import {ChefdepComponent} from './Admin/chefdep/chefdep.component';
+
 import { ExportDataFicheComponent } from './Component/TemplateIntershipAgreement/export-data-fiche/export-data-fiche.component';
+
+
+import {DirecteurComponent} from './Admin/directeur/directeur.component';
+import {EnseignantComponent} from './Admin/enseignant/enseignant.component';
+import {GesStudentComponent} from './Admin/ges-student/ges-student.component';
+import {CalendarteacherComponent} from './Admin/calendarteacher/calendarteacher.component';
 
 
 const routes: Routes = [
@@ -45,6 +52,10 @@ const routes: Routes = [
   {path: 'options', component: OptionnComponent },
   {path: 'classes', component: ClassesComponent },
   {path: 'chefdeps', component: ChefdepComponent },
+  {path: 'directeurs', component: DirecteurComponent },
+  {path: 'teachers', component: EnseignantComponent },
+  {path: 'students', component: GesStudentComponent },
+  {path: 'calendarteacher', component: CalendarteacherComponent },
   {
     path        : 'InternshipDirector/TemplatePFE',
     component: TemplatePFEComponent,

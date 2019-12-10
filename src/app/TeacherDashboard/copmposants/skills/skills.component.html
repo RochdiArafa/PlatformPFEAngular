@@ -1,20 +1,14 @@
 
 <div class="ibox ">
   <div class="ibox-title">
-    <h5>Your Skills</h5>
+    <h5>Your Skills <br><small> the only purpose of this section is to optimize for you the response of some sections in the app </small> </h5>
     <div class="ibox-tools">
       <a class="collapse-link">
         <i class="fa fa-chevron-up"></i>
       </a>
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-        <i class="fa fa-wrench"></i>
+      <a (click)="addSkillsDialogue()" >
+        <fa-icon [icon]="addcatIcon" size="1x"  [spin]="true"  [title]="'add proposed one One !'" [ngStyle]="{color: 'darkgreen'}"></fa-icon>
       </a>
-      <ul class="dropdown-menu dropdown-user">
-        <li><a href="#" class="dropdown-item">Config option 1</a>
-        </li>
-        <li><a href="#" class="dropdown-item">Config option 2</a>
-        </li>
-      </ul>
       <a class="close-link">
         <i class="fa fa-times"></i>
       </a>

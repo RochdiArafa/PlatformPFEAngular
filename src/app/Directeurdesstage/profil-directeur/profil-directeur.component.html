@@ -230,6 +230,108 @@
 
             </tr>
             <tr>
+              <td   colspan="2" align="center">
+                <a (click)="openModal1(tempupdate)" (click)="editer(directeur)">
+                  <fa-icon [icon]="addcatIcone" size="1x" [spin]="true"  [title]="'Propose One !'" [ngStyle]="{color: 'darkgreen'}"></fa-icon>
+                </a>
+                <strong>editer</strong>
+
+              </td>
+              <ng-template #tempupdate>
+                <div class="modal-header">
+                  <h4 class="modal-title pull-left">Modification</h4>
+                  <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <div class="row">
+                    <div class="col-lg-12">
+                      <div class="ibox float-e-margins">
+                        <div class="ibox-title">
+                          <h5>Modifier mon profil :
+
+                          </h5>
+                          <div ibox-tools></div>
+                        </div>
+                        <div class="ibox-content">
+                          <form class="form-horizontal"  [formGroup]="formc" >
+                            <div class="form-group"><label class="col-sm-2 control-label">Nom </label>
+
+                              <div class="col-sm-10"><input type="text" class="form-control"  formControlName="firstname"></div>
+                              <div *ngIf="namef.invalid && namef.touched">
+                                <div *ngIf="namef.errors.required"><strong>nom obligatoire</strong> </div>
+                                <div *ngIf="namef.errors.minlength"><strong> minimum 4 carcteres </strong></div></div>
+
+                            </div>
+
+                            <div class="form-group"><label class="col-sm-2 control-label">Prenom </label>
+
+                              <div class="col-sm-10"><input type="text" class="form-control"  formControlName="lastname"></div>
+                              <div *ngIf="namel.invalid && namel.touched">
+                                <div *ngIf="namel.errors.required"><strong>prenom obligatoire </strong></div>
+                                <div *ngIf="namel.errors.minlength"><strong> minimum 4 carcteres</strong></div></div>
+
+                            </div>
+
+
+                            <div class="form-group"><label class="col-sm-2 control-label">mail </label>
+
+                              <div class="col-sm-10"><input type="text" class="form-control"  formControlName="email"></div>
+                              <div *ngIf="namee.invalid && namee.touched">
+                                <div *ngIf="namee.errors.required"><strong>mail obligatoire </strong> </div>
+                                <div *ngIf="namee.errors.email"> <strong>mail non valide</strong></div></div>
+
+
+                            </div>
+
+
+                            <div class="form-group"><label class="col-sm-2 control-label">mot de passe </label>
+
+                              <div class="col-sm-10"><input type="password" class="form-control"  formControlName="password"></div>
+                              <div *ngIf="namep.invalid && namep.touched">
+                                <div *ngIf="namep.errors.required"><strong>mot de passe obligatoire</strong>  </div>
+                                <div *ngIf="namep.errors.minlength"> <strong> minimum 8 carcteresw</strong></div></div>
+
+                            </div>
+
+                            <div class="form-group"><label class="col-sm-2 control-label">numero telephone </label>
+
+                              <div class="col-sm-10"><input type="numero" class="form-control"  formControlName="phonenumber"></div>
+                              <div *ngIf="nameph.invalid && nameph.touched">
+                                <div *ngIf="nameph.errors.required"><strong>numero de telephone obligatoire </strong></div>
+                                <div *ngIf="nameph.errors.minlength"> <strong>minimum 8 carcteres</strong></div></div>
+                            </div>
+
+
+                            <div class="form-group"><label class="col-sm-2 control-label">image </label>
+
+                              <div class="col-sm-10"><input type="file" class="form-control" (change)="onFileChange($event)" formControlName="file"></div>
+
+                            </div>
+
+
+                            <div class="col-sm-4 col-sm-offset-2">
+
+                              <button class="btn btn-primary" [disabled]="formc.invalid" (click)="editer1()" (click)="modalRef.hide()">Enregistrer modification</button>
+
+                            </div>
+
+
+                          </form></div>
+
+
+
+                      </div></div></div>
+
+
+                </div>
+              </ng-template>
+
+
+            </tr>
+            <tr>
               <td colspan="2" align="center">
                 <a (click)="openModal1(temp)" >
                   <fa-icon [icon]="addcatIcon" size="1x" [spin]="true"  [title]="'Propose One !'" [ngStyle]="{color: 'darkgreen'}"></fa-icon>
