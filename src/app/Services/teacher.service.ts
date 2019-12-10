@@ -16,7 +16,7 @@ import {CategoryModel} from "../Models/Category.Model";
 })
 export class TeacherService {
   httpOptions = {
-    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   };
 
   teacher: TeacherModel;
@@ -135,7 +135,21 @@ export class TeacherService {
     return this.httpClientSer.get<CategoryModel[]>('http://localhost:9080/PlatformPFE-web/rest/categories');
   }
 
+  sendSMSapi() {
+    // 	ByrEW5B0+rs-8ZVHLAitBKWahFYCXa8hGnWe81t31V http://api.pdflayer.com/api/convert
 
+   return this.httpClientSer.get('https://api.screenshotmachine.com/?key=65440c&url=www.google.com' );
+
+// QAAIEYKBJAXOBV6I4U2QCPC67H
+
+    /* return this.httpClientSer.post(
+   ' http://api.pdflayer.com/api/convert? access_key = 0d00b219c1abc744bf9a3492e3828b47 & document_url = https://mozitoun.github.io & page_size = A4 & margin_top = & margin_bottom = & margin_left = & margin_right = ', {
+        accessKey: '0d00b219c1abc744bf9a3492e3828b47',
+        documentHtml: '<p>haha</p>'
+{ "subject": "Sample email with attachment", "bodyparts": { "textmessage":"Here's a sample attachment..." }, "attachment": [ "web/index.html" ], "to": [ "james.bond@mi6.co.uk" ] }'
+      });*/
+
+  }
 
 
 }

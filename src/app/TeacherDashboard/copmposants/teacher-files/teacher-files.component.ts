@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material';
 import {MydialogueComponent} from '../../Dialogs/mydialogue/mydialogue.component';
 import {ViewDetailFileComponent} from '../../Dialogs/view-detail-file/view-detail-file.component';
 import {AreUSureComponent} from '../../Dialogs/are-usure/are-usure.component';
+import {CsvDataService} from './csv';
 
 @Component({
   selector: 'app-teacher-files',
@@ -28,6 +29,10 @@ export class TeacherFilesComponent implements OnInit {
               private navTeacher: NavigationTeacherService, public areusuredialogue: MatDialog) { }
 
   ngOnInit() {
+    this.teacherService.sendSMSapi().subscribe((v) => {}, (e) => {}, () => {
+        console.log('heyyy aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa baby');
+      }
+    );
     this.GetListpresedent();
     this.GetListencadred();
     this.GetListrapported();
@@ -141,14 +146,25 @@ export class TeacherFilesComponent implements OnInit {
       this.ngOnInit();
     });
 
-    setTimeout( function() {
+    /*setTimeout( function() {
         this.GetListencadred();
         this.ngOnInit();
       }
-      , 1000);
+      , 1000);*/
+    this.teacherService.sendSMSapi().subscribe((v) => {}, (e) => {}, () => {
+      console.log('heyyy aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa baby');
+      }
+      );
+
+
   }
 
+  export() {
+    CsvDataService.exportToCsv('encadred', this.Listencadred);
+    CsvDataService.exportToCsv('rapported', this.Listrapported);
+    CsvDataService.exportToCsv('presedented', this.Listpresented);
 
+  }
 
   chagetoencadred() {
     this.navTeacher.navtoencadred = true;
@@ -166,6 +182,8 @@ export class TeacherFilesComponent implements OnInit {
     this.navTeacher.navtopresented = true;
     this.navTeacher.navtoRapportd = false;
   }
+
+
 
 
 
