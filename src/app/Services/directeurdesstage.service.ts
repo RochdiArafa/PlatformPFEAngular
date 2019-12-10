@@ -32,4 +32,9 @@ export class DirecteurdesstageService {
     return this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/student/mailrap');
   }
 
+
+  getSite(id){
+    return this.httpClientSer.get<Site>("http://localhost:9080/PlatformPFE-web/rest/site/searchsiteByDirecteurID?id="+id);
+  }
+
 }

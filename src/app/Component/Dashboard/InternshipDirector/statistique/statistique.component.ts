@@ -23,9 +23,9 @@ export class StatistiqueComponent implements OnInit {
 
   listComplanyStage : object[];
   constructor(private studentService : StudentService , private companyService:CompanyService , private categoryService:CategoryService) {
-    this.getRecrutedCompayByOrder(1);
-    this.GetAllStudent(1);
-    this.StageParCategory(1);
+    this.getRecrutedCompayByOrder(parseInt(sessionStorage.getItem('connectedSite')));
+    this.GetAllStudent(parseInt(sessionStorage.getItem('connectedSite')));
+    this.StageParCategory(parseInt(sessionStorage.getItem('connectedSite')));
   }
 
 	ngOnInit() {
@@ -48,7 +48,7 @@ export class StatistiqueComponent implements OnInit {
     this.studentService.getAllStudent(site_id).subscribe((data: any)=>{
       console.log(data);
       this.ListStudent = data;
-      this.getAllStudentRecrutedoverContry(1);
+      this.getAllStudentRecrutedoverContry(parseInt(sessionStorage.getItem('connectedSite')));
     })
   }
 

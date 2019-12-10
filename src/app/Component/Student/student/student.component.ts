@@ -13,7 +13,8 @@ export class StudentComponent implements OnInit {
   student : Student;
   ListStudent : Student[];
   constructor(public studentService :StudentService , public categoryService:CategoryService , public companyService :CompanyService) {
-      this.GetAllStudent(1);
+    this.GetAllStudent(parseInt(sessionStorage.getItem('connectedSite')));
+    
 
    }
 

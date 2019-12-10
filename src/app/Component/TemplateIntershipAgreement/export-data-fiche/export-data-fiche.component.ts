@@ -45,7 +45,7 @@ export class ExportDataFicheComponent implements OnInit {
 
     this.templateIntershipAgreementService.search(id).subscribe((data: any)=>{
       this.templateIntershipAgreement =  data;
-      this.templateIntershipAgreement.site = data.site.id;
+      this.templateIntershipAgreement.site = parseInt(sessionStorage.getItem('connectedSite'));
       this.template = this.templateIntershipAgreement.template;
       this.ExportStudentTemplate();
     })

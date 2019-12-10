@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TemplateIntershipAgreement } from 'src/app/Models/template-intership-agreement';
 import { TemplateIntershipAgreementService } from 'src/app/Services/TemplateIntershipAgreementService/template-intership-agreement.service';
 import { IntershipAgreement } from 'src/app/Models/intership-agreement';
+import { Site } from 'src/app/Models/site';
+import { DirecteurdesstageService } from 'src/app/Services/directeurdesstage.service';
 
 @Component({
   selector: 'app-update-template-intership-agreement',
@@ -17,11 +19,11 @@ export class UpdateTemplateIntershipAgreementComponent implements OnInit {
   showerrorcompany : boolean = false;
   showerrordatedebut : boolean = false;
   showerrordatefin : boolean = false;
-  
-  constructor(public templateIntershipAgreementService:TemplateIntershipAgreementService) { 
+  site : Site;
+  constructor(public templateIntershipAgreementService:TemplateIntershipAgreementService , public directeurService : DirecteurdesstageService) { 
     this.templateIntershipAgreement = new TemplateIntershipAgreement();
     this.intershipAgreement = new IntershipAgreement();
-    this.GetTemplatePFE(27);
+    this.getSite(parseInt(sessionStorage.getItem('idUser')));
   }
 
   ngOnInit() {
@@ -115,6 +117,23 @@ export class UpdateTemplateIntershipAgreementComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+  }
+
+  getSite(directeurid){
+    this.directeurService.getSite(directeurid).subscribe((data: any)=>{
+      console.log("siteeeeeeeeeeeeeee");
+
+      console.log(data);
+      this.site = data;
+
+      if(this.site.templateIntershipAgreement == null){
+
+      }  
+      else{
+        this.templateIntershipAgreement = this.site.templateIntershipAgreement;
+        this.templateIntershipAgreement.site = this.site.id;
+      }
+    }) 
   }
 
 }

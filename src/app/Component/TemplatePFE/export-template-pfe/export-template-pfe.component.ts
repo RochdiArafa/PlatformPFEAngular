@@ -3,6 +3,8 @@ import { TemplatePFE } from 'src/app/Models/template-pfe';
 import { TemplatePFEService } from 'src/app/Services/TemplatePFEService/template-pfe.service';
 
 import { Student } from 'src/app/Models/student';
+import { Site } from 'src/app/Models/site';
+import { DirecteurdesstageService } from 'src/app/Services/directeurdesstage.service';
 
 @Component({
   selector: 'app-export-template-pfe',
@@ -16,12 +18,12 @@ export class ExportTemplatePFEComponent implements OnInit {
   public templateblank: string = "";
 
   public student : Student = new Student();
+  public site : Site;
+  public showExport : boolean = true;
 
-
-  constructor(public templatePFEService:TemplatePFEService) { 
+  constructor(public templatePFEService:TemplatePFEService , public directeurService : DirecteurdesstageService) { 
     this.templatePFE = new TemplatePFE();
-    this.GetTemplatePFE(4);
-    
+    this.getSite(parseInt(sessionStorage.getItem('idUser')));
   }
 
   ngOnInit() {
@@ -32,7 +34,7 @@ export class ExportTemplatePFEComponent implements OnInit {
     this.templatePFEService.search(id).subscribe((data: any)=>{
       console.log(data);
       this.templatePFE =  data;
-      this.templatePFE.site = data.site.id;
+      this.templatePFE.site = parseInt(sessionStorage.getItem('connectedSite'));
       this.template = this.templatePFE.template;
       this.ExportBlankTemplate();
     })
@@ -52,5 +54,22 @@ export class ExportTemplatePFEComponent implements OnInit {
   }
 
 
+  getSite(directeurid){
+    this.directeurService.getSite(directeurid).subscribe((data: any)=>{
+      console.log("siteeeeeeeeeeeeeee");
+
+      console.log(data);
+      this.site = data;
+
+      if(this.site.templatePFE == null){
+        this.showExport = false;
+      }  
+      else{
+        this.GetTemplatePFE(this.site.templatePFE.id);
+        this.showExport = true;
+
+      }
+    }) 
+  }
 
 }

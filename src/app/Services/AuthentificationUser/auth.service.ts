@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Router} from '@angular/router';
+import { Site } from 'src/app/Models/site';
 
 @Injectable({
   providedIn: 'root'
@@ -69,6 +70,12 @@ export class AuthService {
               sessionStorage.setItem('isdirecteur', 'true');
               sessionStorage.setItem('connectedDirecteur', JSON.stringify(this.Directeurdesstages));
               console.log(this.Directeurdesstages);
+              sessionStorage.setItem('idUser', JSON.stringify(this.Directeurdesstages.id));
+
+              this.getSite(this.Directeurdesstages.id).subscribe((data: any)=>{
+                console.log(data);
+                sessionStorage.setItem('connectedSite', JSON.stringify(data.id));
+              })
               this.route.navigate(['/profildirecteur']);
             }
           }
@@ -90,6 +97,10 @@ export class AuthService {
     sessionStorage.removeItem('isAdmin')
     sessionStorage.removeItem('isdirecteur')
     this.route.navigate(['/Login']);
+  }
+
+  getSite(id){
+    return this.httpClientSer.get<Site>("http://localhost:9080/PlatformPFE-web/rest/site/searchsiteByDirecteurID?id="+id);
   }
 
 }
