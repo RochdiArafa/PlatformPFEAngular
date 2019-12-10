@@ -18,10 +18,10 @@ export class StatistiqueComponent implements OnInit {
   student : Student;
   ListStudent : Student[];
   ListStudentoverContry : Student[];
-  //ListStudent : Student[];
   ListStageParCategory : StageParCategory[];
 
   listComplanyStage : object[];
+  SansStage : number = 0;
   constructor(private studentService : StudentService , private companyService:CompanyService , private categoryService:CategoryService) {
     this.getRecrutedCompayByOrder(parseInt(sessionStorage.getItem('connectedSite')));
     this.GetAllStudent(parseInt(sessionStorage.getItem('connectedSite')));
@@ -49,6 +49,10 @@ export class StatistiqueComponent implements OnInit {
       console.log(data);
       this.ListStudent = data;
       this.getAllStudentRecrutedoverContry(parseInt(sessionStorage.getItem('connectedSite')));
+      this.ListStudent.forEach(etudiant => {
+        if(etudiant.pfeFile == null)
+          this.SansStage = this.SansStage + 1;
+      });
     })
   }
 
@@ -106,7 +110,7 @@ export class StatistiqueComponent implements OnInit {
       
     chart.render();
 
-      chart.data[0].dataPoints[0].y=this.ListStudent.length;
+      chart.data[0].dataPoints[0].y=this.ListStudent.length - this.SansStage;
       chart.data[0].dataPoints[0].name="Tunis";
 
       chart.data[0].dataPoints[1].y=this.ListStudentoverContry.length;
