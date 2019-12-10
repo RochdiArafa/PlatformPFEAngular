@@ -1,0 +1,41 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-content">
+          <h2>
+            <span class="text-navy">“add new Skill !!”</span>
+          </h2>
+
+
+
+
+
+          <div *ngFor="let obj of ListCategories; let i = index" >
+            <div class="hr-line-dashed"></div>
+            <div class="search-result">
+
+
+
+              <div class="feed-element">
+                <div>
+                  <a (click)="addSkill(obj.id)" ><small class="float-right "> <strong style="font-size: 16px;" ></strong> <fa-icon [icon]="folderIcon" size="3x" [ngStyle]="{color: 'darkgreen'}" ></fa-icon>  </small></a>
+                  <span style="font-size: 20px;" class="text-navy"> <strong>{{obj.name}}</strong></span>
+                  <br>
+                  <small class="text-muted">{{obj.description}}</small>
+                </div>
+              </div>
+
+
+
+
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

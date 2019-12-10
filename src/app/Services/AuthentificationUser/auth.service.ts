@@ -87,8 +87,11 @@ export class AuthService {
     this.Directeurdesstages=null;
     this.Admin= null ;
     this.Teacher = null;
+
     sessionStorage.removeItem('isAdmin')
     sessionStorage.removeItem('isdirecteur')
+
+    sessionStorage.clear();
     this.route.navigate(['/Login']);
   }
 

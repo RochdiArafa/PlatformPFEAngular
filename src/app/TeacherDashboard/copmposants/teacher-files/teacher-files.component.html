@@ -1,4 +1,4 @@
-<div class="row wrapper border-bottom white-bg page-heading">
+<div class="row wrapper border-bottom white-bg page-heading" >
   <div class="col-sm-4">
     <h2>Project list</h2>
     <ol class="breadcrumb">
@@ -11,8 +11,8 @@
     </ol>
   </div>
 </div>
-<div class="row">
-  <div class="col-lg-12">
+<div class="row" id="container">
+  <div class="col-lg-12 drag" >
     <div class="wrapper wrapper-content animated fadeInUp">
 
       <div class="ibox">
@@ -66,7 +66,7 @@
                 </td>
                 <td class="project-actions">
                   <a (click)="ShowDetails(obj)" class="btn btn-white btn-sm"><i class="fa fa-folder"></i> View </a>
-                  <a *ngIf="obj.preValidated == false" (click)="prevalidate(obj)" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Edit </a>
+                  <a *ngIf="obj.preValidated == false" (click)="prevalidate(obj)" class="btn btn-white btn-sm"><i class="fa fa-pencil"></i> Prevalidate </a>
                 </td>
               </tr>
 
@@ -158,13 +158,8 @@
 
 
 
-
-
               </tbody>
             </table>
-
-
-
 
 
           </div>
@@ -173,3 +168,8 @@
     </div>
   </div>
 </div>
+
+<button (click)="export()" class="btn btn-primary" >export en csv</button>
+
+
+

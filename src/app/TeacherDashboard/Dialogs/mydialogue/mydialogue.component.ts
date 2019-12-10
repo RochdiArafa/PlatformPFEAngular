@@ -37,11 +37,9 @@ export class MydialogueComponent implements OnInit {
     c.description = this.CategoryFrom.value.CategoryDescription;
     console.log(c);
     this.categoryService.ProposerCategorie(c).subscribe(
-      () => {},
-      (e) => {},
-      () => {
-      }
+      (u) => {this.dialogRef.close(); }
+
     );
-    this.dialogRef.close();
+
   }
 }
