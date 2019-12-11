@@ -46,6 +46,42 @@ import { StatpageComponent } from './DirectorDashboard/statpage/statpage.compone
 import { NotifierModule, NotifierOptions } from "angular-notifier";
 
 
+import { SkillsComponent } from './TeacherDashboard/copmposants/skills/skills.component';
+import { StatistiquesTeacherComponent } from './TeacherDashboard/copmposants/statistiques-teachers/statistiques-teachers.component';
+import {FullCalendarModule} from '@fullcalendar/angular';
+
+
+import {NgxChartsModule} from '@swimlane/ngx-charts';
+import {ChartsModule} from 'ng2-charts';
+
+import { ProfilDirecteurComponent } from './Directeurdesstage/profil-directeur/profil-directeur.component';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CalendarComponent } from './Admin/calendar/calendar.component';
+import { ProfilAdminComponent } from './Admin/profil-admin/profil-admin.component';
+import { EcoleComponent } from './Admin/ecole/ecole.component';
+import { DepartmentComponent } from './Admin/department/department.component';
+import { SitessitComponent } from './Admin/sitessit/sitessit.component';
+import { OptionnComponent } from './Admin/optionn/optionn.component';
+import { ClassesComponent } from './Admin/classes/classes.component';
+import { ChefdepComponent } from './Admin/chefdep/chefdep.component';
+import { DirecteurComponent } from './Admin/directeur/directeur.component';
+import { EnseignantComponent } from './Admin/enseignant/enseignant.component';
+import { GesStudentComponent } from './Admin/ges-student/ges-student.component';
+import {Ng2SearchPipeModule} from 'ng2-search-filter';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { CalendarteacherComponent } from './Admin/calendarteacher/calendarteacher.component';
+
+import { AddPreferdCategoriesComponent } from './TeacherDashboard/Dialogs/add-preferd-categories/add-preferd-categories.component';
+import { AddSkillsComponent } from './TeacherDashboard/Dialogs/add-skills/add-skills.component';
+
+
+
+const appRoutes: Routes = [
+  {
+      path        : 'apps',
+      loadChildren: './main/apps/apps.module#AppsModule'
+  }
+]
 @NgModule({
   declarations: [
     AppComponent,
@@ -66,9 +102,62 @@ import { NotifierModule, NotifierOptions } from "angular-notifier";
     StudentListComponent,
     ListGradfileComponent,
     StatpageComponent
+    TemplatePFEComponent,
+    MydialogueComponent,
+    ViewDetailFileComponent,
+    NotFoundComponent,
+    TemplateIntershipAgreementComponent,
+    StudentComponent,
+    AddTemplatePFEComponent,
+    UpdateTemplatePFEComponent,
+    ExportTemplatePFEComponent,
+    ExportDataFichePFEComponent,
+    StatistiqueComponent,
+    AddTemplateIntershipAgreementComponent,
+    UpdateTemplateIntershipAgreementComponent,
+    ExportTemplateFicheComponent,
+    ExportDataFicheComponent,
+    DashboardInternshipDirectorComponent,
+    SkillsComponent,
+    StatistiquesTeacherComponent,
+    AppComponent,
+    FirstPageComponent,
+    LoginComponent,
+    ProfileComponent,
+    TeacherActionComponent,
+    MyCategoriesComponent,
+    MydialogueComponent,
+    ModialogueComponent,
+    AreUSureComponent,
+    TeacherFilesComponent,
+    ViewDetailFileComponent,
+    SkillsComponent,
+    StatistiquesTeacherComponent,
+
+    ProfilDirecteurComponent,
+    CalendarComponent,
+    ProfilAdminComponent,
+    EcoleComponent,
+    DepartmentComponent,
+    SitessitComponent,
+    OptionnComponent,
+    ClassesComponent,
+    ChefdepComponent,
+    DirecteurComponent,
+    EnseignantComponent,
+    GesStudentComponent,
+    CalendarteacherComponent,
+
+
+
+
+    AddPreferdCategoriesComponent,
+    AddSkillsComponent
+
   ],
   imports: [
     BrowserModule,
+    Ng2SearchPipeModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
@@ -92,9 +181,12 @@ import { NotifierModule, NotifierOptions } from "angular-notifier";
     }
   }
 })
+    ModalModule.forRoot(),
+    FullCalendarModule,
+    NgxPaginationModule
   ],
   entryComponents: [
-    MydialogueComponent, ViewDetailFileComponent, AreUSureComponent
+    MydialogueComponent, ViewDetailFileComponent, AreUSureComponent, AddPreferdCategoriesComponent, AddSkillsComponent
   ],
 
   providers: [AuthService, HttpClient],

@@ -1,4 +1,26 @@
 <h3>Créer Template PFE : </h3>
+<table>
+        <tr>
+            <td> <button (click)="copyMessage('titre')" value="click to copy" >Titre de sujet</button>
+            </td>
+    
+            <td> <button (click)="copyMessage('description')" value="click to copy" >Description de sujet</button>
+            </td>
+    
+            <td> <button (click)="copyMessage('problem')" value="click to copy" >Probleme de sujet</button>         
+            </td>
+    
+            <td> <button (click)="copyMessage('functionnalities')" value="click to copy" >Functionnalities de sujet</button>
+                
+            </td>
+        
+        </tr>
+    </table>
 <ckeditor [(ngModel)]="templatePFE.template"> ></ckeditor>
-<input type="button" value="Créer Template"  (click)="addTemplatePFE()">
+<p *ngIf="showerrorTitre" style="color:brown">Template doit avoir titre de sujet PFE</p>
+<p *ngIf="showerrordescription" style="color:brown">Template doit avoir description de sujet PFE</p>
+<p *ngIf="showerrorproblem" style="color:brown">Template doit avoir problematique de sujet PFE</p>
+<p *ngIf="showerrorfunctionnalities" style="color:brown">Template doit avoir fonctionnalité de sujet PFE</p>
+
+<input type="button" value="Créer Template"  (click)="addTemplatePFE()" class="w3-button w3-blue">
 

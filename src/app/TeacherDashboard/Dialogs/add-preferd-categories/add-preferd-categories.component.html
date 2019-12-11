@@ -1,0 +1,53 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+<div class="row">
+  <div class="col-lg-12">
+    <div class="ibox float-e-margins">
+      <div class="ibox-content">
+        <h2>
+          Choose Your Prefered Category: <span class="text-navy">“and we Will HELP you to Find  it !!”</span>
+        </h2>
+        <small>it may takes some time</small>
+
+        <div class="search-form">
+          <form action="index.html" method="get">
+            <div class="input-group">
+              <input type="text" (keyup)="autocomplete()" [(ngModel)]="inputval" placeholder="Enter your Category" name="search" class="form-control input-lg">
+
+              <div class="input-group-btn">
+                <button  class="btn btn-lg btn-primary" type="submit">
+                  Search
+                </button>
+              </div>
+            </div>
+
+          </form>
+        </div>
+
+        <div *ngFor="let obj of aafficherListCateoriesNames; let i = index" >
+        <div class="hr-line-dashed"></div>
+        <div class="search-result">
+
+
+
+              <div class="feed-element">
+                <div>
+                  <a (click)="addPreferdCategory(obj)" ><small class="float-right "> <strong style="font-size: 16px;" >{{aafficherPoidsC[i].toFixed(2)}}</strong> <fa-icon [icon]="folderIcon" size="3x" [ngStyle]="{color: 'darkgreen'}" ></fa-icon>  </small></a>
+                  <span style="font-size: 20px;" class="text-navy"> <strong>{{obj}}</strong></span>
+                  <br>
+                  <small class="text-muted">{{i+1}}</small>
+                </div>
+              </div>
+
+
+
+
+
+        </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+</div>

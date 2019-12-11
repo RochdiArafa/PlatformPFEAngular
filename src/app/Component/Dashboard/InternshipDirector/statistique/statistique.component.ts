@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import * as CanvasJS from '../../../../../assets/canvasjs.min'
-import { StudentService } from 'src/app/Service/Student/student.service';
-import { CompanyService } from 'src/app/Service/Company/company.service';
-import { Student } from 'src/app/Model/student';
+import { StudentService } from 'src/app/Services/Student/student.service';
+import { CompanyService } from 'src/app/Services/Company/company.service';
+import { Student } from 'src/app/Models/student';
 import * as $ from 'jquery';
-import { CategoryService } from 'src/app/Service/Category/category.service';
-import { StageParCategory } from 'src/app/Model/stage-par-category';
+import { CategoryService } from 'src/app/Services/Category/category.service';
+import { StageParCategory } from 'src/app/Models/stage-par-category';
 
 
 @Component({
@@ -18,14 +18,14 @@ export class StatistiqueComponent implements OnInit {
   student : Student;
   ListStudent : Student[];
   ListStudentoverContry : Student[];
-  //ListStudent : Student[];
   ListStageParCategory : StageParCategory[];
 
   listComplanyStage : object[];
+  SansStage : number = 0;
   constructor(private studentService : StudentService , private companyService:CompanyService , private categoryService:CategoryService) {
-    this.getRecrutedCompayByOrder(1);
-    this.GetAllStudent(1);
-    this.StageParCategory(1);
+    this.getRecrutedCompayByOrder(parseInt(sessionStorage.getItem('connectedSite')));
+    this.GetAllStudent(parseInt(sessionStorage.getItem('connectedSite')));
+    this.StageParCategory(parseInt(sessionStorage.getItem('connectedSite')));
   }
 
 	ngOnInit() {
@@ -48,7 +48,11 @@ export class StatistiqueComponent implements OnInit {
     this.studentService.getAllStudent(site_id).subscribe((data: any)=>{
       console.log(data);
       this.ListStudent = data;
-      this.getAllStudentRecrutedoverContry(1);
+      this.getAllStudentRecrutedoverContry(parseInt(sessionStorage.getItem('connectedSite')));
+      this.ListStudent.forEach(etudiant => {
+        if(etudiant.pfeFile == null)
+          this.SansStage = this.SansStage + 1;
+      });
     })
   }
 
@@ -61,8 +65,9 @@ export class StatistiqueComponent implements OnInit {
       },
       data: [{
         type: "column",
-        showInLegend: true,
-        toolTipContent: "<b>{name}</b>: {y} Etudiant(s)",
+        //showInLegend: true,
+        toolTipContent: "{y} Etudiant(s)",
+        indexLabel: "{label} a {y} etudiant(s)",
         dataPoints: [
         ]
       }]
@@ -105,7 +110,7 @@ export class StatistiqueComponent implements OnInit {
       
     chart.render();
 
-      chart.data[0].dataPoints[0].y=this.ListStudent.length;
+      chart.data[0].dataPoints[0].y=this.ListStudent.length - this.SansStage;
       chart.data[0].dataPoints[0].name="Tunis";
 
       chart.data[0].dataPoints[1].y=this.ListStudentoverContry.length;
@@ -142,8 +147,9 @@ export class StatistiqueComponent implements OnInit {
       },
       data: [{
         type: "column",
-        showInLegend: true,
+        //showInLegend: true,
         toolTipContent: "<b>{name}</b>: {y} Stage(s)",
+        indexLabel: "{y} stage(s) {label}",
         dataPoints: [
         ]
       }]

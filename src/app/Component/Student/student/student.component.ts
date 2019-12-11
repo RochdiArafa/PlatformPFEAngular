@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Student } from 'src/app/Model/student';
-import { StudentService } from 'src/app/Service/Student/student.service';
-import { CategoryService } from 'src/app/Service/Category/category.service';
-import { CompanyService } from 'src/app/Service/Company/company.service';
+import { Student } from 'src/app/Models/student';
+import { StudentService } from 'src/app/Services/Student/student.service';
+import { CategoryService } from 'src/app/Services/Category/category.service';
+import { CompanyService } from 'src/app/Services/Company/company.service';
 
 @Component({
   selector: 'app-student',
@@ -12,8 +12,12 @@ import { CompanyService } from 'src/app/Service/Company/company.service';
 export class StudentComponent implements OnInit {
   student : Student;
   ListStudent : Student[];
+  searchStudent : Student[];
+  search : boolean = false;
+  searchValue : string;
   constructor(public studentService :StudentService , public categoryService:CategoryService , public companyService :CompanyService) {
-      this.GetAllStudent(1);
+    this.GetAllStudent(parseInt(sessionStorage.getItem('connectedSite')));
+    
 
    }
 
@@ -26,6 +30,28 @@ export class StudentComponent implements OnInit {
       console.log(data);
       this.ListStudent = data;
     })
+  }
+
+  onChange($event){
+    console.log(this.searchValue);
+    this.searchStudent =  [];
+    if(this.searchValue == '')
+      this.search = false;
+    else
+      this.search = true;
+      
+    for (let index = 0; index < this.ListStudent.length; index++) {
+      if(this.ListStudent[index].firstName.indexOf(this.searchValue)!=-1 || this.ListStudent[index].lastName.indexOf(this.searchValue)!=-1 || this.ListStudent[index].email == this.searchValue )
+        this.searchStudent.push(this.ListStudent[index]);
+    }
+
+  }
+
+  checkStage(student : Student){
+    if(student.pfeFile == null)
+      return false;
+    else
+      return true;  
   }
 
 }

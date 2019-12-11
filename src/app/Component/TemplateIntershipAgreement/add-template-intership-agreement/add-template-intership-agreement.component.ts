@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { TemplateIntershipAgreement } from 'src/app/Model/template-intership-agreement';
-import { TemplateIntershipAgreementService } from 'src/app/Service/TemplateIntershipAgreementService/template-intership-agreement.service';
+import { TemplateIntershipAgreement } from 'src/app/Models/template-intership-agreement';
+import { TemplateIntershipAgreementService } from 'src/app/Services/TemplateIntershipAgreementService/template-intership-agreement.service';
 
 
 @Component({
@@ -12,6 +12,13 @@ import { TemplateIntershipAgreementService } from 'src/app/Service/TemplateInter
 export class AddTemplateIntershipAgreementComponent implements OnInit {
 
   public templateIntershipAgreement: TemplateIntershipAgreement ;
+  showerrornom : boolean = false;
+  showerrorprenom : boolean = false;
+  showerrorcompany : boolean = false;
+  showerrordatedebut : boolean = false;
+  showerrordatefin : boolean = false;
+
+
   constructor(public TemplateIntershipAgreementService:TemplateIntershipAgreementService) { 
     this.templateIntershipAgreement = new TemplateIntershipAgreement();
   }
@@ -20,17 +27,56 @@ export class AddTemplateIntershipAgreementComponent implements OnInit {
   }
 
   addTemplatePFE(){
-    var ch = this.templateIntershipAgreement.template;
-    for (let index = 0; index < ch.length; index++) {
-      ch = ch.replace("&nbsp;"," ")    
-    }
-    this.templateIntershipAgreement.template = ch;
+    var error = 0;
+    var ch  = this.templateIntershipAgreement.template;
+    if( ch.indexOf("{{student.nom}}")== -1 ){
+      this.showerrornom = true;
+      error++;
+    }  
+    else
+      this.showerrornom = false;  
 
-    this.templateIntershipAgreement.site= 1;
-    this.TemplateIntershipAgreementService.ajouter(this.templateIntershipAgreement).subscribe((data: any)=>{
-      console.log(data);
-      this.templateIntershipAgreement = new TemplateIntershipAgreement();
-    }) 
+    if( ch.indexOf("{{student.prenom}}")== -1 ){
+      this.showerrorprenom = true;
+      error++;
+    }  
+    else
+      this.showerrorprenom = false; 
+      
+    if( ch.indexOf("{{company.nom}}")== -1 ){
+      this.showerrorcompany = true;
+      error++;
+    }
+    else
+      this.showerrorcompany = false; 
+      
+    if( ch.indexOf("{{intershipAgreement.beginningDate}}")== -1 ){
+      this.showerrordatedebut = true;
+      error++;
+    }
+    else
+      this.showerrordatedebut = false; 
+      
+    if( ch.indexOf("{{intershipAgreement.endingDate}}")== -1 ){
+      this.showerrordatefin = true;
+      error++;
+      }
+    else
+      this.showerrordatefin = false;   
+
+    if(error == 0){
+      var ch = this.templateIntershipAgreement.template;
+      for (let index = 0; index < ch.length; index++) {
+        ch = ch.replace("&nbsp;"," ")    
+      }
+      this.templateIntershipAgreement.template = ch;
+
+      this.templateIntershipAgreement.site= parseInt(sessionStorage.getItem('connectedSite'));
+      this.TemplateIntershipAgreementService.ajouter(this.templateIntershipAgreement).subscribe((data: any)=>{
+        console.log(data);
+        this.templateIntershipAgreement = new TemplateIntershipAgreement();
+      }) 
+    }
   }
 
   copyMessage(val: string){

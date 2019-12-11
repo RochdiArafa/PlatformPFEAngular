@@ -17,14 +17,14 @@ export class CategoryService {
   };
   constructor(private route: Router, private httpClientSer: HttpClient, private authservice: AuthService) { }
 
-  public MyProposedCategories(): Observable<CategoryModel[]>  {
+  public MypreferedCategories(): Observable<CategoryModel[]>  {
     return  this.httpClientSer.get<CategoryModel[]>('http://localhost:9080/PlatformPFE-web/rest/categories/MyPrefered/' +
       this.authservice.Teacher.id );
   }
 
   public ProposerCategorie(Categry: any) {
     return  this.httpClientSer.post<CategoryModel>('http://localhost:9080/PlatformPFE-web/rest/categories/propose/'
-      + this.authservice.Teacher.id , Categry, this.httpOptions );
+      + this.authservice.Teacher.id , Categry , this.httpOptions );
   }
 
   public deletePreferedCategorie(idC: number): Observable<any>  {
@@ -32,5 +32,9 @@ export class CategoryService {
       + idC + '/' + this.authservice.Teacher.id);
   }
 
+  public getmyproposedCategories() {
+    return  this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/categories/MyProposed/'
+      + this.authservice.Teacher.id);
+  }
 
 }

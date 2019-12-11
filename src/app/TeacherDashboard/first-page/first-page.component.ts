@@ -12,7 +12,7 @@ import {NavigationTeacherService} from '../../Services/navigation-teacher.servic
 export class FirstPageComponent implements OnInit {
 
 
-  constructor( private route: Router, private navTeacher: NavigationTeacherService) { }
+  constructor( private route: Router, private authSer: AuthService, private navTeacher: NavigationTeacherService, private teacherser: TeacherService) { }
 
   ngOnInit() {
     // this.route.navigate(['/profile']);
@@ -24,5 +24,8 @@ export class FirstPageComponent implements OnInit {
   chagetoFiles() {
     this.navTeacher.navTeachertoProfile = false;
     this.navTeacher.navTeachertofiles = true;
+  }
+  logout() {
+    this.authSer.DoLogout();
   }
 }
