@@ -1,0 +1,53 @@
+<h1 mat-dialog-title style="color: #5cb85c;">Details de l'étudiant et rapporteur</h1>
+<div class="row">
+  <div class="col-md-6" style="border-right:1px solid #DDDDDD;">
+    <div class="col-lg-6">
+      <h3 class="title" style="color: darkred;">Informations de l'étudiant :</h3>
+      <div class="font-weight-bold">Numero de telephone :  <div class="font-weight-light" style="color: #0a568c;"> <p>{{data.student.phoneNumber}} </p></div></div>
+      <div class="font-weight-bold">Email :  <div class="font-weight-light" style="color: #0a568c;"><p>{{data.student.email}} </p></div></div>
+      <div class="font-weight-bold">Classe :  <div class="font-weight-light" style="color: #0a568c;"><p>{{data.student.grade}} ème année </p></div></div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="col-lg-6">
+      <h3 class="title">Informations du encadrant :</h3>
+      <div class="font-weight-bold">Nom et prénom : <div class="font-weight-light" style="color: #0a568c;"><p>
+        {{data.student.encadrants.firstName}} {{data.student.encadrants.lastName}} </p></div></div>
+      <div class="font-weight-bold">Numero de telephone :  <div class="font-weight-light" style="color: #0a568c;"><p> {{data.student.encadrants.phoneNumber}} </p></div></div>
+      <div class="font-weight-bold">Email :   <div class="font-weight-light" style="color: #0a568c;"><p> {{data.student.encadrants.email}} </p></div></div>
+    </div>
+  </div>
+  <div style="width:100%;text-align: center" class="font-weight-bold">Modifier Encadrant</div>
+  <div style="width:100%;text-align: center">Choisissez un nouveau Encadrant</div>
+  <div style="width: 100%;text-align: center;">
+    <select [(ngModel)]="selectedOption" >
+      <option *ngFor="let o of data.teachers" value="{{o.id}}">
+        {{o.firstName}}
+        {{o.lastName}}
+      </option>
+    </select>
+  </div>
+  <input type="text" value="{{data.student.id}}" name="{{data.student.id}}" ngModel="idst" style="display: none;" >
+  <button type="submit" class="btn btn-dark" style="margin: 10px auto;" (click)="modifierencadrant(data.student.id)">Modifier Encadrant</button>
+
+</div>
+<fieldset style="border-style: solid; border-color: black; border: 1px;">
+  <div *ngFor="let pfe of data.listepfe">
+    <div *ngIf="pfe.student != null">
+      <div *ngIf="pfe.student.id === data.student.id">
+
+        <legend style="color: darkred;width:100%;text-align: center">Informations sur la fiche pfe</legend>
+        <div div class="font-weight-bold" style="width:100%;text-align: center">Titre de la fiche : </div>
+        <div style="width:100%;text-align: center">  {{pfe.title}} </div>
+
+
+        <div div class="font-weight-bold" style="width:100%;text-align: center">description de la fiche : </div>
+        <div style="width:100%;text-align: center">  {{pfe.description}} </div>
+
+        <div div class="font-weight-bold" style="width:100%;text-align: center">Note de la fiche :  </div>
+        <div style="width:100%;text-align: center">{{pfe.note}}</div>
+
+      </div>
+    </div>
+  </div>
+</fieldset>

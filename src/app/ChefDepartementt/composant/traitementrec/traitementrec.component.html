@@ -1,0 +1,91 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="col-lg-12">
+      <div class="ibox">
+        <div class="ibox-title">
+          <h5>Liste des reclamations</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link" href="">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-wrench"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="#" class="dropdown-item">Config option 1</a>
+              </li>
+              <li><a href="#" class="dropdown-item">Config option 2</a>
+              </li>
+            </ul>
+            <a class="close-link" href="">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content no-padding">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let obj of reclalist">
+              <p><a class="text-info" href="#">{{obj.student.firstName}} {{obj.student.lastName}}</a> a envoyé une réclamation</p>
+              <button type="button" class="btn btn-info" mdbWavesEffect (click)="click(obj)">Infos et traitement</button>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div *ngIf="clicked">
+      <div class="col-lg-15">
+        <div class="ibox ">
+          <div class="ibox-title">
+            <h5 style="color: DarkRed;text-align: center; width: 100%">Détails de la réclamation</h5>
+            <div class="ibox-tools">
+              <a class="collapse-link" href="">
+                <i class="fa fa-chevron-up"></i>
+              </a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-wrench"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li><a href="#" class="dropdown-item">Config option 1</a>
+                </li>
+                <li><a href="#" class="dropdown-item">Config option 2</a>
+                </li>
+              </ul>
+              <a class="close-link" href="">
+                <i class="fa fa-times"></i>
+              </a>
+            </div>
+          </div>
+          <div class="ibox-content inspinia-timeline">
+
+            <div class="timeline-item">
+              <div class="row">
+                <div class="col-4 date">
+                  <i class="fa fa-briefcase"></i>
+                  <p style="font-weight: bold; width: 100%; text-align: center;color: darkblue">Sujet</p>
+                  <p style="width: 100%; text-align: center;">{{objj.sujet}}</p>
+                  <br/>
+                </div>
+                <div class="col content no-top-border">
+                  <h4><p style="font-weight: bold; width: 100%; text-align: center;color: blue">Description : </p></h4>
+                  <p style="width: 100%; text-align: center;">{{objj.contenu}}</p>
+                  <h4 *ngIf="objj.type == 1"><p style="font-weight: bold; width: 100%; text-align: center;color: darkblue">L'étudiant voudra changer de rapporteur</p></h4>
+                  <h4 *ngIf="objj.type == 2"><p style="font-weight: bold; width: 100%; text-align: center;color: darkblue">L'étudiant voudra changer d'encadreur</p></h4>
+                  <div *ngIf="!objj.traite">
+                    <button style="width: 100%; text-align: center;" class="btn-success" (click)="opendialog(objj)">Traiter reclamation</button>
+                  </div>
+                  <div *ngIf="objj.traite">
+                    <p style="font-weight: bold; width: 100%; text-align: center; color: red"> Réclamation deja traitée </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

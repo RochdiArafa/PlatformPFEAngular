@@ -15,6 +15,10 @@ export class AuthService {
   public Teacher = null;
   public Admin =null ;
   public Directeurdesstages = null ;
+  public isChef = false;
+  public Chef = null;
+  public Student = null;
+  public isStudent = null;
 
 
   httpOptions = {
@@ -73,6 +77,38 @@ export class AuthService {
             }
           }
         );
+        //////////   fin teacher
+        this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/teacher/chef/' +
+          this.User.id + '/', this.httpOptions ).subscribe(
+          value => { this.Chef = value; },
+          error1 => {},
+          () => {
+            console.log('zzzzzzzzzz');
+            if (this.Chef != null) {
+              this.isChef = true;
+              sessionStorage.setItem('isChef', 'true' );
+              sessionStorage.setItem('connectedChef',JSON.stringify( this.Chef));
+              this.route.navigate(['/ProfileChef']);
+            }
+          }
+        );
+        //////////   fin teacher
+        //////////   fin teacher
+        this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/teacher/student/' +
+          this.User.id + '/', this.httpOptions ).subscribe(
+          value => { this.Student = value; },
+          error1 => {},
+          () => {
+            console.log('zzzzzzzzzz');
+            if (this.Student != null) {
+              this.isStudent = true;
+              sessionStorage.setItem('isStudent', 'true' );
+              sessionStorage.setItem('connectedStudent',JSON.stringify( this.Student));
+              this.route.navigate(['/Reclamation']);
+            }
+          }
+        );
+        //////////   fin teacher
       }
     );
 

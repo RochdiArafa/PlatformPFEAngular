@@ -36,11 +36,15 @@ import { ExportDataFicheComponent } from './Component/TemplateIntershipAgreement
 import {DirecteurComponent} from './Admin/directeur/directeur.component';
 import {EnseignantComponent} from './Admin/enseignant/enseignant.component';
 import {GesStudentComponent} from './Admin/ges-student/ges-student.component';
+import {DashboardChefComponent} from './ChefDepartementt/composant/dashboard-chef/dashboard-chef.component';
+import {ReclamationComponent} from './Student/composant/reclamation/reclamation.component';
 
 
 const routes: Routes = [
   {path: 'ProfileTeacher', component: FirstPageComponent,  canActivate: [ControlIsTeacherService]},
   {path: 'Login', component: LoginComponent},
+  {path: 'ProfileChef', component: DashboardChefComponent},
+  {path: 'Reclamation', component: ReclamationComponent},
   {path: 'profile', component: ProfileComponent},
   {path: 'profildirecteur', component: ProfilDirecteurComponent,  canActivate: [ControlIsDirecteurService] },
   {path: 'calendar', component: CalendarComponent },

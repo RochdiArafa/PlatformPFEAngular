@@ -1,7 +1,6 @@
 import {CategoryModel} from './Category.Model';
-import {Student} from './student';
 
-export interface GradeFileModel {
+export class OldGradeFileModel {
   id: number;
   title: string;
   description: string;
@@ -9,9 +8,9 @@ export interface GradeFileModel {
   keyword: string;
   preValidated: boolean;
   note: number;
-  note_rapporteur: number;
+  event: string;
   motif: string;
-  anneeScolaire: Date;
   categoriesoffile: CategoryModel[];
-  student: Student;
+  emetteur: string;
+  datemodif: Date;
 }

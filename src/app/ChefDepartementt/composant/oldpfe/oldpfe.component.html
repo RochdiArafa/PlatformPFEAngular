@@ -1,0 +1,88 @@
+<div class="row">
+  <div class="col-md-4">
+    <div class="col-lg-12">
+      <div class="ibox">
+        <div class="ibox-title">
+          <h5>Log des pfes</h5>
+          <div class="ibox-tools">
+            <a class="collapse-link" href="">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-wrench"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="#" class="dropdown-item">Config option 1</a>
+              </li>
+              <li><a href="#" class="dropdown-item">Config option 2</a>
+              </li>
+            </ul>
+            <a class="close-link" href="">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content no-padding">
+          <ul class="list-group">
+            <li class="list-group-item" *ngFor="let obj of ListeOld">
+              <p><a class="text-info" href="#">{{obj.emetteur}}</a> a changé sa fiche pfe</p>
+              <button type="button" class="btn btn-info" mdbWavesEffect (click)="click(obj)">Info</button>
+              <small class="block text-muted"><i class="fa fa-clock-o"></i>{{obj.datemodif | date: 'M/d/yy, h:mm a'}}</small>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div *ngIf="clicked">
+      <div class="col-lg-12">
+        <div class="ibox ">
+          <div class="ibox-title">
+            <h5>Historique de la fiche</h5>
+            <div class="ibox-tools">
+              <a class="collapse-link" href="">
+                <i class="fa fa-chevron-up"></i>
+              </a>
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <i class="fa fa-wrench"></i>
+              </a>
+              <ul class="dropdown-menu dropdown-user">
+                <li><a href="#" class="dropdown-item">Config option 1</a>
+                </li>
+                <li><a href="#" class="dropdown-item">Config option 2</a>
+                </li>
+              </ul>
+              <a class="close-link" href="">
+                <i class="fa fa-times"></i>
+              </a>
+            </div>
+          </div>
+          <div class="ibox-content inspinia-timeline">
+
+            <div class="timeline-item">
+              <div class="row">
+                <div class="col-4 date">
+                  <i class="fa fa-briefcase"></i>
+                  <p>Date de modification : </p>
+                  {{objj.datemodif | date: 'M/d/yy, h:mm a'}}
+                  <br/>
+                </div>
+                <div class="col content no-top-border">
+                  <p class="m-b-xs"><strong>{{objj.event}}</strong></p>
+                  <h4><p>Description : </p></h4>
+                  <p>{{objj.description}}</p>
+                  <h4><p>Note : </p></h4>
+                  <p>{{objj.note}}</p>
+                  <h4><p>Motif : </p></h4>
+                  <p>{{objj.motif}}</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -59,6 +59,21 @@ import { ChefdepComponent } from './Admin/chefdep/chefdep.component';
 import { DirecteurComponent } from './Admin/directeur/directeur.component';
 import { EnseignantComponent } from './Admin/enseignant/enseignant.component';
 import { GesStudentComponent } from './Admin/ges-student/ges-student.component';
+import { DashboardChefComponent } from './ChefDepartementt/composant/dashboard-chef/dashboard-chef.component';
+import { CategoriesComponent } from './ChefDepartementt/composant/categories/categories.component';
+import { EspacefichesComponent } from './ChefDepartementt/composant/espacefiches/espacefiches.component';
+import { OldpfeComponent } from './ChefDepartementt/composant/oldpfe/oldpfe.component';
+import { StudentsConfigComponent } from './ChefDepartementt/composant/students-config/students-config.component';
+import { TeachersencadrementComponent } from './ChefDepartementt/composant/teachersencadrement/teachersencadrement.component';
+import { TraitementrecComponent } from './ChefDepartementt/composant/traitementrec/traitementrec.component';
+import { ConfirmationComponent } from './Dialogs/confirmation/confirmation.component';
+import { Details2configComponent } from './Dialogs/details2config/details2config.component';
+import { DetailsconfigComponent } from './Dialogs/detailsconfig/detailsconfig.component';
+import { DetailsdialogComponent } from './Dialogs/detailsdialog/detailsdialog.component';
+import { Details2dialogComponent } from './Dialogs/details2dialog/details2dialog.component';
+import { PrevalidateurComponent } from './Dialogs/prevalidateur/prevalidateur.component';
+import { TraitementdialogComponent } from './Dialogs/traitementdialog/traitementdialog.component';
+import { ReclamationComponent } from './Student/composant/reclamation/reclamation.component';
 
 
 
@@ -124,6 +139,21 @@ const appRoutes: Routes = [
     DirecteurComponent,
     EnseignantComponent,
     GesStudentComponent,
+    DashboardChefComponent,
+    CategoriesComponent,
+    EspacefichesComponent,
+    OldpfeComponent,
+    StudentsConfigComponent,
+    TeachersencadrementComponent,
+    TraitementrecComponent,
+    ConfirmationComponent,
+    Details2configComponent,
+    DetailsconfigComponent,
+    DetailsdialogComponent,
+    Details2dialogComponent,
+    PrevalidateurComponent,
+    TraitementdialogComponent,
+    ReclamationComponent,
 
   ],
   imports: [
@@ -154,7 +184,7 @@ const appRoutes: Routes = [
 
   ],
   entryComponents: [
-    MydialogueComponent, ViewDetailFileComponent, AreUSureComponent
+    MydialogueComponent, ViewDetailFileComponent, AreUSureComponent, ConfirmationComponent, DetailsdialogComponent, Details2dialogComponent, PrevalidateurComponent, TraitementdialogComponent
   ],
 
   providers: [AuthService, HttpClient],
