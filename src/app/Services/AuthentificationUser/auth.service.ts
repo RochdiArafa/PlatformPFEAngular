@@ -14,6 +14,9 @@ export class AuthService {
   public isdirecteur = false ;
   public  isTeacher = false;
   public Teacher = null;
+
+    public  isDirector = false;
+  public Director = null;
   public Admin =null ;
   public Directeurdesstages = null ;
 
@@ -24,7 +27,7 @@ export class AuthService {
   constructor(private route: Router, private httpClientSer: HttpClient) { }
 
   DoLogin(login: string, password: string ) {
-    this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/teacher/authuser/' +
+     this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/teacher/authuser/' +
       login + '/' + password + '/', this.httpOptions ).subscribe(
       value => {this.User = value; },
       error1 => {},
@@ -60,6 +63,24 @@ export class AuthService {
             }
           }
         ); // fin admin
+             ///   directeur
+         if(this.User != null){
+         this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/teacher/authuser/' +
+      login + '/' + password + '/', this.httpOptions ).subscribe(
+           value => { this.Director = value; },
+           error1 => {},
+           () => {
+             console.log('zzzzzzzzzz');
+             if (this.Director != null) {
+               this.isDirector = true;
+               sessionStorage.setItem('isDirector', 'true' );
+               sessionStorage.setItem('connectedDirector', JSON.stringify( this.Director));
+               this.route.navigate(['/ProfileDirector']);
+             }
+           }
+         );
+         }
+         //////////   fin directeur
         this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/directeurdestages/'+this.User.id + '/', this.httpOptions).subscribe(
           value => {this.Directeurdesstages = value; },
           error1 => {},
@@ -95,6 +116,9 @@ export class AuthService {
     this.Admin= null ;
     this.Teacher = null;
 
+
+  this.isDirector = false;
+    this.Director = null;
     sessionStorage.removeItem('isAdmin')
     sessionStorage.removeItem('isdirecteur')
 

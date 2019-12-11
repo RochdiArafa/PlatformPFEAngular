@@ -1,0 +1,150 @@
+<notifier-container></notifier-container>
+<style type="text/css">
+	{box-sizing: border-box;}
+
+/* Button used to open the contact form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup form - hidden by default */
+.form-popup {
+  display: none;
+  position: fixed;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width input fields */
+.form-container textarea, .form-container input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+/* When the inputs get focus, do something */
+.form-container input[type=text]:focus, .form-container input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/login button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
+<h2>Liste des fiches</h2>
+<form class="m-t" role="form" [formGroup]="FilesForm" (ngSubmit)="DisplayFiles()">
+	<table>
+	      <div class="form-group">
+	      	<tr>
+	      		<td>
+	      			<label for="etat">l'etat de la fiche</label>
+	      		</td>
+	      		<td>
+	      	<select class="form-control" id="etat" formControlName="etat" required="">
+	      		<option value="encours">
+	      			en cours
+	      		</option>
+	      		<option value="acceptée">
+	      			validée
+	      		</option>
+	      		<option value="refusée">
+	      			refusée
+	      		</option>
+	      		<option value="demandeAnnulation">
+	      			Demande d'annulation
+	      		</option>
+	      	</select>
+	      		</td>
+	        
+	    	</tr>
+	    	<tr>
+	    	<td><label for="pays">Pays</label></td>
+	        <td><input type="text" class="form-control" id="pays" formControlName="pays" ></td>
+	        </tr>
+	        <tr>
+	         <td>l'annee universitaire</td>
+	         <td><input type="text" id="year" formControlName="year"></td>
+	         <div *ngIf="yearC.touched && yearC.invalid">
+	        année universitaire invalide.Exemple valide: 2019-2020.
+	      </div>
+	      </tr>
+	      </div>
+      </table>
+      <button type="submit" class="btn btn-primary block full-width m-b">Rechercher</button>
+    </form>
+    <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Problematique </th>
+                    <th>Description </th>
+                    <th>Annee</th>
+                    <th>Etat </th>
+                    <th>Note rapporteur</th>
+                    <th>Note encadreur</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listFiles">
+                        <td> {{item.problem}} </td>
+                        <td> {{item.description}}</td>
+                        <td>{{item.anneeScolairee}}</td>
+                        <td> {{item.state}} </td>
+                        <td>{{item.note_rapporteur==0 ? 'non attribuée' : item.note_rapporteur}}</td>
+                        <td>{{item.note==0 ? 'non attribuée' : item.note}}</td>
+                        <td > <a *ngIf="item.state=='encours'" (click)="acceptFile(item)">Valider fiche</a><!-- (click)="validerFiche( item )" --><button *ngIf="item.state=='demandeAnnulation'" (click)="openForm(item.id)" value="refuser"><div class="form-popup" id="myForm{{item.id}}">
+								  <form  class="form-container" [formGroup]="mailForm" (ngSubmit)="refuseReset(item)">
+								  	<h5>envoyer un mail à </h5>
+								    <label for="email"><b>Email</b></label>
+								    <textarea placeholder="Contenu email" class="form-control" formControlName="motif" name="email" required></textarea>
+
+								    <button type="submit" class="btn">Envoyer</button>
+								    <button class="btn cancel" (click)="closeForm(item.id)">Fermer</button>
+								  </form>
+								</div></button>/<button *ngIf="item.state=='demandeAnnulation'" (click)="acceptReset(item)">accepter</button>
+                        	
+                        	<a *ngIf="item.state=='encours'" (click)="refuseFile(item)">Refuser fiche</a> 
+                        </td> <!-- pop up -->
+                    </tr>
+                </tbody>
+            </table>
+        </div>

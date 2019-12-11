@@ -1,0 +1,24 @@
+<notifier-container></notifier-container>
+<h2>Liste des etudiants qui ne sont pas encore autorisés à passer leur pfe</h2>
+<div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+    
+                    <th>Nom </th>
+                    <th>Prenom </th>
+                    <th>Email </th>
+                    <th>Classe </th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of list5thGrade">
+                        <td> {{item.lastName}} </td>
+                        <td> {{item.firstName}} </td>
+                        <td> {{item.email}}</td>
+                        <td> {{item.grade}} </td>
+                        <td> <a (click)="enable( item )">activer etudiant</a><i class="fa fa-file-export" style="color: black;"></i> <i class="fa fa-search" aria-hidden="true"></i> <i class="fa fa-trash" aria-hidden="true"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
