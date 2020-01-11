@@ -19,7 +19,7 @@ export class AddTemplateIntershipAgreementComponent implements OnInit {
   showerrordatefin : boolean = false;
 
 
-  constructor(public TemplateIntershipAgreementService:TemplateIntershipAgreementService) { 
+  constructor(public TemplateIntershipAgreementService:TemplateIntershipAgreementService ) { 
     this.templateIntershipAgreement = new TemplateIntershipAgreement();
   }
 

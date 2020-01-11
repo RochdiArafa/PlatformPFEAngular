@@ -36,6 +36,7 @@ export class ExportTemplatePFEComponent implements OnInit {
       this.templatePFE =  data;
       this.templatePFE.site = parseInt(sessionStorage.getItem('connectedSite'));
       this.template = this.templatePFE.template;
+      console.log(this.template);
       this.ExportBlankTemplate();
     })
 
