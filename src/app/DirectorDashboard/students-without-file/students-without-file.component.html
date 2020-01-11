@@ -1,0 +1,44 @@
+<h2>Liste des etudiants qui n'ont pas de fiche pfe</h2>
+<form class="m-t" role="form" [formGroup]="WithoutFilesForm" (ngSubmit)="DisplayStudents()">
+      <div class="form-group">
+        <input type="radio" class="form-control" id="year" value="oneyear" formControlName="searchType" [checked]="">
+        <label for="year">Pour une année universitaire</label>
+        <input type="radio" class="form-control" id="myear" value="multipleyear" formControlName="searchType" [checked]="" >
+        <label for="myear">Pour Une période</label>
+        <div>
+        	<span *ngIf="searchTypeC.value=='multipleyear'">De </span>
+         l'annee universitaire<input type="text" id="oneyeartext" formControlName="oneyeartext" required="">
+         <div *ngIf="oneyeartextC.touched && oneyeartextC.invalid">
+        année universitaire invalide.Exemple valide: 2019-2020.
+      </div>
+         <span *ngIf="searchTypeC.value=='multipleyear'">à </span>
+         <input type="text" id="yeartext2" formControlName="yeartext2" *ngIf="searchTypeC.value=='multipleyear'">
+         <div *ngIf="(yeartext2C.touched && yeartext2C.invalid)|| (yeartext2C.touched && yeartext2C.value<oneyeartextC.value)">
+        Champs invalide.Vérifiez votre saisie.
+      </div>
+     	</div>
+      </div>
+      <button type="submit" class="btn btn-primary block full-width m-b">Rechercher</button>
+    </form>
+    <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+    
+                    <th>Nom </th>
+                    <th>Prenom </th>
+                    <th>Email </th>
+                    <th>Classe </th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listWithoutPfe">
+                        <td> {{item.lastName}} </td>
+                        <td> {{item.firstName}} </td>
+                        <td> {{item.email}}</td>
+                        <td> {{item.grade}} </td>
+                        <td> <i class="fa fa-file-export" style="color: black;"></i> <i class="fa fa-search" aria-hidden="true"></i> <i class="fa fa-trash" aria-hidden="true"></i></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
