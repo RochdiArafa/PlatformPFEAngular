@@ -4,11 +4,6 @@
       <ul class="nav metismenu" id="side-menu">
         <li class="nav-header">
           <div class="dropdown profile-element">
-            <img alt="image" class="rounded-circle" src="assets/img/profile_small.jpg" />
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-              <span class="block m-t-xs font-bold">David Williams</span>
-              <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
-            </a>
 
           </div>
           <div class="logo-element">
@@ -16,14 +11,15 @@
           </div>
         </li>
         <li class="active">
-          <a  [routerLink]="['/chefdeps']" ><i  class="fa fa-home"></i> <span class="nav-label">Ecole</span></a>
+          <a  [routerLink]="['/ecole']" ><i  class="fa fa-home"></i> <span class="nav-label">Ecole</span></a>
 
         </li>
-        <li>
-          <a  [routerLink]="['/sites']"><i class="fa fa-user"></i> <span class="nav-label">Site</span></a>
-        </li>
+
         <li>
           <a [routerLink]="['/departments']"><i  class="fa fa-briefcase"></i> <span class="nav-label">Department</span></a>
+        </li>
+        <li>
+          <a  [routerLink]="['/sites']"><i class="fa fa-home"></i> <span class="nav-label">Site</span></a>
         </li>
         <li>
           <a [routerLink]="['/options']" ><i class="fa fa-envelope"></i> <span class="nav-label">Options </span></a>
@@ -32,20 +28,17 @@
         <li>
           <a [routerLink]="['/classes']"><i  class="fa fa-bell-o"></i> <span class="nav-label">Classes</span>  </a>
         </li>
-        <div class="dropdown profile-element">
+        <li>
+          <a [routerLink]="['/students']"><i  class="fa fa-user"></i> <span class="nav-label">Etudients</span>  </a>
+        </li>
 
-          <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
-            <span class="text-muted text-xs block">Employer <b class="caret"></b></span>
-          </a>
-          <ul class="dropdown-menu animated fadeInRight m-t-xs">
-            <li><a class="dropdown-item" [routerLink]="['/chefdeps']">Chef department</a></li>
-            <li><a class="dropdown-item" [routerLink]="['/calendar']">Directeur des stages</a></li>
-            <li><a class="dropdown-item" href="mailbox.html">Enseignant</a></li>
-            <li class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="login.html" (click)="logout()">Logout</a></li>
-          </ul>
-        </div>
+        <li><a class="dropdown-item" [routerLink]="['/chefdeps']"> <i  class="fa fa-user"></i> <span class="nav-label">Chef department</span></a></li>
+        <li><a class="dropdown-item" [routerLink]="['/directeurs']"><i  class="fa fa-user"></i> <span class="nav-label">Directeur des stages</span></a></li>
+        <li><a class="dropdown-item" [routerLink]="['/teachers']"><i  class="fa fa-user"></i> <span class="nav-label">Enseignant</span></a></li>
+
+
+
       </ul>
 
     </div>
@@ -213,7 +206,9 @@
                 <div class="form-group"><label class="col-sm-2 control-label">Nom ecole</label>
 
                   <div class="col-sm-10"><input type="text" class="form-control"  formControlName="nom"></div>
-
+                  <div *ngIf="namen.invalid && namen.touched">
+                    <div *ngIf="namen.errors.required"><strong>nom obligatoire </strong></div>
+                    <div *ngIf="namen.errors.minlength"> <strong>minimum 4 carcteres</strong></div></div>
                 </div>
 
 
@@ -221,11 +216,14 @@
                 <div class="form-group"><label class="col-sm-2 control-label">logo </label>
 
                   <div class="col-sm-10"><input type="file" class="form-control" (change)="onFileChange($event)"formControlName="logo"  ></div>
+                  <div *ngIf="namen.invalid && namen.touched">
+                    <div *ngIf="namen.errors.required"><strong>image obligatoire </strong></div></div>
+
 
                 </div>
                 <div class="col-sm-4 col-sm-offset-2">
 
-                  <button class="btn btn-primary"  (click)="add()" >Ajouter</button>
+                  <button class="btn btn-primary" [disabled]="formadd.invalid" (click)="add()" >Ajouter</button>
                 </div></form></div></div></div></div>
 
     </div>

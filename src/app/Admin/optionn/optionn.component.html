@@ -12,11 +12,6 @@
       <ul class="nav metismenu" id="side-menu">
         <li class="nav-header">
           <div class="dropdown profile-element">
-            <img alt="image" class="rounded-circle" src="assets/img/profile_small.jpg" />
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-              <span class="block m-t-xs font-bold">David Williams</span>
-              <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
-            </a>
 
           </div>
           <div class="logo-element">
@@ -24,23 +19,36 @@
           </div>
         </li>
         <li class="active">
-          <a  routerLink="Login"  ><i  class="fa fa-home"></i> <span class="nav-label">Ecole</span></a>
+          <a  [routerLink]="['/ecole']" ><i  class="fa fa-home"></i> <span class="nav-label">Ecole</span></a>
+
+        </li>
+
+        <li>
+          <a [routerLink]="['/departments']"><i  class="fa fa-briefcase"></i> <span class="nav-label">Department</span></a>
+        </li>
+        <li>
+          <a  [routerLink]="['/sites']"><i class="fa fa-home"></i> <span class="nav-label">Site</span></a>
+        </li>
+        <li>
+          <a [routerLink]="['/options']" ><i class="fa fa-envelope"></i> <span class="nav-label">Options </span></a>
 
         </li>
         <li>
-          <a  [routerLink]="['/sites']"><i class="fa fa-user"></i> <span class="nav-label">Site</span></a>
+          <a [routerLink]="['/classes']"><i  class="fa fa-bell-o"></i> <span class="nav-label">Classes</span>  </a>
         </li>
         <li>
-          <a ><i  class="fa fa-briefcase"></i> <span class="nav-label">Department</span></a>
+          <a [routerLink]="['/students']"><i  class="fa fa-user"></i> <span class="nav-label">Etudients</span>  </a>
         </li>
-        <li>
-          <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Options </span></a>
 
-        </li>
-        <li>
-          <a href="metrics.html"><i  class="fa fa-bell-o"></i> <span class="nav-label">Classes</span>  </a>
-        </li>
+
+        <li><a class="dropdown-item" [routerLink]="['/chefdeps']"> <i  class="fa fa-user"></i> <span class="nav-label">Chef department</span></a></li>
+        <li><a class="dropdown-item" [routerLink]="['/directeurs']"><i  class="fa fa-user"></i> <span class="nav-label">Directeur des stages</span></a></li>
+        <li><a class="dropdown-item" [routerLink]="['/teachers']"><i  class="fa fa-user"></i> <span class="nav-label">Enseignant</span></a></li>
+
+
+
       </ul>
+
 
     </div>
   </nav>
@@ -184,25 +192,25 @@
       <div class="col-lg-12">
         <div class="ibox float-e-margins">
           <div class="ibox-title">
-            <h5>Ajouter Classe :
+            <h5>Ajouter option :
 
             </h5>
             <div ibox-tools></div>
           </div>
           <div class="ibox-content">
             <form class="form-horizontal"  [formGroup]="formc" >
-              <div class="form-group"><label class="col-sm-2 control-label">Nom classe</label>
+              <div class="form-group"><label class="col-sm-2 control-label">Nom option</label>
 
                 <div class="col-sm-10"><input type="text" class="form-control"  formControlName="nom"></div>
 
               </div>
               <div *ngIf="namec.invalid && namec.touched">
-                <div style="color: red" *ngIf="namec.errors.required">nom classe obligatoire </div></div>
+                <div style="color: red" *ngIf="namec.errors.required">nom option obligatoire </div></div>
 
 
               <div class="col-sm-4 col-sm-offset-2">
 
-                <button class="btn btn-primary"  (click)="openModal(template)" (auxclick)="add()">Ajouter</button>
+                <button class="btn btn-primary" [disabled]="formc.invalid" (click)="openModal(template)" (click)="add()">Ajouter</button>
                 <ng-template #template>
                   <div class="modal-header">
                     <h4 class="modal-title pull-left">Ajout</h4>
@@ -212,7 +220,7 @@
                     </button>
                   </div>
                   <div class="modal-body">
-                    La classe a été ajouter avec succes
+                    L' option a été ajouter avec succes
                   </div>
                 </ng-template>
               </div>
@@ -257,9 +265,9 @@
               </button>
             </div>
             <div class="modal-body">
-              vous etes sur de supprimer cette classe ? <br> <br>
+              vous etes sur de supprimer cette option ? <br> <br>
               <div align="center">
-                <button class="btn btn-outline-primary"(click)="delete(a.id)" >supprimer</button>
+                <button class="btn btn-outline-primary"(click)="delete(a.id)" (click)="modalRef.hide()">supprimer</button>
                 <button class="btn btn-outline-success"(click)="modalRef.hide()" >annuler</button> </div>
             </div>
           </ng-template>

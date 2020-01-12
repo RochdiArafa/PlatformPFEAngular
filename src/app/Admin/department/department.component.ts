@@ -2,7 +2,7 @@ import {Component, Input, OnInit, TemplateRef} from '@angular/core';
 import {Department} from '../../Models/Department';
 import {AuthService} from '../../Services/AuthentificationUser/auth.service';
 import {DepartmentService} from '../../Services/department.service';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Chefdepartement} from '../../Models/Chefdepartement';
 import {ChefdepartmentService} from '../../Services/chefdepartment.service';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
@@ -18,8 +18,8 @@ export class DepartmentComponent implements OnInit {
   department: Department ;
   modalRef: BsModalRef;
   depform = new FormGroup({
-    nom: new FormControl(),
-    code: new FormControl(),
+    nom: new FormControl('',[Validators.required, Validators.minLength(4)]),
+    code: new FormControl('',[Validators.required, Validators.minLength(2)]),
     chef: new FormControl()
   });
   chefform = new FormGroup({
@@ -45,6 +45,7 @@ export class DepartmentComponent implements OnInit {
     this.depservice.adddepartment(this.department).subscribe();
     this.depservice.getalldepartments().subscribe(data => { this.departements = data ;
       console.log(this.departements)});
+    this.depform.reset();
   }
   get namec(){
     return   this.depform.get('nom');

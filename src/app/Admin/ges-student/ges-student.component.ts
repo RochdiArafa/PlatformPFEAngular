@@ -12,7 +12,8 @@ import {faSearchPlus} from '@fortawesome/free-solid-svg-icons/faSearchPlus';
   styleUrls: ['./ges-student.component.scss']
 })
 export class GesStudentComponent implements OnInit {
-  serchtext: string
+  serchtext: string;
+  p: number;
   modalRef: BsModalRef;
   serchicone= faSearchPlus;
   addcatIcon = faPlusCircle;

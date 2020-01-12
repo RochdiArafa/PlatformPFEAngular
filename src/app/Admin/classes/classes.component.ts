@@ -48,16 +48,16 @@ export class ClassesComponent implements OnInit {
     this.classe = new Classes(null,this.formc.value['nom'],this.formc.value['nbr'],null);
     console.log(this.classe);
     this.classeser.addclasse(this.classe).subscribe( );
-    setTimeout(function() {
+
       this.classeser.getallclasses().subscribe(data =>{this.classes = data;
         console.log(this.classes); });
       this.formc.reset();
-    }, 1000);
+
 
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    this.add();
+  //  this.add();
   }
   openModal1(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

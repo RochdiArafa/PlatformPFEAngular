@@ -18,6 +18,8 @@
 
         <li style="color:#FFf;">
           <a [routerLink]="['/InternshipDirector/Dashboard']"><i  class="fa fa-bell-o"></i> <span class="nav-label">Dashboard</span>  </a>
+        <li>
+          <a [routerLink]="['/calendar']"><i  class="fa fa-calendar"></i> <span class="nav-label">Calendrier des soutenonce</span>  </a>
         </li>
 
 
@@ -906,13 +908,13 @@
         <div align="center">
           <form [formGroup]="forme">
 
-            <select   formControlName="j" > jour : <option *ngFor="let d of jj">{{d}}
-            </option>
-            </select>
-            <select formControlName="d" > mois :<option *ngFor="let d of mm">{{d}}</option></select>
-            <select formControlName="a" > annee :<option *ngFor="let d of aa">{{d}}</option></select>
+            <div class="form-group">choisir une date
 
-            <button class="btn btn-outline-info" (click)="geresout(namea.value,named.value,namej.value)">affecter</button>
+              <div class="col-sm-10"><input type="date" class="form-control"  formControlName="j" min="2019-12-11"></div>
+
+            </div>
+
+            <button class="btn btn-outline-info" (click)="aaa(namej.value)" (click)="geresout()" (click)="modalRef.hide()">affecter</button>
           </form></div></div>
     </ng-template>
 
