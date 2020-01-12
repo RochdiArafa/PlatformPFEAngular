@@ -11,6 +11,7 @@ import {TeacherModel} from '../Models/Teacher.Model';
 import {Recla} from '../Models/recla';
 import {Chefdepartement} from '../Models/Chefdepartement';
 import {Student} from '../Models/student';
+import {Notification} from '../Models/notification';
 
 @Injectable({
   providedIn: 'root'
@@ -103,6 +104,14 @@ export class ChefDepService {
   public traiterreclamation(id: number) {
     return  this.httpClientSer.put<number>('http://localhost:9080/PlatformPFE-web/rest/reclamation/traiterreclamation?idst='
       + id, this.httpOptions ).pipe(timeout(6000));
+  }
+  public NotifierEtudiant(notif: Notification, id: number): Observable<Notification> {
+    return  this.httpClientSer.post<Notification>( 'http://localhost:9080/PlatformPFE-web/rest/notifres/ajoutnotifstudent?idst=' +
+      id, notif, this.httpOptions).pipe(timeout(6000));
+  }
+  public getnotifbystudent(ids: number) {
+    return this.httpClientSer.get<Notification[]>('http://localhost:9080/PlatformPFE-web/rest/notifres/notifbystudent?tid=' + ids)
+      .pipe(timeout(4000));
   }
 }
 

@@ -1,6 +1,7 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 import {ChefDepService} from '../../Services/ChefDep.service';
+import {Notification} from '../../Models/notification';
 
 @Component({
   selector: 'app-traitementdialog',
@@ -9,14 +10,23 @@ import {ChefDepService} from '../../Services/ChefDep.service';
 })
 export class TraitementdialogComponent implements OnInit {
   selectedOption: number;
-
+  public notif: Notification;
   constructor(public dialogRef: MatDialogRef<TraitementdialogComponent>,
-              @Inject(MAT_DIALOG_DATA) public data: any, private chefService: ChefDepService) { }
+              @Inject(MAT_DIALOG_DATA) public data: any, private chefService: ChefDepService) {
+  }
 
   ngOnInit() {
   }
 
   changerrapporteur(id: number, idrec: number) {
+    console.log(id);
+    this.notif = new Notification();
+    this.notif.contenu = 'Réclamation acceptée, votre rapporteur a été changé';
+    this.chefService.NotifierEtudiant(this.notif, id).subscribe(
+      () => {},
+      error => {}
+    );
+    console.log(this.notif);
     this.chefService.ModifierRapporteur(id, this.selectedOption).subscribe(
       () => {},
       e => {},
@@ -34,6 +44,14 @@ export class TraitementdialogComponent implements OnInit {
     );
   }
   changerencadrant(id: number, idrec: number) {
+    console.log(id);
+    this.notif = new Notification();
+    this.notif.contenu = 'Réclamation acceptée, votre encadrant a été changé';
+    this.chefService.NotifierEtudiant(this.notif, id).subscribe(
+      () => {},
+      error => {}
+    );
+    console.log(this.notif);
     this.chefService.ModifierEncadrant(id, this.selectedOption).subscribe(
       () => {},
       e => {},
@@ -50,8 +68,16 @@ export class TraitementdialogComponent implements OnInit {
       }
     );
   }
-  refuserreclamation(id: number) {
-    this.chefService.traiterreclamation(id).subscribe(
+  refuserreclamation(id: number, idd: number) {
+    console.log(id);
+    this.notif = new Notification();
+    this.notif.contenu = 'Réclamation refusé';
+    this.chefService.NotifierEtudiant(this.notif, id).subscribe(
+      () => {},
+      error => {}
+    );
+    console.log(this.notif);
+    this.chefService.traiterreclamation(idd).subscribe(
       () => {},
       e => {},
       () => {

@@ -10,7 +10,7 @@
         </option>
       </select>
       <div><button class="btn-success" (click)="changerrapporteur(data.reclamation.student.id,data.reclamation.id)">Changer rapporteur</button></div>
-      <div><button class="btn-danger" (click)="refuserreclamation(data.reclamation.id)">Refuser réclamation</button></div>
+      <div><button class="btn-danger" (click)="refuserreclamation(data.reclamation.id,data.reclamation.student.id)">Refuser réclamation</button></div>
     </div>
     <div *ngIf="data.reclamation.type==2">
       <span style="font-family:'Comic Sans MS'">Selectionnez un encadrant</span>
@@ -21,7 +21,7 @@
         </option>
       </select>
       <div><button class="btn-success" (click)="changerencadrant(data.reclamation.student.id,data.reclamation.id)">Changer encadrant</button></div>
-      <div><button class="btn-danger" (click)="refuserreclamation(data.reclamation.id)">Refuser réclamation</button></div>
+      <div><button class="btn-danger" (click)="refuserreclamation(data.reclamation.student.id,data.reclamation.id)">Refuser réclamation</button></div>
     </div>
   </div>
 </fieldset>

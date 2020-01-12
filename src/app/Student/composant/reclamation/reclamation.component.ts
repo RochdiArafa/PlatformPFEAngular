@@ -4,6 +4,7 @@ import {AuthService} from '../../../Services/AuthentificationUser/auth.service';
 import {ChefDepService} from '../../../Services/ChefDep.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Student} from '../../../Models/student';
+import {Notification} from '../../../Models/notification';
 
 @Component({
   selector: 'app-reclamation',
@@ -13,6 +14,7 @@ import {Student} from '../../../Models/student';
 export class ReclamationComponent implements OnInit {
   student: Student ;
   public rec: Recla;
+  notifs: Notification[] = [] ;
   i: number;
   subj: string;
   descc: string;
@@ -26,6 +28,12 @@ export class ReclamationComponent implements OnInit {
 
   ngOnInit() {
     this.student =  this.auth.Student;
+    this.getallnotifsbystudent();
+  }
+  getallnotifsbystudent() {
+    this.chefdep.getnotifbystudent(this.student.id).subscribe((value) => {
+      this.notifs = value;
+    }, error => {}, () => {console.log(this.notifs); });
   }
 
   validerform() {

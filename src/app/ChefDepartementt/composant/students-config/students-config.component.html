@@ -40,7 +40,7 @@
                   <th>Nom et prenom</th>
                   <th>Numero</th>
                   <th data-hide="all">Email</th>
-                  <th data-hide="all">Grade</th>
+                  <th data-hide="all">Classe</th>
 
                   <th>Action</th>
                 </tr>
@@ -51,7 +51,7 @@
                   <td>{{obj.firstName}} {{obj.lastName}}</td>
                   <td>{{obj.phoneNumber}}</td>
                   <td>{{obj.email}}</td>
-                  <td><span class="pie">{{obj.grade}}</span></td>
+                  <td><span class="pie">{{obj.grade}}</span>eme année</td>
                   <td><button type="button" class="btn btn-info btn-sm" (click)="clickRapporter(obj.id)">Affecter Rapporteur</button></td>
                 </tr>
                 </tbody>

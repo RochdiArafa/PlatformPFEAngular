@@ -13,7 +13,9 @@
 
           <div class="row">
             <div class="col-lg-8">
+              <div *ngIf="grade.student.encadrants != null">
               <div *ngIf='(grade.student.encadrants.firstName+" "+grade.student.encadrants.lastName) == obj'>
+
                 <div class="panel panel-primary">
                   <div class="panel-heading">
                     {{obj}}
@@ -28,6 +30,7 @@
                     </div>
                   </div>
                 </div>
+              </div>
               </div>
             </div>
           </div>
