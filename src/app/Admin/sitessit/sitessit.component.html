@@ -4,11 +4,6 @@
       <ul class="nav metismenu" id="side-menu">
         <li class="nav-header">
           <div class="dropdown profile-element">
-            <img alt="image" class="rounded-circle" src="assets/img/profile_small.jpg" />
-            <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-              <span class="block m-t-xs font-bold">David Williams</span>
-              <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
-            </a>
 
           </div>
           <div class="logo-element">
@@ -16,22 +11,34 @@
           </div>
         </li>
         <li class="active">
-          <a  routerLink="Login"  ><i  class="fa fa-home"></i> <span class="nav-label">Ecole</span></a>
+          <a  [routerLink]="['/ecole']" ><i  class="fa fa-home"></i> <span class="nav-label">Ecole</span></a>
+
+        </li>
+
+        <li>
+          <a [routerLink]="['/departments']"><i  class="fa fa-briefcase"></i> <span class="nav-label">Department</span></a>
+        </li>
+        <li>
+          <a  [routerLink]="['/sites']"><i class="fa fa-home"></i> <span class="nav-label">Site</span></a>
+        </li>
+        <li>
+          <a [routerLink]="['/options']" ><i class="fa fa-envelope"></i> <span class="nav-label">Options </span></a>
 
         </li>
         <li>
-          <a  [routerLink]="['/sites']"><i class="fa fa-user"></i> <span class="nav-label">Site</span></a>
+          <a [routerLink]="['/classes']"><i  class="fa fa-bell-o"></i> <span class="nav-label">Classes</span>  </a>
         </li>
         <li>
-          <a ><i  class="fa fa-briefcase"></i> <span class="nav-label">Department</span></a>
+          <a [routerLink]="['/students']"><i  class="fa fa-user"></i> <span class="nav-label">Etudients</span>  </a>
         </li>
-        <li>
-          <a href="mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Options </span></a>
 
-        </li>
-        <li>
-          <a href="metrics.html"><i  class="fa fa-bell-o"></i> <span class="nav-label">Classes</span>  </a>
-        </li>
+
+        <li><a class="dropdown-item" [routerLink]="['/chefdeps']"> <i  class="fa fa-user"></i> <span class="nav-label">Chef department</span></a></li>
+        <li><a class="dropdown-item" [routerLink]="['/directeurs']"><i  class="fa fa-user"></i> <span class="nav-label">Directeur des stages</span></a></li>
+        <li><a class="dropdown-item" [routerLink]="['/teachers']"><i  class="fa fa-user"></i> <span class="nav-label">Enseignant</span></a></li>
+
+
+
       </ul>
 
     </div>
@@ -197,7 +204,7 @@
               </div>
               <div class="col-sm-4 col-sm-offset-2">
 
-                <button class="btn btn-primary"  (click)="add()">Ajouter</button>
+                <button class="btn btn-primary" [disabled]="siteform.invalid" (click)="add()">Ajouter</button>
               </div>
 
 

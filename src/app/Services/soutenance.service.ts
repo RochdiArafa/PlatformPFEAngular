@@ -23,7 +23,7 @@ export class SoutenanceService {
   getallsoutcalendar():Observable<any>{
     return  this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/soutenance/');
   }
-  gerersoutnonce(jj:number, mm: number ,aa: number){
+  gerersoutnonce(jj:string, mm: string ,aa: string){
     return  this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/soutenance/' + jj + '/' + mm + '/' + aa);
   }
 }

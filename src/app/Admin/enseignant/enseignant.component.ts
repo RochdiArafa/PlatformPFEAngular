@@ -6,6 +6,7 @@ import {DirecteurdesstageService} from '../../Services/directeurdesstage.service
 import {TeacherService} from '../../Services/teacher.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {faSearchPlus} from '@fortawesome/free-solid-svg-icons/faSearchPlus';
+import {AuthService} from '../../Services/AuthentificationUser/auth.service';
 
 @Component({
   selector: 'app-enseignant',
@@ -20,7 +21,7 @@ export class EnseignantComponent implements OnInit {
   addcatIcon = faPlusCircle;
   teacher: Teacher;
   teachers:Teacher[]= [];
-  constructor(private teacherser: TeacherService, private modalService: BsModalService) { }
+  constructor(private teacherser: TeacherService, private modalService: BsModalService, private connectedadminSer: AuthService) { }
   file: File ;
   formc = new FormGroup({
     firstname: new FormControl('',[Validators.required, Validators.minLength(4)]),
@@ -74,6 +75,12 @@ add(){
   }
   get nameph () {
     return this.formc.get('phonenumber');
+  }
+  logout(){
+    //disconecttttttfsdfsdfsd
+    this.connectedadminSer.DoLogout();
+    console.log('hhhh');
+
   }
 
 

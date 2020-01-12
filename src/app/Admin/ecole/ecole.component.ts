@@ -26,7 +26,7 @@ export class EcoleComponent implements OnInit {
     logo: new FormControl('',[Validators.required])
   });
   formadd = new FormGroup({
-    nom: new FormControl('',[Validators.required]),
+    nom: new FormControl('',[Validators.required, Validators.minLength(4)]),
     logo: new FormControl('',[Validators.required])
   });
 
@@ -37,6 +37,13 @@ export class EcoleComponent implements OnInit {
       console.log(this.ecoles);});
     console.log(this.admin);
   }
+  get namen(){
+    return this.formadd.get('nom');
+  }
+  get namel(){
+    return this.formadd.get('logo');
+  }
+
   onFileChange(event){
     const reader = new FileReader();
 
