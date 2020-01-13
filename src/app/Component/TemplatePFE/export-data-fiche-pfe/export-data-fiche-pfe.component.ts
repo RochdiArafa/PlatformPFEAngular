@@ -40,7 +40,7 @@ export class ExportDataFichePFEComponent implements OnInit {
     this.templatePFEService.search(id).subscribe((data: any)=>{
       console.log(data);
       this.templatePFE =  data;
-      this.templatePFE.site = data.site.id;
+      this.templatePFE.site = parseInt(sessionStorage.getItem('connectedSite'));
       this.template = this.templatePFE.template;
       this.ExportStudentTemplate();
     })

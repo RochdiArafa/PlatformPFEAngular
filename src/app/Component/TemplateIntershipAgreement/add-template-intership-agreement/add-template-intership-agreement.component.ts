@@ -19,7 +19,7 @@ export class AddTemplateIntershipAgreementComponent implements OnInit {
   showerrordatefin : boolean = false;
 
 
-  constructor(public TemplateIntershipAgreementService:TemplateIntershipAgreementService) { 
+  constructor(public TemplateIntershipAgreementService:TemplateIntershipAgreementService ) { 
     this.templateIntershipAgreement = new TemplateIntershipAgreement();
   }
 
@@ -71,7 +71,7 @@ export class AddTemplateIntershipAgreementComponent implements OnInit {
       }
       this.templateIntershipAgreement.template = ch;
 
-      this.templateIntershipAgreement.site= 1;
+      this.templateIntershipAgreement.site= parseInt(sessionStorage.getItem('connectedSite'));
       this.TemplateIntershipAgreementService.ajouter(this.templateIntershipAgreement).subscribe((data: any)=>{
         console.log(data);
         this.templateIntershipAgreement = new TemplateIntershipAgreement();

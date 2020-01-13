@@ -24,6 +24,7 @@ export class TeacherActionComponent implements OnInit {
   GetListActionsOfTeacher() {
     this.TeacherSer.getTeachersAction().subscribe((value) => {
       this.ListActions = value;
+      // this.ListActions.log
     });
   }
 

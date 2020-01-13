@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TemplateIntershipAgreement } from 'src/app/Models/template-intership-agreement';
 import { TemplateIntershipAgreementService } from 'src/app/Services/TemplateIntershipAgreementService/template-intership-agreement.service';
+import { Site } from 'src/app/Models/site';
+import { DirecteurdesstageService } from 'src/app/Services/directeurdesstage.service';
 
 @Component({
   selector: 'app-export-template-fiche',
@@ -12,9 +14,12 @@ export class ExportTemplateFicheComponent implements OnInit {
   public template: string;
 
   public templateblank: string = "";
+  public site : Site;
+  public showExport : boolean = true;
 
-  constructor(public templateIntershipAgreementService:TemplateIntershipAgreementService) { 
-    this.GetTemplatePFE(27);
+  constructor(public templateIntershipAgreementService:TemplateIntershipAgreementService , public directeurService : DirecteurdesstageService) { 
+    this.templateIntershipAgreement = new TemplateIntershipAgreement();
+    this.getSite(parseInt(sessionStorage.getItem('idUser')));
     
   }
 
@@ -26,7 +31,7 @@ export class ExportTemplateFicheComponent implements OnInit {
     this.templateIntershipAgreementService.search(id).subscribe((data: any)=>{
       console.log(data);
       this.templateIntershipAgreement =  data;
-      this.templateIntershipAgreement.site = data.site.id;
+      this.templateIntershipAgreement.site = parseInt(sessionStorage.getItem('connectedSite'));
       this.template = this.templateIntershipAgreement.template;
       this.ExportBlankTemplate();
     })
@@ -43,6 +48,24 @@ export class ExportTemplateFicheComponent implements OnInit {
 
     console.log(this.templateblank);
     this.template = this.templateblank;
+  }
+
+  getSite(directeurid){
+    this.directeurService.getSite(directeurid).subscribe((data: any)=>{
+      console.log("siteeeeeeeeeeeeeee");
+
+      console.log(data);
+      this.site = data;
+
+      if(this.site.templateIntershipAgreement == null){
+        this.showExport = false;
+      }  
+      else{
+        this.GetTemplatePFE(this.site.templateIntershipAgreement.id);
+        this.showExport = true;
+
+      }
+    }) 
   }
 
 

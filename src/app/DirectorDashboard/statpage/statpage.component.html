@@ -1,0 +1,22 @@
+    <h1>Statistique sur les fiches durant les 3 dernières années</h1>
+<div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData1"
+              [labels]="barChartLabels1"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>
+    <h1>Statistique sur les fiches de l'année scolaire courante</h1>
+<div style="display: block">
+      <canvas baseChart
+              [datasets]="barChartData"
+              [labels]="barChartLabels"
+              [options]="barChartOptions"
+              [plugins]="barChartPlugins"
+              [legend]="barChartLegend"
+              [chartType]="barChartType">
+      </canvas>
+    </div>

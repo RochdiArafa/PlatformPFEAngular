@@ -17,7 +17,7 @@ export class DashboardInternshipDirectorComponent implements OnInit {
 
   ngOnInit() {
     
-    this.GetAllStudent(1);
+    this.GetAllStudent(parseInt(sessionStorage.getItem('connectedSite')));
 
   }
 
