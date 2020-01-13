@@ -44,7 +44,7 @@ const routes: Routes = [
   {path: 'ProfileTeacher', component: FirstPageComponent,  canActivate: [ControlIsTeacherService]},
   {path: 'Login', component: LoginComponent},
   {path: 'profile', component: ProfileComponent},
-  {path: 'ProfileDirector', component: DirectorpageComponent,  canActivate: [ControlIsDirectorService]}];
+  {path: 'ProfileDirector', component: DirectorpageComponent,  canActivate: [ControlIsDirectorService]},
   {path: 'profildirecteur', component: ProfilDirecteurComponent,  canActivate: [ControlIsDirecteurService] },
   {path: 'calendar', component: CalendarComponent },
   {path: 'profileadmin', component: ProfilAdminComponent,   canActivate: [ControleIsadminService]  },
