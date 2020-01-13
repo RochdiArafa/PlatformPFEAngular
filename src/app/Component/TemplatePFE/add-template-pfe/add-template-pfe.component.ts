@@ -16,7 +16,7 @@ export class AddTemplatePFEComponent implements OnInit {
   showerrorproblem : boolean = false;
   showerrorfunctionnalities : boolean = false;
   
-  constructor(public templatePFEService:TemplatePFEService) { 
+  constructor(public templatePFEService:TemplatePFEService ) { 
     this.templatePFE = new TemplatePFE();
   }
 
@@ -61,9 +61,10 @@ export class AddTemplatePFEComponent implements OnInit {
       }
       this.templatePFE.template = ch;
 
-      this.templatePFE.site= 1;
+      this.templatePFE.site= parseInt(sessionStorage.getItem('connectedSite'));
       this.templatePFEService.ajouter(this.templatePFE).subscribe((data: any)=>{
         console.log(data);
+        this.templatePFE = new TemplatePFE();
       })
     } 
   }

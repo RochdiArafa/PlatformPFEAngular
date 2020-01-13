@@ -194,8 +194,8 @@
             <div class="ibox-content">
                 <div class="row">
                     <div class="col-sm-3">
-                        <div class="input-group"><input type="text" placeholder="Search" class="input-sm form-control"> <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-sm btn-primary"> Go!</button> </span></div>
+                        <div class="input-group"><input type="text" placeholder="Rechercher Etudiant" class="input-sm form-control"  [(ngModel)]="searchValue" (ngModelChange)="onChange($event)"> <span class="input-group-btn">
+                                                    </span></div>
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -213,19 +213,29 @@
                         </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let item of ListStudent">
-                                <td> {{item.lastName}} </td>
-                                <td> {{item.firstName}} </td>
-                                <td> {{item.email}}</td>
-                                <td> 4twin2 </td>
-                                <td> {{item.phoneNumber}} </td>
-                                <td> {{item.birthDay}}</td>
-                                <td> <a class="w3-button w3-blue" [routerLink]="['/InternshipDirector/TemplatePFE/exportPFEfile', item.id]"> Export fichier PFE  </a>
-                                  <a class="w3-button w3-blue" [routerLink]="['/InternshipDirector/TemplateIntershipAgreement/exportfile', item.id]"> Export Convention de stage  </a>
-                                
-                                  
-                                </td>
+                            <tr   *ngFor="let item of ListStudent">
+                              <td *ngIf="!search"> {{item.lastName}} </td>
+                              <td *ngIf="!search"> {{item.firstName}} </td>
+                              <td *ngIf="!search"> {{item.email}}</td>
+                              <td *ngIf="!search"> 4twin2 </td>
+                              <td *ngIf="!search"> {{item.phoneNumber}} </td>
+                              <td *ngIf="!search">  {{item.birthDay |  date:'MM/dd/yyyy'}}</td>
+                              <td *ngIf="!search">  <a *ngIf="checkStage(item)" class="w3-button w3-blue" [routerLink]="['/InternshipDirector/TemplatePFE/exportPFEfile', item.id]"> Export fichier PFE  </a>
+                                <a *ngIf="checkStage(item)" class="w3-button w3-blue" [routerLink]="['/InternshipDirector/TemplateIntershipAgreement/exportfile', item.id]"> Export Convention de stage  </a>
+                              </td>
                             </tr>
+
+                            <tr *ngFor="let item of searchStudent">
+                              <td *ngIf="search"> {{item.lastName}} </td>
+                              <td *ngIf="search"> {{item.firstName}} </td>
+                              <td *ngIf="search"> {{item.email}}</td>
+                              <td *ngIf="search"> 4twin2 </td>
+                              <td *ngIf="search"> {{item.phoneNumber}} </td>
+                              <td *ngIf="search"> {{item.birthDay |  date:'MM/dd/yyyy'}}</td>
+                              <td *ngIf="search"> <a *ngIf="checkStage(item)"  class="w3-button w3-blue" [routerLink]="['/InternshipDirector/TemplatePFE/exportPFEfile', item.id]"> Export fichier PFE  </a>
+                                <a *ngIf="checkStage(item)" class="w3-button w3-blue" [routerLink]="['/InternshipDirector/TemplateIntershipAgreement/exportfile', item.id]"> Export Convention de stage  </a>
+                              </td>
+                          </tr>
                         </tbody>
                     </table>
                 </div>

@@ -24,7 +24,7 @@ export class ViewDetailFileComponent implements OnInit {
   );
 
   noteRapporteurForm = new FormGroup({
-    Note_Rappoteur: new FormControl('', [NoteValidator])
+    Note_Rappoteur: new FormControl('', [NoteValidator, Validators.max(20), Validators.min(0)])
   });
 
   constructor(public dialogRef: MatDialogRef<ViewDetailFileComponent>,

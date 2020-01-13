@@ -44,12 +44,12 @@ export class OptionnComponent implements OnInit {
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    this.add();
+   // this.add();
 
   }
   openModal1(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    this.add();
+   // this.add();
   }
 
 }

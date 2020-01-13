@@ -6,6 +6,7 @@ import {Router} from '@angular/router';
 import {ClassesService} from '../../Services/classes.service';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
+import {faSearchPlus} from '@fortawesome/free-solid-svg-icons/faSearchPlus';
 
 @Component({
   selector: 'app-classes',
@@ -13,6 +14,8 @@ import {BsModalRef, BsModalService} from 'ngx-bootstrap/modal';
   styleUrls: ['./classes.component.scss']
 })
 export class ClassesComponent implements OnInit {
+  serchtext: string;
+  serchicone= faSearchPlus;
   classes: Classes[] = [];
   modalRef: BsModalRef;
   admin: Admin;
@@ -45,16 +48,16 @@ export class ClassesComponent implements OnInit {
     this.classe = new Classes(null,this.formc.value['nom'],this.formc.value['nbr'],null);
     console.log(this.classe);
     this.classeser.addclasse(this.classe).subscribe( );
-    setTimeout(function() {
+
       this.classeser.getallclasses().subscribe(data =>{this.classes = data;
         console.log(this.classes); });
       this.formc.reset();
-    }, 1000);
+
 
   }
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
-    this.add();
+  //  this.add();
   }
   openModal1(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);

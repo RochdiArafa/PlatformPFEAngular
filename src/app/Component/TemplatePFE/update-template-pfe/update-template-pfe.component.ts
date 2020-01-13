@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { TemplatePFE } from 'src/app/Models/template-pfe';
 import { TemplatePFEService } from 'src/app/Services/TemplatePFEService/template-pfe.service';
 import { GradProjectFile } from 'src/app/Models/grad-project-file';
+import { DirecteurdesstageService } from 'src/app/Services/directeurdesstage.service';
+import { Site } from 'src/app/Models/site';
 
 @Component({
   selector: 'app-update-template-pfe',
@@ -15,10 +17,10 @@ export class UpdateTemplatePFEComponent implements OnInit {
   showerrordescription : boolean = false;
   showerrorproblem : boolean = false;
   showerrorfunctionnalities : boolean = false;
-
-  constructor(public templatePFEService:TemplatePFEService) { 
+  site : Site;
+  constructor(public templatePFEService:TemplatePFEService , public directeurService : DirecteurdesstageService) { 
     this.templatePFE = new TemplatePFE();
-    this.GetTemplatePFE(4);
+    this.getSite(parseInt(sessionStorage.getItem('idUser')));
   }
 
   ngOnInit() {
@@ -102,5 +104,22 @@ export class UpdateTemplatePFEComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+  }
+
+  getSite(directeurid){
+    this.directeurService.getSite(directeurid).subscribe((data: any)=>{
+      console.log("siteeeeeeeeeeeeeee");
+
+      console.log(data);
+      this.site = data;
+
+      if(this.site.templatePFE == null){
+
+      }  
+      else{
+        this.templatePFE = this.site.templatePFE;
+        this.templatePFE.site = this.site.id;
+      }
+    }) 
   }
 }

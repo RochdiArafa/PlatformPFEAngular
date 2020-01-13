@@ -1,6 +1,8 @@
 import {CategoryModel} from './Category.Model';
 import {Student} from './student';
 
+import {StudentModel} from '../Models/Student.Model';
+
 export interface GradeFileModel {
   id: number;
   title: string;
@@ -12,6 +14,10 @@ export interface GradeFileModel {
   note_rapporteur: number;
   motif: string;
   anneeScolaire: Date;
+  anneeScolairee:string;
+  Student:StudentModel;
+  stateRapport:string;
+  state:string;
   categoriesoffile: CategoryModel[];
   student: Student;
 }

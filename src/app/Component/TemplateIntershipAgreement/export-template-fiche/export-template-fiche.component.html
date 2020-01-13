@@ -1,6 +1,7 @@
-<h3>Export Template Convention de stage</h3>
 
-<div class="pageWrapper">
+<div *ngIf="showExport" class="pageWrapper">
+    <h3>Export Template Convention de stage</h3>
+
         <div class="content cadre">
           <kendo-pdf-export #pdf paperSize="A4" margin="2cm">
             <div class="size-a4">

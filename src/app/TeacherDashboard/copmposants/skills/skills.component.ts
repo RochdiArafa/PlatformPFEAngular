@@ -4,6 +4,10 @@ import {MatDialog} from '@angular/material';
 import {Router} from '@angular/router';
 import {SkillModel} from '../../../Models/Skill.Model';
 import {TeacherService} from '../../../Services/teacher.service';
+import {faTrashAlt, faPlusCircle, faBullhorn, faGrinStars} from '@fortawesome/free-solid-svg-icons';
+import {AddPreferdCategoriesComponent} from "../../Dialogs/add-preferd-categories/add-preferd-categories.component";
+import {AddSkillsComponent} from "../../Dialogs/add-skills/add-skills.component";
+
 
 @Component({
   selector: 'app-skills',
@@ -11,6 +15,11 @@ import {TeacherService} from '../../../Services/teacher.service';
   styleUrls: ['./skills.component.scss']
 })
 export class SkillsComponent implements OnInit {
+  trashIncon = faTrashAlt;
+  addcatIcon = faPlusCircle;
+  annonceIcon = faBullhorn;
+  proposedIcon = faGrinStars;
+
 
   ListSkills: SkillModel[] = [];
   constructor(private teacherSer: TeacherService, public dialog: MatDialog, private router: Router) { }
@@ -26,9 +35,18 @@ export class SkillsComponent implements OnInit {
       },
       e => {},
       () => {
-        //this.ngOnInit();
+        // this.ngOnInit();
       }
     );
   }
-
+  addSkillsDialogue() {
+    const dialogRef = this.dialog.open(AddSkillsComponent, { maxHeight: '600px',
+      data: {name: 'mo', animal: 'zitoun'}
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.ngOnInit();
+      // this.animal = result;
+    });
+  }
 }

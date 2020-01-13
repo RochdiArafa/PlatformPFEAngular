@@ -18,12 +18,12 @@ export class SoutenanceService {
   }
   getteacherbysout(): Observable<any>{
     return  this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/soutenance/' +
-    10);
+    this.authservice.Teacher.id);
   }
   getallsoutcalendar():Observable<any>{
     return  this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/soutenance/');
   }
-  gerersoutnonce(jj:number, mm: number ,aa: number){
+  gerersoutnonce(jj:string, mm: string ,aa: string){
     return  this.httpClientSer.get<any>('http://localhost:9080/PlatformPFE-web/rest/soutenance/' + jj + '/' + mm + '/' + aa);
   }
 }

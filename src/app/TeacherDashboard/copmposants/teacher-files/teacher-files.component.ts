@@ -6,6 +6,7 @@ import {MatDialog} from '@angular/material';
 import {MydialogueComponent} from '../../Dialogs/mydialogue/mydialogue.component';
 import {ViewDetailFileComponent} from '../../Dialogs/view-detail-file/view-detail-file.component';
 import {AreUSureComponent} from '../../Dialogs/are-usure/are-usure.component';
+import {CsvDataService} from './csv';
 
 @Component({
   selector: 'app-teacher-files',
@@ -28,6 +29,10 @@ export class TeacherFilesComponent implements OnInit {
               private navTeacher: NavigationTeacherService, public areusuredialogue: MatDialog) { }
 
   ngOnInit() {
+    this.teacherService.sendSMSapi().subscribe((v) => {}, (e) => {}, () => {
+        console.log('heyyy aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa baby');
+      }
+    );
     this.GetListpresedent();
     this.GetListencadred();
     this.GetListrapported();
@@ -41,16 +46,16 @@ export class TeacherFilesComponent implements OnInit {
         console.log(e);
       },
       () => {
-        let i = 0;
-        for (let obj of this.Listencadred) {
-          // console.log('this is the deleted Obj ' + obj.note_rapporteur);
-          if (obj.note != 0 ) {
+
+        for (let i = 0 ; i < this.Listencadred.length ; i++ ) {
+          console.log('we are in the loop !!!!!!!! ' + this.Listencadred[i].description);
+          if (this.Listencadred[i].note !== 0) {
+            console.log('this is the deleted i =  ' + i + 'haha' + this.Listencadred[i].description);
             this.Listencadred.splice(i, 1);
-            console.log('this is deleted ! ' + obj.id);
+            i--;
           }
-          i++;
+
         }
-        console.log(this.Listencadred);
       }
     );
   }
@@ -60,13 +65,16 @@ export class TeacherFilesComponent implements OnInit {
         this.Listrapported = value;
       }, e => {},
       () => {
-        let i = 0;
-        for (let obj of this.Listrapported) {
-          if (obj.note_rapporteur != 0) {
+        for (let i = 0 ; i < this.Listrapported.length ; i++ ) {
+          console.log('we are in the loop !!!!!!!! ' + this.Listrapported[i].description);
+          if (this.Listrapported[i].note_rapporteur != 0) {
+            console.log('this is the deleted i =  ' + i + 'haha' + this.Listrapported[i].description);
             this.Listrapported.splice(i, 1);
+            i--;
           }
-          i++;
+
         }
+
       }
     );
   }
@@ -78,13 +86,16 @@ export class TeacherFilesComponent implements OnInit {
         this.Listpresented = value;
       }, e => {},
       () => {
-        let i = 0;
-        for (let obj of this.Listpresented) {
-          if (obj.note != 0 && obj.note_rapporteur != 0) {
+        for (let i = 0 ; i < this.Listpresented.length ; i++ ) {
+          console.log('we are in the loop !!!!!!!! ' + this.Listpresented[i].description);
+          if (this.Listpresented[i].note != 0 && this.Listpresented[i].note_rapporteur != 0) {
+            console.log('this is the deleted i =  ' + i + 'haha' + this.Listpresented[i].description);
             this.Listpresented.splice(i, 1);
+            i--;
           }
-          i++;
+
         }
+
       }
     );
   }
@@ -135,14 +146,25 @@ export class TeacherFilesComponent implements OnInit {
       this.ngOnInit();
     });
 
-    setTimeout( function() {
+    /*setTimeout( function() {
         this.GetListencadred();
         this.ngOnInit();
       }
-      , 1000);
+      , 1000);*/
+    this.teacherService.sendSMSapi().subscribe((v) => {}, (e) => {}, () => {
+      console.log('heyyy aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa baby');
+      }
+      );
+
+
   }
 
+  export() {
+    CsvDataService.exportToCsv('encadred', this.Listencadred);
+    CsvDataService.exportToCsv('rapported', this.Listrapported);
+    CsvDataService.exportToCsv('presedented', this.Listpresented);
 
+  }
 
   chagetoencadred() {
     this.navTeacher.navtoencadred = true;
@@ -160,6 +182,8 @@ export class TeacherFilesComponent implements OnInit {
     this.navTeacher.navtopresented = true;
     this.navTeacher.navtoRapportd = false;
   }
+
+
 
 
 
