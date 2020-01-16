@@ -1,0 +1,65 @@
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-15">
+      <div class="ibox ">
+        <div class="ibox-title">
+          <h5>Les fiches et notes des prevalidations</h5>
+
+          <div class="ibox-tools">
+            <a class="collapse-link">
+              <i class="fa fa-chevron-up"></i>
+            </a>
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+              <i class="fa fa-wrench"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-user">
+              <li><a href="#" class="dropdown-item">Config option 1</a>
+              </li>
+              <li><a href="#" class="dropdown-item">Config option 2</a>
+              </li>
+            </ul>
+            <a class="close-link">
+              <i class="fa fa-times"></i>
+            </a>
+          </div>
+        </div>
+        <div class="ibox-content">
+
+          <table class="footable table table-stripped toggle-arrow-tiny">
+            <thead>
+            <tr>
+              <th>Titre de la fiche</th>
+              <th>Description de la fiche</th>
+              <th>Note de la fiche</th>
+              <th>Prevalidation</th>
+              <th>Prevalidateur</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let obj of grads">
+              <td>{{obj.title}}</td>
+              <td>{{obj.description}}</td>
+              <td>{{obj.note}}</td>
+              <td *ngIf="!obj.preValidated">Projet non validé</td>
+              <td *ngIf="obj.preValidated">projet validé</td>
+              <td *ngIf="obj.student.prevalidateur !== null">kkk</td>
+              <td *ngIf="obj.student.prevalidateur === null">Pas de prévalidateur</td>
+              <td *ngIf="obj.student.prevalidateur === null"><button type="button" class="btn btn-info btn-sm" (click)="affecterprevalidateur(obj)">Affecter Prévalidateur</button></td>
+              <td *ngIf="obj.student.prevalidateur !== null">Prévalidateur deja affecté</td>
+            </tr>
+            </tbody>
+            <tfoot>
+            <tr>
+              <td colspan="8">
+                <ul class="pagination float-right"></ul>
+              </td>
+            </tr>
+            </tfoot>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

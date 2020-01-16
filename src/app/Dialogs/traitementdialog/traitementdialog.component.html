@@ -1,0 +1,27 @@
+<fieldset>
+  <legend> Traitement de la réclamation de {{data.reclamation.student.firstName}} {{data.reclamation.student.lastName}}</legend>
+  <div style="text-align: center; width: 100%">
+    <div *ngIf="data.reclamation.type==1">
+      <span style="font-family:'Comic Sans MS'">Selectionnez un rapporteur</span>
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of data.listeteachersreclamation" value="{{o.id}}">
+          {{o.firstName}}
+          {{o.lastName}}
+        </option>
+      </select>
+      <div><button class="btn-success" (click)="changerrapporteur(data.reclamation.student.id,data.reclamation.id)">Changer rapporteur</button></div>
+      <div><button class="btn-danger" (click)="refuserreclamation(data.reclamation.id,data.reclamation.student.id)">Refuser réclamation</button></div>
+    </div>
+    <div *ngIf="data.reclamation.type==2">
+      <span style="font-family:'Comic Sans MS'">Selectionnez un encadrant</span>
+      <select [(ngModel)]="selectedOption">
+        <option *ngFor="let o of data.listeteachersreclamation" value="{{o.id}}">
+          {{o.firstName}}
+          {{o.lastName}}
+        </option>
+      </select>
+      <div><button class="btn-success" (click)="changerencadrant(data.reclamation.student.id,data.reclamation.id)">Changer encadrant</button></div>
+      <div><button class="btn-danger" (click)="refuserreclamation(data.reclamation.student.id,data.reclamation.id)">Refuser réclamation</button></div>
+    </div>
+  </div>
+</fieldset>

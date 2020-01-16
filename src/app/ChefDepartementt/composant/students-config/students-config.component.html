@@ -1,0 +1,262 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Students</h2>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-6 col-xs-6">
+    <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox ">
+            <div class="ibox-title">
+              <h5>Etudiants sans rapporteurs</h5>
+
+              <div class="ibox-tools">
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                  <li><a href="#" class="dropdown-item">Config option 1</a>
+                  </li>
+                  <li><a href="#" class="dropdown-item">Config option 2</a>
+                  </li>
+                </ul>
+                <a class="close-link">
+                  <i class="fa fa-times"></i>
+                </a>
+              </div>
+            </div>
+            <div class="ibox-content">
+
+              <table class="footable table table-stripped toggle-arrow-tiny">
+                <thead>
+                <tr>
+
+                  <th data-toggle="true" [hidden]="hiddentrue()">Id</th>
+                  <th>Nom et prenom</th>
+                  <th>Numero</th>
+                  <th data-hide="all">Email</th>
+                  <th data-hide="all">Classe</th>
+
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let obj of ListeStudentssansrapp">
+                  <td [hidden]="hiddentrue()">{{obj.id}}</td>
+                  <td>{{obj.firstName}} {{obj.lastName}}</td>
+                  <td>{{obj.phoneNumber}}</td>
+                  <td>{{obj.email}}</td>
+                  <td><span class="pie">{{obj.grade}}</span>eme année</td>
+                  <td><button type="button" class="btn btn-info btn-sm" (click)="clickRapporter(obj.id)">Affecter Rapporteur</button></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <td colspan="8">
+                    <ul class="pagination float-right"></ul>
+                  </td>
+                </tr>
+                </tfoot>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xs-6">
+    <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="col-lg-15">
+          <div class="ibox ">
+            <div class="ibox-title">
+              <h5>Etudiants sans Encadrants</h5>
+
+              <div class="ibox-tools">
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                  <li><a href="#" class="dropdown-item">Config option 1</a>
+                  </li>
+                  <li><a href="#" class="dropdown-item">Config option 2</a>
+                  </li>
+                </ul>
+                <a class="close-link">
+                  <i class="fa fa-times"></i>
+                </a>
+              </div>
+            </div>
+            <div class="ibox-content">
+
+              <table class="footable table table-stripped toggle-arrow-tiny">
+                <thead>
+                <tr>
+
+                  <th data-toggle="true" [hidden]="hiddentrue()">Id</th>
+                  <th>Nom et prenom</th>
+                  <th>Numero</th>
+                  <th data-hide="all">Email</th>
+                  <th data-hide="all">Grade</th>
+
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let obj of ListeStudentsSansencad">
+                  <td [hidden]="hiddentrue()">{{obj.id}}</td>
+                  <td>{{obj.firstName}} {{obj.lastName}}</td>
+                  <td>{{obj.phoneNumber}}</td>
+                  <td>{{obj.email}}</td>
+                  <td><span class="pie">{{obj.grade}}</span></td>
+                  <td><button type="button" class="btn btn-info btn-sm" (click)="clickEncadrer(obj.id)">Affecter Encadrant</button></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <td colspan="8">
+                    <ul class="pagination float-right"></ul>
+                  </td>
+                </tr>
+                </tfoot>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div class="row">
+  <div class="col-md-6 col-xs-6">
+    <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox ">
+            <div class="ibox-title">
+              <h5>Les etudiants et leurs rapporteurs</h5>
+
+              <div class="ibox-tools">
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                  <li><a href="#" class="dropdown-item">Config option 1</a>
+                  </li>
+                  <li><a href="#" class="dropdown-item">Config option 2</a>
+                  </li>
+                </ul>
+                <a class="close-link">
+                  <i class="fa fa-times"></i>
+                </a>
+              </div>
+            </div>
+            <div class="ibox-content">
+
+              <table class="footable table table-stripped toggle-arrow-tiny">
+                <thead>
+                <tr>
+
+                  <th data-toggle="true" [hidden]="hiddentrue()">Id</th>
+                  <th>Nom et prenom</th>
+                  <th>Details</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let obj of ListeStudentsavecrapp">
+                  <td [hidden]="hiddentrue()">{{obj.id}}</td>
+                  <td>{{obj.firstName}} {{obj.lastName}}</td>
+                  <td><button type="button" class="btn btn-info btn-sm" (click)="openrapporteurdetailsdialog(obj)">Afficher details</button></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <td colspan="8">
+                    <ul class="pagination float-right"></ul>
+                  </td>
+                </tr>
+                </tfoot>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xs-6">
+    <div class="wrapper wrapper-content animated fadeInRight">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="ibox ">
+            <div class="ibox-title">
+              <h5>Les etudiants et leurs encadrants</h5>
+
+              <div class="ibox-tools">
+                <a class="collapse-link">
+                  <i class="fa fa-chevron-up"></i>
+                </a>
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                  <i class="fa fa-wrench"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-user">
+                  <li><a href="#" class="dropdown-item">Config option 1</a>
+                  </li>
+                  <li><a href="#" class="dropdown-item">Config option 2</a>
+                  </li>
+                </ul>
+                <a class="close-link">
+                  <i class="fa fa-times"></i>
+                </a>
+              </div>
+            </div>
+            <div class="ibox-content">
+
+              <table class="footable table table-stripped toggle-arrow-tiny">
+                <thead>
+                <tr>
+
+                  <th data-toggle="true" [hidden]="hiddentrue()">Id</th>
+                  <th>Nom et prenom</th>
+                  <th>Details</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let obj of ListeStudentavecEncadrant">
+                  <td [hidden]="hiddentrue()">{{obj.id}}</td>
+                  <td>{{obj.firstName}} {{obj.lastName}}</td>
+                  <td><button type="button" class="btn btn-info btn-sm" (click)="openrapporteurdetails2dialog(obj)">Afficher details</button></td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <td colspan="8">
+                    <ul class="pagination float-right"></ul>
+                  </td>
+                </tr>
+                </tfoot>
+              </table>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+

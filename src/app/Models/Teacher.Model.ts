@@ -10,4 +10,5 @@ export interface TeacherModel {
   image: string;
   categoriesProposed: CategoryModel[];
   preferedCategories: CategoryModel[];
+  nbmaxrap: number;
 }

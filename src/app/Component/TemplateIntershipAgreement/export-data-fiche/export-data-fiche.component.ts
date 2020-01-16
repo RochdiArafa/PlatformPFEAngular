@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { TemplateIntershipAgreement } from 'src/app/Model/template-intership-agreement';
-import { TemplateIntershipAgreementService } from 'src/app/Service/TemplateIntershipAgreementService/template-intership-agreement.service';
-import { Student } from 'src/app/Model/student';
-import { IntershipAgreement } from 'src/app/Model/intership-agreement';
-import { Company } from 'src/app/Model/company';
+import { TemplateIntershipAgreement } from 'src/app/Models/template-intership-agreement';
+import { TemplateIntershipAgreementService } from 'src/app/Services/TemplateIntershipAgreementService/template-intership-agreement.service';
+import { Student } from 'src/app/Models/student';
+import { IntershipAgreement } from 'src/app/Models/intership-agreement';
+import { Company } from 'src/app/Models/company';
+import { ActivatedRoute } from '@angular/router';
+import { StudentService } from 'src/app/Services/Student/student.service';
 
 @Component({
   selector: 'app-export-data-fiche',
@@ -20,15 +22,18 @@ export class ExportDataFicheComponent implements OnInit {
 
   public templateNotblank: string = "";
 
-  constructor(public templateIntershipAgreementService:TemplateIntershipAgreementService) { 
-    this.GetTemplatePFE(27);
+  constructor(public templateIntershipAgreementService:TemplateIntershipAgreementService , public activatedRoute:ActivatedRoute , public studentService : StudentService) { 
     this.student = new Student();
     this.company = new Company();
     this.intershipAgreement = new IntershipAgreement();
-    this.student.lastName = "arafa";
-    this.student.firstName = "rochdi";
 
-    this.company.gmName  ="Familia Chic";
+    this.activatedRoute.params.subscribe(params => {
+      let id = params['id'];
+      this.getStudentByID(id);
+      });
+
+
+
 
   }
 
@@ -39,9 +44,8 @@ export class ExportDataFicheComponent implements OnInit {
   GetTemplatePFE(id : number){
 
     this.templateIntershipAgreementService.search(id).subscribe((data: any)=>{
-      console.log(data);
       this.templateIntershipAgreement =  data;
-      this.templateIntershipAgreement.site = data.site.id;
+      this.templateIntershipAgreement.site = parseInt(sessionStorage.getItem('connectedSite'));
       this.template = this.templateIntershipAgreement.template;
       this.ExportStudentTemplate();
     })
@@ -55,9 +59,23 @@ export class ExportDataFicheComponent implements OnInit {
     this.templateNotblank =  this.templateNotblank.replace("{{intershipAgreement.endingDate}}", this.intershipAgreement.endingDate+"");
     this.templateNotblank =  this.templateNotblank.replace("{{company.nom}}", this.company.gmName);
 
-    console.log(this.templateNotblank);
     this.template = this.templateNotblank;
   }
 
+  public getStudentByID(id){
+    this.studentService.getStudent(id).subscribe((data: any)=>{
+      console.log(data);
+      this.student = data;
+      this.GetTemplatePFE(27);
+
+
+      this.student.lastName = this.student.firstName;
+      this.student.firstName = this.student.lastName;
+  
+      this.company.gmName  =this.student.pfeFile.company.gmName;
+      this.intershipAgreement.beginningDate = "06/04/2020";
+      this.intershipAgreement.endingDate = "12/10/2020";
+    })
+  }
 
 }

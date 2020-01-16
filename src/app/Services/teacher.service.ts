@@ -9,7 +9,11 @@ import {ActionTeacherModel} from '../Models/ActionTeacher.Model';
 import {TeacherModel} from '../Models/Teacher.Model';
 import {not} from 'rxjs/internal-compatibility';
 import {SkillModel} from '../Models/Skill.Model';
+
+import {Teacher} from '../Models/teacher';
+
 import {CategoryModel} from "../Models/Category.Model";
+
 
 @Injectable({
   providedIn: 'root'
@@ -107,6 +111,16 @@ export class TeacherService {
     return  this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/bestnoterapportedcategorie/'
       + this.teacher.id);
   }
+
+  getallteachers() {
+    return  this.httpClientSer.get<Teacher[]>('http://localhost:9080/PlatformPFE-web/rest/teachers'
+    );
+  }
+  addteachers(teacher: Teacher): Observable<Teacher> {
+    return this.httpClientSer.post<Teacher>('http://localhost:9080/PlatformPFE-web/rest/teachers/'
+      , teacher, this.httpOptions);
+  }
+
   getmostrapportedCategorie() {
     return  this.httpClientSer.get<any[]>('http://localhost:9080/PlatformPFE-web/rest/teacher/mostrapportedcategorie/'
       + this.teacher.id);
@@ -118,6 +132,7 @@ export class TeacherService {
   public getautoComplete() {
     return  this.httpClientSer.get<any[]>(' http://localhost:9080/PlatformPFE-web/rest/teacher/autocomplete/'
       + this.teacher.id);
+
   }
 
   addPreferdCategory(nomc: string) {

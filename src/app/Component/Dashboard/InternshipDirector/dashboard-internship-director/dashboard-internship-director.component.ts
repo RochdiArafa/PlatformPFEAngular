@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Student } from 'src/app/Models/student';
+import { StudentService } from 'src/app/Services/Student/student.service';
+import { Directeurdesstages } from 'src/app/Models/Directeurdesstages';
+import { DirecteurdesstageService } from 'src/app/Services/directeurdesstage.service';
+import { Site } from 'src/app/Models/site';
 
 @Component({
   selector: 'app-dashboard-internship-director',
@@ -6,43 +11,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dashboard-internship-director.component.scss']
 })
 export class DashboardInternshipDirectorComponent implements OnInit {
-  afficherStatis : boolean = true;
-  afficherEtudiant : boolean = false;
-  afficherTemplatePFE : boolean = false;
-  afficherTemplateConvention : boolean = false;
-
-  constructor() { }
+  ListStudent : Student[];
+  SansStage : number = 0 ;
+  constructor(public studentService :StudentService , public directeurStageService : DirecteurdesstageService) { }
 
   ngOnInit() {
-  }
-
-  showStatis(){
-    this.afficherEtudiant = false;
-    this.afficherStatis = true;
-    this.afficherTemplatePFE = false;
-    this.afficherTemplateConvention = false;  }
-
-  showStudent(){
-    this.afficherEtudiant = true;
-    this.afficherStatis = false;
-    this.afficherTemplatePFE = false;
-    this.afficherTemplateConvention = false;
-
-
+    
+    this.GetAllStudent(parseInt(sessionStorage.getItem('connectedSite')));
 
   }
 
-  showTemplatePFE(){
-    this.afficherEtudiant = false;
-    this.afficherStatis = false;
-    this.afficherTemplatePFE = true;
-    this.afficherTemplateConvention = false;  }
+  GetAllStudent(site_id : number){
 
-  showTemplateConvention(){
-    this.afficherEtudiant = false;
-    this.afficherStatis = false;
-    this.afficherTemplatePFE = false;
-    this.afficherTemplateConvention = true;  }
+    this.studentService.getAllStudent(site_id).subscribe((data: any)=>{
+      this.ListStudent = data;
+      this.ListStudent.forEach(etudiant => {
+        if(etudiant.pfeFile == null)
+          this.SansStage = this.SansStage + 1;
+      });
+    })
+  }
+
+
+
 
 
 }

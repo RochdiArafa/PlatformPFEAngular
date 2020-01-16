@@ -1,0 +1,14 @@
+<fieldset>
+  <legend>Affectation du prévalidateur</legend>
+  <div style="width:100%;text-align: center"> Nom et prénom de l'etudiant : {{data.fichepfe.student.firstName}} {{data.fichepfe.student.lastName}}</div>
+  <div style="width:100%;text-align: center">Choisir un prévalidateur : </div>
+  <div style="width:100%;text-align: center">
+    <select [(ngModel)]="selectedOption">
+      <option *ngFor="let o of data.teacherslist" value="{{o.id}}">
+        {{o.firstName}}
+        {{o.lastName}}
+      </option>
+    </select>
+  </div>
+  <div style="width:100%;text-align: center" (click)="affecterprevalidateur(data.fichepfe)"><button>Affecter</button></div>
+</fieldset>

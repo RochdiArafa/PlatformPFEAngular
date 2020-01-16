@@ -1,0 +1,42 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+
+
+
+
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox" *ngFor="let obj of listeTeachers">
+        <div class="ibox-title">
+          <h5>{{obj}} a encadré les fiches : </h5>
+        </div>
+        <div class="ibox-content" *ngFor="let grade of grads" >
+
+          <div class="row">
+            <div class="col-lg-8">
+              <div *ngIf="grade.student.encadrants != null">
+              <div *ngIf='(grade.student.encadrants.firstName+" "+grade.student.encadrants.lastName) == obj'>
+
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    {{obj}}
+                  </div>
+                  <div class="panel-body">
+                    <div>
+
+
+                      <div style="text-align: center; width: 100%;">Titre : {{grade.title}}</div>
+                      <div style="text-align: center; width: 100%;">Note : {{grade.note}}</div>
+                      <div style="text-align: center; width: 100%;"><span>Etudiant : {{grade.student.email}}</span></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

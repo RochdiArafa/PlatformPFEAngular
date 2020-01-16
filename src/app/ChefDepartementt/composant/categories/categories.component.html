@@ -1,0 +1,78 @@
+<!-- <div class="row">
+  <div class="col-md-4">
+    <input *ngIf="config.filtering" placeholder="Filter all columns"
+           [ngTableFiltering]="config.filtering"
+           class="form-control"
+           (tableChanged)="onChangeTable(config)"/>
+  </div>
+</div>
+<br>
+<ng-table [config]="config"
+          (tableChanged)="onChangeTable(config)"
+          (cellClicked)="onCellClick($event)"
+          [rows]="rows" [columns]="columns">
+</ng-table>
+<pagination *ngIf="config.paging"
+            class="pagination-sm"
+            [(ngModel)]="page"
+            [totalItems]="length"
+            [itemsPerPage]="itemsPerPage"
+            [maxSize]="maxSize"
+            [boundaryLinks]="true"
+            [rotate]="false"
+            (pageChanged)="onChangeTable(config, $event)"
+            (numPages)="numPages = $event">
+</pagination>
+<pre *ngIf="config.paging" class="card card-block card-header">Page: {{page}} / {{numPages}}</pre>
+-->
+<div class="row wrapper border-bottom white-bg page-heading">
+  <div class="col-lg-10">
+    <h2>Validation des categories</h2>
+    <ol class="breadcrumb">
+    </ol>
+  </div>
+  <div class="col-lg-2">
+
+  </div>
+</div>
+<div class="wrapper wrapper-content animated fadeInRight">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="ibox float-e-margins">
+        <div class="ibox-title">
+          <h5>Table des categories</h5>
+
+          <div ibox-tools></div>
+        </div>
+        <div class="ibox-content">
+
+          <table class="table">
+            <thead>
+            <tr>
+              <th hidden>#</th>
+              <th>Nom de la categorie</th>
+              <th>Description</th>
+              <th>Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let a of listeCat">
+              <td hidden>{{a.id}}</td>
+              <td>{{a.name}}</td>
+              <td>{{a.description}}</td>
+              <div *ngIf="!a.valide; else suppr">
+                <td><button class="btn-success" (click)="validercat(a.id)">Valider</button></td>
+              </div>
+              <ng-template #suppr>
+                <td><button class="btn-danger" (click)="unvalidercat(a.id)">Unvalider</button></td>
+              </ng-template>
+            </tr>
+
+            </tbody>
+          </table>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

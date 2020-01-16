@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { TemplatePFE } from 'src/app/Model/template-pfe';
-import { TemplatePFEService } from 'src/app/Service/TemplatePFEService/template-pfe.service';
-import { GradProjectFile } from 'src/app/Model/grad-project-file';
+import { TemplatePFE } from 'src/app/Models/template-pfe';
+import { TemplatePFEService } from 'src/app/Services/TemplatePFEService/template-pfe.service';
+import { GradProjectFile } from 'src/app/Models/grad-project-file';
+import { DirecteurdesstageService } from 'src/app/Services/directeurdesstage.service';
+import { Site } from 'src/app/Models/site';
 
 @Component({
   selector: 'app-update-template-pfe',
@@ -11,9 +13,14 @@ import { GradProjectFile } from 'src/app/Model/grad-project-file';
 export class UpdateTemplatePFEComponent implements OnInit {
 
   public templatePFE: TemplatePFE ;
-  constructor(public templatePFEService:TemplatePFEService) { 
+  showerrorTitre : boolean = false;
+  showerrordescription : boolean = false;
+  showerrorproblem : boolean = false;
+  showerrorfunctionnalities : boolean = false;
+  site : Site;
+  constructor(public templatePFEService:TemplatePFEService , public directeurService : DirecteurdesstageService) { 
     this.templatePFE = new TemplatePFE();
-    this.GetTemplatePFE(16);
+    this.getSite(parseInt(sessionStorage.getItem('idUser')));
   }
 
   ngOnInit() {
@@ -22,15 +29,46 @@ export class UpdateTemplatePFEComponent implements OnInit {
 
 
   updateTemplatePFE(){
-    var ch = this.templatePFE.template;
-    for (let index = 0; index < ch.length; index++) {
-      ch = ch.replace("&nbsp;"," ")    
+    var error = 0;
+    var ch  = this.templatePFE.template;
+    if( ch.indexOf("{{gradProjectFile.titre}}")== -1 ){
+      this.showerrorTitre = true;
+      error++;
     }
-    this.templatePFE.template = ch;
-    
-    this.templatePFEService.modifier(this.templatePFE).subscribe((data: any)=>{
-      console.log(data);
-    }) 
+    else
+      this.showerrorTitre = false;  
+
+    if( ch.indexOf("{{gradProjectFile.description}}")== -1 ){
+      this.showerrordescription = true;
+      error++;
+    }
+    else
+      this.showerrordescription = false; 
+      
+    if( ch.indexOf("{{gradProjectFile.problem}}")== -1 ){
+      this.showerrorproblem = true;
+      error++
+    }
+    else
+      this.showerrorproblem = false; 
+      
+    if( ch.indexOf("{{gradProjectFile.functionnalities}}")== -1 ){
+      this.showerrorfunctionnalities = true;
+      error++;
+    }
+    else
+      this.showerrorfunctionnalities = false;   
+
+    if(error == 0){
+      for (let index = 0; index < ch.length; index++) {
+        ch = ch.replace("&nbsp;"," ")    
+      }
+      this.templatePFE.template = ch;
+      
+      this.templatePFEService.modifier(this.templatePFE).subscribe((data: any)=>{
+        console.log(data);
+      }) 
+    }
   }
 
   
@@ -66,5 +104,22 @@ export class UpdateTemplatePFEComponent implements OnInit {
     selBox.select();
     document.execCommand('copy');
     document.body.removeChild(selBox);
+  }
+
+  getSite(directeurid){
+    this.directeurService.getSite(directeurid).subscribe((data: any)=>{
+      console.log("siteeeeeeeeeeeeeee");
+
+      console.log(data);
+      this.site = data;
+
+      if(this.site.templatePFE == null){
+
+      }  
+      else{
+        this.templatePFE = this.site.templatePFE;
+        this.templatePFE.site = this.site.id;
+      }
+    }) 
   }
 }
